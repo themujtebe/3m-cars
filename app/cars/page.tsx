@@ -179,17 +179,19 @@ export default function CarsPage() {
       <Header />
 
       <section className="bg-gradient-to-b from-[#7b000b] via-[#2a0307] to-black">
-        <div className="mx-auto max-w-7xl px-6 py-20 text-center md:py-24">
-          <h1 className="text-4xl font-extrabold md:text-6xl">السيارات</h1>
-          <p className="mx-auto mt-5 max-w-2xl text-sm leading-8 text-white/70 md:text-base">
+        <div className="mx-auto max-w-7xl px-4 py-16 text-center sm:px-6 sm:py-20 md:py-24">
+          <h1 className="text-4xl font-extrabold sm:text-5xl md:text-6xl">
+            السيارات
+          </h1>
+          <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-white/70 sm:text-base sm:leading-8">
             تصفح السيارات المتوفرة لدينا بطريقة واضحة وسهلة.
           </p>
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-10">
-        <div className="rounded-[28px] border border-white/10 bg-[#111111] p-5 shadow-[0_10px_40px_rgba(0,0,0,0.25)]">
-          <div className="grid gap-4 lg:grid-cols-4">
+      <section className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-10">
+        <div className="rounded-[24px] border border-white/10 bg-[#111111] p-4 shadow-[0_10px_40px_rgba(0,0,0,0.25)] sm:rounded-[28px] sm:p-5">
+          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
             <div>
               <label className="mb-2 block text-sm font-medium text-white">
                 نطاق السنة
@@ -198,7 +200,7 @@ export default function CarsPage() {
                 <select
                   value={yearFrom}
                   onChange={(e) => setYearFrom(e.target.value)}
-                  className="h-11 rounded-xl border border-white/10 bg-white text-right text-black outline-none"
+                  className="h-11 rounded-xl border border-white/10 bg-white px-3 text-right text-black outline-none"
                 >
                   <option value="">من</option>
                   {[2026, 2025, 2024, 2023, 2022, 2021, 2020, 2019, 2018, 2017].map(
@@ -210,12 +212,14 @@ export default function CarsPage() {
                   )}
                 </select>
 
-                <div className="flex items-center justify-center text-white/60">-</div>
+                <div className="flex items-center justify-center text-white/60">
+                  -
+                </div>
 
                 <select
                   value={yearTo}
                   onChange={(e) => setYearTo(e.target.value)}
-                  className="h-11 rounded-xl border border-white/10 bg-white text-right text-black outline-none"
+                  className="h-11 rounded-xl border border-white/10 bg-white px-3 text-right text-black outline-none"
                 >
                   <option value="">إلى</option>
                   {[2026, 2025, 2024, 2023, 2022, 2021, 2020, 2019, 2018, 2017].map(
@@ -287,17 +291,17 @@ export default function CarsPage() {
             </div>
           </div>
 
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center">
             <button
               onClick={handleSearch}
-              className="rounded-xl bg-red-600 px-8 py-3 text-sm font-bold text-white transition hover:bg-red-500"
+              className="w-full rounded-xl bg-red-600 px-8 py-3 text-sm font-bold text-white transition hover:bg-red-500 sm:w-auto"
             >
               انطلق في البحث
             </button>
 
             <button
               onClick={handleReset}
-              className="rounded-xl border border-white/20 px-6 py-3 text-sm font-bold text-white transition hover:border-white/40 hover:bg-white/5"
+              className="w-full rounded-xl border border-white/20 px-6 py-3 text-sm font-bold text-white transition hover:border-white/40 hover:bg-white/5 sm:w-auto"
             >
               إعادة
             </button>
@@ -305,8 +309,8 @@ export default function CarsPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 pb-16">
-        <div className="mb-6 flex items-center justify-between">
+      <section className="mx-auto max-w-7xl px-4 pb-14 sm:px-6 sm:pb-16">
+        <div className="mb-6 flex flex-col gap-2 text-center sm:flex-row sm:items-center sm:justify-between sm:text-right">
           <h2 className="text-2xl font-extrabold">السيارات المتوفرة</h2>
           <p className="text-sm text-white/60">{filteredCars.length} نتيجة</p>
         </div>
@@ -321,17 +325,17 @@ export default function CarsPage() {
                 <img
                   src={car.image}
                   alt={car.title}
-                  className="h-56 w-full object-cover"
+                  className="h-52 w-full object-cover sm:h-56"
                 />
 
                 <div className="p-5 text-right">
-                  <h3 className="text-xl font-bold">{car.title}</h3>
+                  <h3 className="text-lg font-bold sm:text-xl">{car.title}</h3>
 
-                  <p className="mt-2 text-lg font-semibold text-red-500">
+                  <p className="mt-2 text-base font-semibold text-red-500 sm:text-lg">
                     {car.price.toLocaleString()} د.ب
                   </p>
 
-                  <div className="mt-4 space-y-2 text-sm text-white/70">
+                  <div className="mt-4 space-y-2 text-sm leading-7 text-white/70">
                     <p>العلامة التجارية: {car.brand}</p>
                     <p>الموديل: {car.model}</p>
                     <p>السنة: {car.year}</p>
@@ -343,7 +347,7 @@ export default function CarsPage() {
             ))}
           </div>
         ) : (
-          <div className="rounded-[24px] border border-white/10 bg-[#0d0d0d] px-6 py-16 text-center text-white/70">
+          <div className="rounded-[24px] border border-white/10 bg-[#0d0d0d] px-6 py-14 text-center text-white/70">
             لا توجد سيارات مطابقة للفلاتر المختارة.
           </div>
         )}

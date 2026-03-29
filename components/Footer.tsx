@@ -4,13 +4,13 @@ import { MessageCircle } from "lucide-react";
 export default function Footer() {
   return (
     <footer className="border-t border-white/10 bg-black text-white">
-      <div className="mx-auto max-w-7xl px-6 py-12">
+      <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-12">
         <div className="grid gap-10 text-center md:grid-cols-3 md:text-right">
           <div>
-            <h3 className="text-xl font-extrabold">3M CARS</h3>
+            <h3 className="text-xl font-extrabold sm:text-2xl">3M CARS</h3>
             <p className="mt-4 text-sm leading-7 text-white/60">
               منصة متكاملة لعرض السيارات بطريقة احترافية تساعدك
-              <br />
+              <br className="hidden sm:block" />
               توصل للمشتري المناسب بسهولة.
             </p>
           </div>
