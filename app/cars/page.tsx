@@ -3,357 +3,175 @@
 import { useMemo, useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import CarCard from "@/components/CarCard";
+import type { Car } from "@/lib/supabase/types";
+import { SlidersHorizontal, RotateCcw } from "lucide-react";
 
-const cars = [
-  {
-    id: 1,
-    brand: "Mercedes",
-    model: "C-Class",
-    title: "Mercedes C-Class",
-    price: 8500,
-    year: 2022,
-    mileage: 42000,
-    condition: "ممتازة",
-    image:
-      "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
-    id: 2,
-    brand: "BMW",
-    model: "5 Series",
-    title: "BMW 5 Series",
-    price: 11200,
-    year: 2021,
-    mileage: 38000,
-    condition: "ممتازة",
-    image:
-      "https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
-    id: 3,
-    brand: "Toyota",
-    model: "Land Cruiser",
-    title: "Toyota Land Cruiser",
-    price: 15900,
-    year: 2020,
-    mileage: 61000,
-    condition: "ممتازة",
-    image:
-      "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
-    id: 4,
-    brand: "Range Rover",
-    model: "Sport",
-    title: "Range Rover Sport",
-    price: 18500,
-    year: 2022,
-    mileage: 29000,
-    condition: "ممتازة",
-    image:
-      "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
-    id: 5,
-    brand: "Toyota",
-    model: "Camry",
-    title: "Toyota Camry",
-    price: 6200,
-    year: 2019,
-    mileage: 89000,
-    condition: "جيدة جدًا",
-    image:
-      "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
-    id: 6,
-    brand: "Mercedes",
-    model: "E-Class",
-    title: "Mercedes E-Class",
-    price: 13200,
-    year: 2023,
-    mileage: 18000,
-    condition: "ممتازة",
-    image:
-      "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=1200&q=80",
-  },
+const MOCK_CARS: Car[] = [
+  { id: "1", title_ar: "تويوتا كامري", title_en: "Toyota Camry", brand: "Toyota", model: "Camry", year: 2023, mileage: 15000, price: 4800, currency: "BHD", description_ar: null, description_en: null, status: "available", featured: true, images: ["https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=800&q=80"], whatsapp_number: "97336414730", created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+  { id: "2", title_ar: "BMW 5 Series", title_en: "BMW 5 Series", brand: "BMW", model: "5 Series", year: 2022, mileage: 28000, price: 9500, currency: "BHD", description_ar: null, description_en: null, status: "available", featured: false, images: ["https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=800&q=80"], whatsapp_number: "97336414730", created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+  { id: "3", title_ar: "لكزس ES 350", title_en: "Lexus ES 350", brand: "Lexus", model: "ES 350", year: 2023, mileage: 8000, price: 12200, currency: "BHD", description_ar: null, description_en: null, status: "sold", featured: false, images: ["https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&w=800&q=80"], whatsapp_number: "97336414730", created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+  { id: "4", title_ar: "مرسيدس E-Class", title_en: "Mercedes E-Class", brand: "Mercedes", model: "E-Class", year: 2022, mileage: 22000, price: 13500, currency: "BHD", description_ar: null, description_en: null, status: "available", featured: false, images: ["https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=800&q=80"], whatsapp_number: "97336414730", created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+  { id: "5", title_ar: "تويوتا لاند كروزر", title_en: "Toyota Land Cruiser", brand: "Toyota", model: "Land Cruiser", year: 2021, mileage: 48000, price: 15900, currency: "BHD", description_ar: null, description_en: null, status: "available", featured: false, images: ["https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80"], whatsapp_number: "97336414730", created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+  { id: "6", title_ar: "رنج روفر سبورت", title_en: "Range Rover Sport", brand: "Range Rover", model: "Sport", year: 2022, mileage: 29000, price: 18500, currency: "BHD", description_ar: null, description_en: null, status: "available", featured: false, images: ["https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=800&q=80"], whatsapp_number: "97336414730", created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+  { id: "7", title_ar: "بورش كايين", title_en: "Porsche Cayenne", brand: "Porsche", model: "Cayenne", year: 2021, mileage: 34000, price: 22000, currency: "BHD", description_ar: null, description_en: null, status: "available", featured: true, images: ["https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80"], whatsapp_number: "97336414730", created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+  { id: "8", title_ar: "نيسان باترول", title_en: "Nissan Patrol", brand: "Nissan", model: "Patrol", year: 2020, mileage: 62000, price: 11800, currency: "BHD", description_ar: null, description_en: null, status: "available", featured: false, images: ["https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=800&q=80"], whatsapp_number: "97336414730", created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+  { id: "9", title_ar: "مرسيدس GLE", title_en: "Mercedes GLE", brand: "Mercedes", model: "GLE", year: 2023, mileage: 9000, price: 28500, currency: "BHD", description_ar: null, description_en: null, status: "available", featured: false, images: ["https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=800&q=80"], whatsapp_number: "97336414730", created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
 ];
 
-type SortOption =
-  | "newest"
-  | "oldest"
-  | "price-low"
-  | "price-high"
-  | "mileage-low"
-  | "mileage-high";
+type SortOption = "newest" | "oldest" | "price-low" | "price-high";
+
+const selectClass = "h-11 w-full rounded-xl border border-black/[0.08] bg-white px-4 text-right text-[14px] text-[#333] outline-none focus:border-[#a71225]/40 transition-colors appearance-none";
 
 export default function CarsPage() {
   const [brand, setBrand] = useState("");
-  const [model, setModel] = useState("");
   const [yearFrom, setYearFrom] = useState("");
   const [yearTo, setYearTo] = useState("");
   const [sortBy, setSortBy] = useState<SortOption>("newest");
+  const [applied, setApplied] = useState({ brand: "", yearFrom: "", yearTo: "", sortBy: "newest" as SortOption });
 
-  const [appliedBrand, setAppliedBrand] = useState("");
-  const [appliedModel, setAppliedModel] = useState("");
-  const [appliedYearFrom, setAppliedYearFrom] = useState("");
-  const [appliedYearTo, setAppliedYearTo] = useState("");
-  const [appliedSortBy, setAppliedSortBy] = useState<SortOption>("newest");
-
-  const brands = useMemo(() => {
-    return Array.from(new Set(cars.map((car) => car.brand)));
-  }, []);
-
-  const models = useMemo(() => {
-    const filteredCars = brand ? cars.filter((car) => car.brand === brand) : cars;
-    return Array.from(new Set(filteredCars.map((car) => car.model)));
-  }, [brand]);
+  const brands = useMemo(() => Array.from(new Set(MOCK_CARS.map((c) => c.brand))).sort(), []);
 
   const filteredCars = useMemo(() => {
-    let result = [...cars];
-
-    if (appliedBrand) {
-      result = result.filter((car) => car.brand === appliedBrand);
+    let result = [...MOCK_CARS];
+    if (applied.brand) result = result.filter((c) => c.brand === applied.brand);
+    if (applied.yearFrom) result = result.filter((c) => c.year >= Number(applied.yearFrom));
+    if (applied.yearTo) result = result.filter((c) => c.year <= Number(applied.yearTo));
+    switch (applied.sortBy) {
+      case "newest": result.sort((a, b) => b.year - a.year); break;
+      case "oldest": result.sort((a, b) => a.year - b.year); break;
+      case "price-low": result.sort((a, b) => a.price - b.price); break;
+      case "price-high": result.sort((a, b) => b.price - a.price); break;
     }
-
-    if (appliedModel) {
-      result = result.filter((car) => car.model === appliedModel);
-    }
-
-    if (appliedYearFrom) {
-      result = result.filter((car) => car.year >= Number(appliedYearFrom));
-    }
-
-    if (appliedYearTo) {
-      result = result.filter((car) => car.year <= Number(appliedYearTo));
-    }
-
-    switch (appliedSortBy) {
-      case "newest":
-        result.sort((a, b) => b.year - a.year);
-        break;
-      case "oldest":
-        result.sort((a, b) => a.year - b.year);
-        break;
-      case "price-low":
-        result.sort((a, b) => a.price - b.price);
-        break;
-      case "price-high":
-        result.sort((a, b) => b.price - a.price);
-        break;
-      case "mileage-low":
-        result.sort((a, b) => a.mileage - b.mileage);
-        break;
-      case "mileage-high":
-        result.sort((a, b) => b.mileage - a.mileage);
-        break;
-    }
-
     return result;
-  }, [appliedBrand, appliedModel, appliedYearFrom, appliedYearTo, appliedSortBy]);
+  }, [applied]);
 
-  const handleSearch = () => {
-    setAppliedBrand(brand);
-    setAppliedModel(model);
-    setAppliedYearFrom(yearFrom);
-    setAppliedYearTo(yearTo);
-    setAppliedSortBy(sortBy);
-  };
-
+  const handleSearch = () => setApplied({ brand, yearFrom, yearTo, sortBy });
   const handleReset = () => {
-    setBrand("");
-    setModel("");
-    setYearFrom("");
-    setYearTo("");
-    setSortBy("newest");
-
-    setAppliedBrand("");
-    setAppliedModel("");
-    setAppliedYearFrom("");
-    setAppliedYearTo("");
-    setAppliedSortBy("newest");
+    setBrand(""); setYearFrom(""); setYearTo(""); setSortBy("newest");
+    setApplied({ brand: "", yearFrom: "", yearTo: "", sortBy: "newest" });
   };
 
   return (
-    <main className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-white text-[#111]">
       <Header />
 
-      <section className="bg-gradient-to-b from-[#7b000b] via-[#2a0307] to-black">
-        <div className="mx-auto max-w-7xl px-4 py-16 text-center sm:px-6 sm:py-20 md:py-24">
-          <h1 className="text-4xl font-extrabold sm:text-5xl md:text-6xl">
-            السيارات
-          </h1>
-          <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-white/70 sm:text-base sm:leading-8">
-            تصفح السيارات المتوفرة لدينا بطريقة واضحة وسهلة.
-          </p>
-        </div>
+      {/* Page header */}
+      <section className="border-b border-black/[0.06] bg-[#f7f7f7] px-10 py-14">
+        <p
+          className="mb-2 text-[11px] font-bold tracking-[4px] text-[#a71225] uppercase"
+          style={{ fontFamily: "var(--font-tajawal)" }}
+        >
+          OUR INVENTORY
+        </p>
+        <h1
+          className="text-[42px] font-bold text-[#111]"
+          style={{ fontFamily: "var(--font-tajawal)" }}
+        >
+          السيارات المتوفرة
+        </h1>
+        <p
+          className="mt-2 text-[15px] text-[#777]"
+          style={{ fontFamily: "var(--font-tajawal)" }}
+        >
+          تصفح مجموعتنا من السيارات المختارة بعناية
+        </p>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-10">
-        <div className="rounded-[24px] border border-white/10 bg-[#111111] p-4 shadow-[0_10px_40px_rgba(0,0,0,0.25)] sm:rounded-[28px] sm:p-5">
-          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-            <div>
-              <label className="mb-2 block text-sm font-medium text-white">
-                نطاق السنة
-              </label>
-              <div className="grid grid-cols-[1fr_auto_1fr] gap-2">
-                <select
-                  value={yearFrom}
-                  onChange={(e) => setYearFrom(e.target.value)}
-                  className="h-11 rounded-xl border border-white/10 bg-white px-3 text-right text-black outline-none"
-                >
-                  <option value="">من</option>
-                  {[2026, 2025, 2024, 2023, 2022, 2021, 2020, 2019, 2018, 2017].map(
-                    (year) => (
-                      <option key={year} value={year}>
-                        {year}
-                      </option>
-                    )
-                  )}
-                </select>
-
-                <div className="flex items-center justify-center text-white/60">
-                  -
-                </div>
-
-                <select
-                  value={yearTo}
-                  onChange={(e) => setYearTo(e.target.value)}
-                  className="h-11 rounded-xl border border-white/10 bg-white px-3 text-right text-black outline-none"
-                >
-                  <option value="">إلى</option>
-                  {[2026, 2025, 2024, 2023, 2022, 2021, 2020, 2019, 2018, 2017].map(
-                    (year) => (
-                      <option key={year} value={year}>
-                        {year}
-                      </option>
-                    )
-                  )}
-                </select>
-              </div>
-            </div>
-
-            <div>
-              <label className="mb-2 block text-sm font-medium text-white">
-                العلامة التجارية
-              </label>
-              <select
-                value={brand}
-                onChange={(e) => {
-                  setBrand(e.target.value);
-                  setModel("");
-                }}
-                className="h-11 w-full rounded-xl border border-white/10 bg-white px-4 text-right text-black outline-none"
-              >
-                <option value="">كل العلامات التجارية</option>
-                {brands.map((item) => (
-                  <option key={item} value={item}>
-                    {item}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            <div>
-              <label className="mb-2 block text-sm font-medium text-white">
-                الموديل
-              </label>
-              <select
-                value={model}
-                onChange={(e) => setModel(e.target.value)}
-                className="h-11 w-full rounded-xl border border-white/10 bg-white px-4 text-right text-black outline-none"
-              >
-                <option value="">كل الموديلات</option>
-                {models.map((item) => (
-                  <option key={item} value={item}>
-                    {item}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            <div>
-              <label className="mb-2 block text-sm font-medium text-white">
-                ترتيب حسب
-              </label>
-              <select
-                value={sortBy}
-                onChange={(e) => setSortBy(e.target.value as SortOption)}
-                className="h-11 w-full rounded-xl border border-white/10 bg-white px-4 text-right text-black outline-none"
-              >
-                <option value="newest">الأحدث أولاً</option>
-                <option value="oldest">الأقدم أولاً</option>
-                <option value="price-low">السعر: الأقل أولاً</option>
-                <option value="price-high">السعر: الأعلى أولاً</option>
-                <option value="mileage-low">الممشى: الأقل أولاً</option>
-                <option value="mileage-high">الممشى: الأعلى أولاً</option>
-              </select>
-            </div>
+      {/* Filters */}
+      <section className="border-b border-black/[0.06] bg-white px-10 py-6">
+        <div className="flex flex-wrap items-end gap-4">
+          {/* Brand */}
+          <div className="flex-1 min-w-[160px]">
+            <label className="mb-1.5 block text-[11px] font-bold tracking-[2px] text-[#999] uppercase" style={{ fontFamily: "var(--font-tajawal)" }}>
+              BRAND
+            </label>
+            <select value={brand} onChange={(e) => setBrand(e.target.value)} className={selectClass} style={{ fontFamily: "var(--font-tajawal)" }}>
+              <option value="">كل الماركات</option>
+              {brands.map((b) => <option key={b} value={b}>{b}</option>)}
+            </select>
           </div>
 
-          <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center">
+          {/* Year from */}
+          <div className="flex-1 min-w-[120px]">
+            <label className="mb-1.5 block text-[11px] font-bold tracking-[2px] text-[#999] uppercase" style={{ fontFamily: "var(--font-tajawal)" }}>
+              FROM
+            </label>
+            <select value={yearFrom} onChange={(e) => setYearFrom(e.target.value)} className={selectClass} style={{ fontFamily: "var(--font-tajawal)" }}>
+              <option value="">السنة</option>
+              {[2024,2023,2022,2021,2020,2019,2018].map((y) => <option key={y} value={y}>{y}</option>)}
+            </select>
+          </div>
+
+          {/* Year to */}
+          <div className="flex-1 min-w-[120px]">
+            <label className="mb-1.5 block text-[11px] font-bold tracking-[2px] text-[#999] uppercase" style={{ fontFamily: "var(--font-tajawal)" }}>
+              TO
+            </label>
+            <select value={yearTo} onChange={(e) => setYearTo(e.target.value)} className={selectClass} style={{ fontFamily: "var(--font-tajawal)" }}>
+              <option value="">السنة</option>
+              {[2024,2023,2022,2021,2020,2019,2018].map((y) => <option key={y} value={y}>{y}</option>)}
+            </select>
+          </div>
+
+          {/* Sort */}
+          <div className="flex-1 min-w-[180px]">
+            <label className="mb-1.5 block text-[11px] font-bold tracking-[2px] text-[#999] uppercase" style={{ fontFamily: "var(--font-tajawal)" }}>
+              SORT
+            </label>
+            <select value={sortBy} onChange={(e) => setSortBy(e.target.value as SortOption)} className={selectClass} style={{ fontFamily: "var(--font-tajawal)" }}>
+              <option value="newest">الأحدث أولاً</option>
+              <option value="oldest">الأقدم أولاً</option>
+              <option value="price-low">السعر: الأقل</option>
+              <option value="price-high">السعر: الأعلى</option>
+            </select>
+          </div>
+
+          {/* Actions */}
+          <div className="flex gap-3">
             <button
               onClick={handleSearch}
-              className="w-full rounded-xl bg-red-600 px-8 py-3 text-sm font-bold text-white transition hover:bg-red-500 sm:w-auto"
+              className="flex items-center gap-2 rounded-xl bg-[#111] px-6 py-2.5 text-[13px] font-bold text-white transition-colors hover:bg-[#a71225]"
+              style={{ fontFamily: "var(--font-tajawal)" }}
             >
-              انطلق في البحث
+              <SlidersHorizontal className="h-4 w-4" />
+              بحث
             </button>
-
             <button
               onClick={handleReset}
-              className="w-full rounded-xl border border-white/20 px-6 py-3 text-sm font-bold text-white transition hover:border-white/40 hover:bg-white/5 sm:w-auto"
+              className="flex items-center gap-2 rounded-xl border border-black/[0.08] px-4 py-2.5 text-[13px] text-[#555] transition-colors hover:border-black/20"
             >
-              إعادة
+              <RotateCcw className="h-4 w-4" />
             </button>
           </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 pb-14 sm:px-6 sm:pb-16">
-        <div className="mb-6 flex flex-col gap-2 text-center sm:flex-row sm:items-center sm:justify-between sm:text-right">
-          <h2 className="text-2xl font-extrabold">السيارات المتوفرة</h2>
-          <p className="text-sm text-white/60">{filteredCars.length} نتيجة</p>
+      {/* Results */}
+      <section className="px-10 py-10">
+        <div className="mb-6 flex items-center justify-between">
+          <p className="text-[13px] text-[#999]" style={{ fontFamily: "var(--font-tajawal)" }}>
+            {filteredCars.length} سيارة
+          </p>
         </div>
 
         {filteredCars.length > 0 ? (
-          <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
-            {filteredCars.map((car) => (
-              <div
-                key={car.id}
-                className="overflow-hidden rounded-[24px] border border-white/10 bg-[#0d0d0d] transition duration-300 hover:-translate-y-1 hover:border-red-500/40"
-              >
-                <img
-                  src={car.image}
-                  alt={car.title}
-                  className="h-52 w-full object-cover sm:h-56"
-                />
-
-                <div className="p-5 text-right">
-                  <h3 className="text-lg font-bold sm:text-xl">{car.title}</h3>
-
-                  <p className="mt-2 text-base font-semibold text-red-500 sm:text-lg">
-                    {car.price.toLocaleString()} د.ب
-                  </p>
-
-                  <div className="mt-4 space-y-2 text-sm leading-7 text-white/70">
-                    <p>العلامة التجارية: {car.brand}</p>
-                    <p>الموديل: {car.model}</p>
-                    <p>السنة: {car.year}</p>
-                    <p>الممشى: {car.mileage.toLocaleString()} كم</p>
-                    <p>الحالة: {car.condition}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {filteredCars.map((car) => <CarCard key={car.id} car={car} />)}
           </div>
         ) : (
-          <div className="rounded-[24px] border border-white/10 bg-[#0d0d0d] px-6 py-14 text-center text-white/70">
-            لا توجد سيارات مطابقة للفلاتر المختارة.
+          <div className="rounded-2xl border border-black/[0.06] bg-[#f7f7f7] py-20 text-center">
+            <p className="text-[15px] text-[#999]" style={{ fontFamily: "var(--font-tajawal)" }}>
+              لا توجد سيارات مطابقة للفلاتر المختارة
+            </p>
+            <button onClick={handleReset} className="mt-4 text-[13px] text-[#a71225] underline" style={{ fontFamily: "var(--font-tajawal)" }}>
+              إعادة الضبط
+            </button>
           </div>
         )}
       </section>
 
       <Footer />
-    </main>
+    </div>
   );
 }

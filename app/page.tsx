@@ -1,138 +1,189 @@
 import Link from "next/link";
-import {
-  BriefcaseBusiness,
-  Car,
-  MessageCircle,
-  ShieldCheck,
-  Users,
-} from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Hero from "@/components/Hero";
+import CarCard from "@/components/CarCard";
+import StatsSection from "@/components/StatsSection";
+import CTASection from "@/components/CTASection";
+import { createClient } from "@/lib/supabase/server";
+import type { Car } from "@/lib/supabase/types";
 
-const stats = [
+const MOCK_CARS: Car[] = [
   {
-    icon: Car,
-    value: "+1000",
-    label: "سيارة",
-    highlighted: false,
+    id: "1",
+    title_ar: "تويوتا كامري",
+    title_en: "Toyota Camry",
+    brand: "Toyota",
+    model: "Camry",
+    year: 2023,
+    mileage: 15000,
+    price: 4800,
+    currency: "BHD",
+    description_ar: null,
+    description_en: null,
+    status: "available",
+    featured: true,
+    images: ["https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=800&q=80"],
+    whatsapp_number: "97336414730",
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
   },
   {
-    icon: Users,
-    value: "+800",
-    label: "عميل",
-    highlighted: false,
+    id: "2",
+    title_ar: "BMW 5 Series",
+    title_en: "BMW 5 Series",
+    brand: "BMW",
+    model: "5 Series",
+    year: 2022,
+    mileage: 28000,
+    price: 9500,
+    currency: "BHD",
+    description_ar: null,
+    description_en: null,
+    status: "available",
+    featured: false,
+    images: ["https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=800&q=80"],
+    whatsapp_number: "97336414730",
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
   },
   {
-    icon: BriefcaseBusiness,
-    value: "+6",
-    label: "سنوات خبرة",
-    highlighted: false,
+    id: "3",
+    title_ar: "لكزس ES 350",
+    title_en: "Lexus ES 350",
+    brand: "Lexus",
+    model: "ES 350",
+    year: 2023,
+    mileage: 8000,
+    price: 12200,
+    currency: "BHD",
+    description_ar: null,
+    description_en: null,
+    status: "sold",
+    featured: false,
+    images: ["https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&w=800&q=80"],
+    whatsapp_number: "97336414730",
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
   },
   {
-    icon: ShieldCheck,
-    value: "100%",
-    label: "رضا العملاء",
-    highlighted: true,
+    id: "4",
+    title_ar: "مرسيدس E-Class",
+    title_en: "Mercedes E-Class",
+    brand: "Mercedes",
+    model: "E-Class",
+    year: 2022,
+    mileage: 22000,
+    price: 13500,
+    currency: "BHD",
+    description_ar: null,
+    description_en: null,
+    status: "available",
+    featured: false,
+    images: ["https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=800&q=80"],
+    whatsapp_number: "97336414730",
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+  },
+  {
+    id: "5",
+    title_ar: "تويوتا لاند كروزر",
+    title_en: "Toyota Land Cruiser",
+    brand: "Toyota",
+    model: "Land Cruiser",
+    year: 2021,
+    mileage: 48000,
+    price: 15900,
+    currency: "BHD",
+    description_ar: null,
+    description_en: null,
+    status: "available",
+    featured: false,
+    images: ["https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80"],
+    whatsapp_number: "97336414730",
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+  },
+  {
+    id: "6",
+    title_ar: "رنج روفر سبورت",
+    title_en: "Range Rover Sport",
+    brand: "Range Rover",
+    model: "Sport",
+    year: 2022,
+    mileage: 29000,
+    price: 18500,
+    currency: "BHD",
+    description_ar: null,
+    description_en: null,
+    status: "available",
+    featured: false,
+    images: ["https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=800&q=80"],
+    whatsapp_number: "97336414730",
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
   },
 ];
 
-export default function HomePage() {
-  const whatsappNumber = "97336414730";
-  const whatsappText = encodeURIComponent(
-    "السلام عليكم، حاب أبدأ البيع مع 3M Cars"
-  );
-  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappText}`;
+async function getLatestCars(): Promise<Car[]> {
+  try {
+    const supabase = await createClient();
+    const { data } = await supabase
+      .from("cars")
+      .select("*")
+      .order("created_at", { ascending: false })
+      .limit(6);
+    if (data && data.length > 0) return data as Car[];
+  } catch {}
+  return MOCK_CARS;
+}
+
+export default async function HomePage() {
+  const cars = await getLatestCars();
 
   return (
-    <main className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-white text-[#111]">
       <Header />
+      <Hero />
+      <StatsSection />
 
-      <section className="bg-gradient-to-b from-[#7b000b] via-[#2a0307] to-black">
-        <div className="mx-auto flex min-h-[420px] max-w-7xl flex-col items-center justify-center px-4 py-16 text-center sm:px-6 sm:py-20 md:min-h-[520px]">
-          <h1 className="text-4xl font-extrabold leading-tight sm:text-5xl md:text-6xl lg:text-7xl">
-            تسوق سياراتك
-            <br />
-            بذكاء واحترافية
-          </h1>
-
-          <p className="mt-5 max-w-2xl text-sm leading-7 text-white/80 sm:text-base md:text-lg">
-            منصة متكاملة لعرض السيارات بطريقة احترافية
-          </p>
-
-          <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:flex-wrap sm:justify-center">
-            <Link
-              href="/cars"
-              className="inline-flex w-full justify-center rounded-full bg-red-600 px-8 py-3 text-sm font-bold text-white transition hover:bg-red-500 sm:w-auto"
+      {/* Latest Cars */}
+      <section className="bg-white px-10 py-[72px]">
+        {/* Header row */}
+        <div className="mb-8 flex items-end justify-between">
+          <div>
+            <p
+              className="mb-2 text-[11px] font-bold tracking-[3px] text-[#a71225] uppercase"
+              style={{ fontFamily: "var(--font-tajawal)" }}
             >
-              تصفح السيارات
-            </Link>
-
-            <a
-              href={whatsappLink}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex w-full justify-center rounded-full border border-white/20 px-8 py-3 text-sm font-bold text-white transition hover:border-white/40 hover:bg-white/5 sm:w-auto"
+              MODERN SELECTION
+            </p>
+            <h2
+              className="text-[36px] font-bold text-[#111]"
+              style={{ fontFamily: "var(--font-tajawal)" }}
             >
-              ابدأ البيع معنا
-            </a>
+              أحدث السيارات
+            </h2>
           </div>
+          <Link
+            href="/cars"
+            className="text-[13px] font-bold tracking-[0.5px] text-[#111] uppercase transition-colors hover:text-[#a71225]"
+            style={{ fontFamily: "var(--font-tajawal)" }}
+          >
+            VIEW ALL →
+          </Link>
+        </div>
+
+        {/* Grid */}
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {cars.map((car) => (
+            <CarCard key={car.id} car={car} />
+          ))}
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 md:py-20">
-        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-          {stats.map((item, index) => {
-            const Icon = item.icon;
-
-            return (
-              <div
-                key={index}
-                className={`rounded-[24px] border px-6 py-8 text-center transition duration-300 hover:-translate-y-1 sm:py-10 ${
-                  item.highlighted
-                    ? "border-red-600 bg-gradient-to-b from-[#3a050a] to-[#120204] shadow-[0_0_0_1px_rgba(255,0,0,0.12)]"
-                    : "border-white/10 bg-gradient-to-b from-[#0e0b0d] to-[#090909]"
-                }`}
-              >
-                <Icon className="mx-auto mb-4 h-5 w-5 text-red-500 sm:mb-5" />
-                <div className="text-4xl font-extrabold leading-none tracking-tight sm:text-5xl lg:text-6xl">
-                  {item.value}
-                </div>
-                <div className="mt-3 text-sm text-white/70">{item.label}</div>
-              </div>
-            );
-          })}
-        </div>
-      </section>
-
-      <section id="contact" className="mx-auto max-w-5xl px-4 py-14 sm:px-6 sm:py-20 md:py-24">
-        <div className="rounded-[24px] border border-red-900/40 bg-gradient-to-b from-[#2b0005] to-[#150204] px-5 py-10 text-center shadow-[0_25px_80px_rgba(90,0,0,0.18)] sm:rounded-[30px] sm:px-8 sm:py-16">
-          <div className="mx-auto mb-6 flex h-12 w-12 items-center justify-center rounded-full border border-red-500/30 bg-red-500/10">
-            <MessageCircle className="h-5 w-5 text-red-500" />
-          </div>
-
-          <h2 className="text-2xl font-extrabold sm:text-3xl md:text-5xl">
-            جاهز تبيع سيارتك معنا؟
-          </h2>
-
-          <p className="mx-auto mt-5 max-w-3xl text-sm leading-7 text-white/70 sm:text-base sm:leading-8">
-            نوفر لك تجربة سلسة لعرض سياراتك وتسويقها بشكل احترافي والوصول للعملاء
-            المناسبين.
-          </p>
-
-          <div className="mt-8">
-            <a
-              href={whatsappLink}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex w-full justify-center rounded-full border border-white/20 px-7 py-3 text-sm font-medium text-white transition hover:border-white/40 hover:bg-white/5 sm:w-auto"
-            >
-              تواصل معنا
-            </a>
-          </div>
-        </div>
-      </section>
-
+      <CTASection />
       <Footer />
-    </main>
+    </div>
   );
 }
