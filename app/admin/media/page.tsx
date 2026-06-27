@@ -7,44 +7,60 @@ const images = [
   "صورة إضافية - Porsche",
 ];
 
+const LABEL = "text-[11px] font-bold tracking-[1.5px] text-[#999] uppercase";
+
 export default function AdminMediaPage() {
   return (
-    <div className="space-y-6">
-      <section className="rounded-[2rem] border border-white/10 bg-white/[0.03] p-6">
-        <h2 className="text-3xl font-black text-white">إدارة الصور</h2>
-        <p className="mt-2 text-sm leading-7 text-zinc-400">
-          تنظيم صور السيارات، وتحديد الصورة الرئيسية، وحذف الصور غير المطلوبة.
-        </p>
-      </section>
+    <div className="space-y-5">
 
-      <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+      {/* Header */}
+      <div>
+        <p className={LABEL} style={{ fontFamily: "var(--font-tajawal)" }}>إدارة الصور</p>
+        <p className="mt-1 text-[13px] text-[#999]" style={{ fontFamily: "var(--font-tajawal)" }}>
+          تنظيم صور السيارات وتحديد الصورة الرئيسية وحذف الصور غير المطلوبة
+        </p>
+      </div>
+
+      {/* Grid */}
+      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
         {images.map((image) => (
           <div
             key={image}
-            className="rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-4"
+            className="rounded-2xl border border-black/[0.06] bg-white p-4"
           >
-            <div className="h-44 rounded-2xl border border-white/10 bg-[linear-gradient(180deg,rgba(120,0,0,0.18),rgba(15,15,15,0.8))]" />
-            <h3 className="mt-4 text-sm font-semibold text-white">{image}</h3>
-            <p className="mt-1 text-xs text-zinc-500">مرتبطة بسيارة داخل النظام</p>
+            <div className="h-44 rounded-xl bg-[#f0f0f0]" />
+            <h3
+              className="mt-4 text-[14px] font-semibold text-[#111]"
+              style={{ fontFamily: "var(--font-tajawal)" }}
+            >
+              {image}
+            </h3>
+            <p
+              className="mt-1 text-[12px] text-[#999]"
+              style={{ fontFamily: "var(--font-tajawal)" }}
+            >
+              مرتبطة بسيارة داخل النظام
+            </p>
 
             <div className="mt-4 flex gap-2">
               <button
                 type="button"
-                className="rounded-xl border border-white/10 bg-white/[0.04] px-3 py-2 text-xs font-medium text-white transition hover:border-red-500/25 hover:bg-white/[0.06]"
+                className="rounded-lg border border-black/[0.08] px-3 py-2 text-[12px] font-medium text-[#555] transition-colors hover:border-black/20 hover:text-[#111]"
+                style={{ fontFamily: "var(--font-tajawal)" }}
               >
                 تعيين كرئيسية
               </button>
-
               <button
                 type="button"
-                className="rounded-xl border border-red-500/20 bg-red-500/10 px-3 py-2 text-xs font-medium text-red-300 transition hover:bg-red-500/15"
+                className="rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-[12px] font-medium text-[#a71225] transition-colors hover:bg-red-100"
+                style={{ fontFamily: "var(--font-tajawal)" }}
               >
                 حذف
               </button>
             </div>
           </div>
         ))}
-      </section>
+      </div>
     </div>
   );
 }

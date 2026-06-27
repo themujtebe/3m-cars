@@ -1,34 +1,20 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Plus, Pencil, Trash2, CheckCircle, XCircle } from "lucide-react";
-import { createClient } from "@/lib/supabase/server";
-import { deleteCar, updateCarStatus } from "@/app/actions/cars";
+import { deleteCarAction, updateCarStatus } from "@/app/actions/cars";
 import type { Car } from "@/lib/supabase/types";
 
-const MOCK: Car[] = [
-  {
-    id: "1", title_ar: "تويوتا كامري 2023", title_en: null, brand: "Toyota", model: "Camry",
-    year: 2023, mileage: 15000, price: 4800, currency: "BHD", description_ar: null,
-    description_en: null, status: "available", featured: true,
-    images: ["https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=400&q=60"],
-    whatsapp_number: "97336414730", created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
-  },
-  {
-    id: "2", title_ar: "BMW 5 Series", title_en: null, brand: "BMW", model: "5 Series",
-    year: 2022, mileage: 28000, price: 9500, currency: "BHD", description_ar: null,
-    description_en: null, status: "sold", featured: false,
-    images: ["https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=400&q=60"],
-    whatsapp_number: "97336414730", created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
-  },
-];
-
 async function getCars(): Promise<Car[]> {
-  try {
-    const supabase = await createClient();
-    const { data } = await supabase.from("cars").select("*").order("created_at", { ascending: false });
-    if (data && data.length > 0) return data as Car[];
-  } catch {}
-  return MOCK;
+  if (process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+    try {
+      const { createClient } = await import("@/lib/supabase/server");
+      const supabase = await createClient();
+      const { data } = await supabase.from("cars").select("*").order("created_at", { ascending: false });
+      if (data) return data as Car[];
+    } catch {}
+  }
+  const { localDb } = await import("@/lib/local/db");
+  return localDb.cars.getAll();
 }
 
 export default async function AdminCarsPage() {

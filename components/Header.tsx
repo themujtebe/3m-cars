@@ -48,10 +48,10 @@ export default function Header() {
         {/* Nav links — center */}
         <nav className="hidden items-center gap-7 md:flex">
           {[
-            { href: "/", label: "HOME" },
-            { href: "/cars", label: "CARS" },
-            { href: "/packages", label: "PACKAGES" },
-            { href: "/contact", label: "CONTACT" },
+            { href: "/", label: "الرئيسية" },
+            { href: "/cars", label: "السيارات" },
+            { href: "/packages", label: "الباقات" },
+            { href: "/contact", label: "تواصل معنا" },
           ].map(({ href, label }) => (
             <Link
               key={href}
@@ -61,7 +61,7 @@ export default function Header() {
                   ? "rounded border border-[#a71225] px-2.5 py-1 text-[#a71225]"
                   : "text-[#111] hover:text-[#a71225]"
               }`}
-              style={{ fontFamily: "var(--font-tajawal)", textTransform: "uppercase" }}
+              style={{ fontFamily: "var(--font-tajawal)" }}
             >
               {label}
             </Link>
@@ -110,7 +110,7 @@ export default function Header() {
             style={{ fontFamily: "var(--font-tajawal)" }}
           >
             <User className="h-4 w-4" />
-            PORTAL
+            البوابة
           </Link>
 
           {/* Inquire CTA */}

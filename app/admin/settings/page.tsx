@@ -1,59 +1,94 @@
+const INPUT = [
+  "w-full rounded-xl border border-black/[0.08] bg-[#f7f7f7] px-4 py-2.5",
+  "text-[14px] text-[#111] outline-none placeholder:text-[#bbb]",
+  "focus:border-[#a71225]/40 focus:bg-white transition-colors",
+].join(" ");
+
+const LABEL = "mb-1.5 block text-[11px] font-bold tracking-[1.5px] text-[#999] uppercase";
+
 export default function AdminSettingsPage() {
   return (
-    <div className="space-y-6">
-      <section className="rounded-[2rem] border border-white/10 bg-white/[0.03] p-6">
-        <h2 className="text-3xl font-black text-white">الإعدادات</h2>
-        <p className="mt-2 text-sm leading-7 text-zinc-400">
-          إعدادات التواصل والروابط العامة والنصوص الأساسية في الموقع.
-        </p>
-      </section>
+    <div className="mx-auto max-w-2xl space-y-5">
 
-      <form className="space-y-6">
-        <section className="rounded-[2rem] border border-white/10 bg-white/[0.03] p-6">
-          <h3 className="text-xl font-bold text-white">إعدادات التواصل</h3>
+      <form className="space-y-4">
 
-          <div className="mt-5 grid gap-4 md:grid-cols-2">
-            <input
-              defaultValue="+973 0000 0000"
-              className="rounded-2xl border border-white/10 bg-[#0a0a0a] px-4 py-3 text-sm text-white outline-none"
-              placeholder="رقم الهاتف"
-            />
-            <input
-              defaultValue="https://wa.me/97300000000"
-              className="rounded-2xl border border-white/10 bg-[#0a0a0a] px-4 py-3 text-sm text-white outline-none"
-              placeholder="رابط واتساب"
-            />
-            <input
-              defaultValue="https://instagram.com/3mcars"
-              className="rounded-2xl border border-white/10 bg-[#0a0a0a] px-4 py-3 text-sm text-white outline-none md:col-span-2"
-              placeholder="رابط إنستغرام"
-            />
+        {/* Contact settings */}
+        <section className="rounded-2xl border border-black/[0.06] bg-white p-6">
+          <h3
+            className="mb-5 text-[16px] font-bold text-[#111]"
+            style={{ fontFamily: "var(--font-tajawal)" }}
+          >
+            إعدادات التواصل
+          </h3>
+          <div className="grid gap-4 md:grid-cols-2">
+            <div>
+              <label className={LABEL} style={{ fontFamily: "var(--font-tajawal)" }}>رقم الهاتف</label>
+              <input
+                defaultValue="+973 36414730"
+                className={INPUT}
+                style={{ fontFamily: "var(--font-tajawal)" }}
+                placeholder="رقم الهاتف"
+              />
+            </div>
+            <div>
+              <label className={LABEL} style={{ fontFamily: "var(--font-tajawal)" }}>رابط واتساب</label>
+              <input
+                defaultValue="https://wa.me/97336414730"
+                className={INPUT}
+                style={{ fontFamily: "var(--font-tajawal)" }}
+                placeholder="رابط واتساب"
+              />
+            </div>
+            <div className="md:col-span-2">
+              <label className={LABEL} style={{ fontFamily: "var(--font-tajawal)" }}>رابط إنستغرام</label>
+              <input
+                defaultValue="https://instagram.com/3mcars.bh"
+                className={INPUT}
+                style={{ fontFamily: "var(--font-tajawal)" }}
+                placeholder="رابط إنستغرام"
+              />
+            </div>
           </div>
         </section>
 
-        <section className="rounded-[2rem] border border-white/10 bg-white/[0.03] p-6">
-          <h3 className="text-xl font-bold text-white">النصوص العامة</h3>
-
-          <div className="mt-5 grid gap-4 md:grid-cols-2">
-            <input
-              defaultValue="تواصل معنا"
-              className="rounded-2xl border border-white/10 bg-[#0a0a0a] px-4 py-3 text-sm text-white outline-none"
-              placeholder="نص زر التواصل"
-            />
-            <input
-              defaultValue="اتصال مباشر"
-              className="rounded-2xl border border-white/10 bg-[#0a0a0a] px-4 py-3 text-sm text-white outline-none"
-              placeholder="نص زر الاتصال"
-            />
+        {/* General text */}
+        <section className="rounded-2xl border border-black/[0.06] bg-white p-6">
+          <h3
+            className="mb-5 text-[16px] font-bold text-[#111]"
+            style={{ fontFamily: "var(--font-tajawal)" }}
+          >
+            النصوص العامة
+          </h3>
+          <div className="grid gap-4 md:grid-cols-2">
+            <div>
+              <label className={LABEL} style={{ fontFamily: "var(--font-tajawal)" }}>نص زر التواصل</label>
+              <input
+                defaultValue="تواصل معنا"
+                className={INPUT}
+                style={{ fontFamily: "var(--font-tajawal)" }}
+              />
+            </div>
+            <div>
+              <label className={LABEL} style={{ fontFamily: "var(--font-tajawal)" }}>نص زر الاتصال</label>
+              <input
+                defaultValue="اتصال مباشر"
+                className={INPUT}
+                style={{ fontFamily: "var(--font-tajawal)" }}
+              />
+            </div>
           </div>
         </section>
 
-        <button
-          type="submit"
-          className="rounded-2xl bg-red-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-red-500"
-        >
-          حفظ الإعدادات
-        </button>
+        {/* Actions */}
+        <div>
+          <button
+            type="submit"
+            className="rounded-full bg-[#111] px-8 py-3 text-[14px] font-bold text-white transition-colors hover:bg-[#a71225]"
+            style={{ fontFamily: "var(--font-tajawal)" }}
+          >
+            حفظ الإعدادات
+          </button>
+        </div>
       </form>
     </div>
   );

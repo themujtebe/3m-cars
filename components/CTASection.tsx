@@ -11,9 +11,9 @@ export default function CTASection() {
           letterSpacing: "-1px",
         }}
       >
-        READY TO SELL
+        هل أنت مستعد
         <br />
-        YOUR CAR WITH US?
+        لبيع سيارتك معنا؟
       </h2>
 
       <p

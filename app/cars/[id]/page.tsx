@@ -4,32 +4,21 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ImageSlider from "@/components/ImageSlider";
 import CarPriceDisplay from "@/components/CarPriceDisplay";
-import { createClient } from "@/lib/supabase/server";
 import type { Car } from "@/lib/supabase/types";
 import { ArrowRight } from "lucide-react";
 import ShareButton from "@/components/ShareButton";
 
-const MOCK_CARS: Record<string, Car> = {
-  "1": {
-    id: "1", title_ar: "تويوتا كامري 2023", title_en: "Toyota Camry 2023",
-    brand: "Toyota", model: "Camry", year: 2023, mileage: 15000, price: 4800, currency: "BHD",
-    description_ar: "سيارة بحالة ممتازة، لا يوجد حوادث، سيرفيس منتظم من الوكالة. قابل للتفاوض.",
-    description_en: null, status: "available", featured: true,
-    images: [
-      "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80",
-    ],
-    whatsapp_number: "97336414730", created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
-  },
-};
-
 async function getCar(id: string): Promise<Car | null> {
-  try {
-    const supabase = await createClient();
-    const { data } = await supabase.from("cars").select("*").eq("id", id).single();
-    if (data) return data as Car;
-  } catch {}
-  return MOCK_CARS[id] ?? null;
+  if (process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+    try {
+      const { createClient } = await import("@/lib/supabase/server");
+      const supabase = await createClient();
+      const { data } = await supabase.from("cars").select("*").eq("id", id).single();
+      if (data) return data as Car;
+    } catch {}
+  }
+  const { localDb } = await import("@/lib/local/db");
+  return localDb.cars.getById(id);
 }
 
 export default async function CarDetailPage({ params }: { params: Promise<{ id: string }> }) {
@@ -90,7 +79,7 @@ export default async function CarDetailPage({ params }: { params: Promise<{ id: 
                 { label: "الماركة", value: car.brand },
                 { label: "الموديل", value: car.model },
                 { label: "السنة", value: car.year.toString() },
-                { label: "الكيلومترات", value: `${car.mileage.toLocaleString("en-US")} KM` },
+                { label: "الكيلومترات", value: `${car.mileage.toLocaleString("en-US")} كم` },
               ].map(({ label, value }) => (
                 <div key={label} className="rounded-xl border border-black/[0.06] bg-[#f7f7f7] px-4 py-3">
                   <p className="text-[11px] font-bold tracking-[1px] text-[#999] uppercase" style={{ fontFamily: "var(--font-tajawal)" }}>{label}</p>

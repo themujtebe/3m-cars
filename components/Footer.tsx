@@ -85,10 +85,10 @@ export default function Footer() {
             className="mb-5 text-[10px] font-bold tracking-[3px] text-[#999] uppercase"
             style={{ fontFamily: "var(--font-tajawal)" }}
           >
-            INVENTORY
+            المخزون
           </h4>
           <ul className="flex flex-col gap-3">
-            {["Digital Stock", "Porsche", "Mercedes AMG", "Rolls-Royce"].map((item) => (
+            {["المخزون الرقمي", "بورش", "مرسيدس AMG", "رولز رويس"].map((item) => (
               <li key={item}>
                 <Link
                   href="/cars"
@@ -108,10 +108,10 @@ export default function Footer() {
             className="mb-5 text-[10px] font-bold tracking-[3px] text-[#999] uppercase"
             style={{ fontFamily: "var(--font-tajawal)" }}
           >
-            ECOSYSTEM
+            خدماتنا
           </h4>
           <ul className="flex flex-col gap-3">
-            {["Service Tiers", "Digital Concierge", "Tier Preservation", "Global Network"].map((item) => (
+            {["باقات الخدمة", "الاستشارة الرقمية", "ضمان الجودة", "الشبكة العالمية"].map((item) => (
               <li key={item}>
                 <Link
                   href="/packages"
@@ -131,11 +131,11 @@ export default function Footer() {
             className="mb-5 text-[10px] font-bold tracking-[3px] text-[#999] uppercase"
             style={{ fontFamily: "var(--font-tajawal)" }}
           >
-            NETWORK
+            تواصل معنا
           </h4>
           <ul className="flex flex-col gap-4">
             {[
-              { icon: <MapPin className="h-3.5 w-3.5" />, text: "Kingdom of Bahrain" },
+              { icon: <MapPin className="h-3.5 w-3.5" />, text: "مملكة البحرين" },
               { icon: <Phone className="h-3.5 w-3.5" />, text: "+973 36414730", href: "tel:+97336414730" },
               { icon: <Mail className="h-3.5 w-3.5" />, text: "INFO@3MCARS.VIP", href: "mailto:INFO@3MCARS.VIP" },
             ].map((item, i) => (
@@ -162,12 +162,12 @@ export default function Footer() {
       {/* Bottom bar */}
       <div className="mt-12 flex flex-col items-center justify-between gap-2 border-t border-black/[0.08] pt-6 sm:flex-row">
         <p className="text-[12px] text-[#aaa]" style={{ fontFamily: "var(--font-tajawal)" }}>
-          © 3M Cars 2026. All rights reserved.
+          © 3M Cars 2026. جميع الحقوق محفوظة.
         </p>
         <div className="flex gap-4 text-[12px] text-[#aaa]" style={{ fontFamily: "var(--font-tajawal)" }}>
-          <Link href="#" className="hover:text-[#555] transition-colors">Privacy Policy</Link>
+          <Link href="#" className="hover:text-[#555] transition-colors">سياسة الخصوصية</Link>
           <span>|</span>
-          <Link href="#" className="hover:text-[#555] transition-colors">Terms of Service</Link>
+          <Link href="#" className="hover:text-[#555] transition-colors">الشروط والأحكام</Link>
         </div>
       </div>
     </footer>

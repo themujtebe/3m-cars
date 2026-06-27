@@ -43,7 +43,7 @@ export default function ContactPage() {
           className="mb-2 text-[11px] font-bold tracking-[4px] text-[#a71225] uppercase"
           style={{ fontFamily: "var(--font-tajawal)" }}
         >
-          GET IN TOUCH
+          تواصل معنا
         </p>
         <h1
           className="text-[42px] font-bold text-[#111]"
@@ -100,7 +100,7 @@ export default function ContactPage() {
             className="mb-1 text-[11px] font-bold tracking-[3px] text-[#a71225] uppercase"
             style={{ fontFamily: "var(--font-tajawal)" }}
           >
-            DIRECT LINE
+            تواصل مباشر
           </p>
           <h2
             className="text-[24px] font-bold text-[#111]"

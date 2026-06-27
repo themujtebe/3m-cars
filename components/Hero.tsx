@@ -31,7 +31,7 @@ export default function Hero() {
           className="mb-6 text-[11px] font-bold tracking-[4px] text-[#a71225] uppercase"
           style={{ fontFamily: "var(--font-tajawal)" }}
         >
-          EXCELLENCE IN MOTION
+          التميز في كل تفصيل
         </p>
 
         {/* H1 */}
@@ -82,13 +82,13 @@ export default function Hero() {
             className="text-[10px] font-bold tracking-[2px] text-[#999]"
             style={{ fontFamily: "var(--font-tajawal)" }}
           >
-            ESTABLISHED IN BAHRAIN
+            تأسست في البحرين
           </p>
           <p
             className="text-[10px] font-bold tracking-[2px] text-[#999]"
             style={{ fontFamily: "var(--font-tajawal)" }}
           >
-            GLOBAL NETWORK
+            شبكة عالمية
           </p>
         </div>
       </div>

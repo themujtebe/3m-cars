@@ -13,7 +13,7 @@ export default function AdminNewCarPage() {
   return (
     <div className="mx-auto max-w-3xl space-y-5">
 
-      <form action={addCar} encType="multipart/form-data" className="space-y-4">
+      <form action={addCar} className="space-y-4">
 
         {/* Basic info */}
         <section className="rounded-2xl border border-black/[0.06] bg-white p-6">

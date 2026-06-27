@@ -52,7 +52,7 @@ export default function CarCard({ car }: CarCardProps) {
               className="border-2 border-[#111] px-4 py-1 text-[22px] font-bold tracking-[4px] text-[#111]"
               style={{ fontFamily: "var(--font-tajawal)" }}
             >
-              SOLD
+              مُباع
             </span>
           </div>
         )}
@@ -73,7 +73,7 @@ export default function CarCard({ car }: CarCardProps) {
         >
           <span>{car.year}</span>
           <span className="h-1 w-1 rounded-full bg-[#ddd]" />
-          <span>{car.mileage.toLocaleString("en-US")} KM</span>
+          <span>{car.mileage.toLocaleString("en-US")} كم</span>
         </div>
 
         <div className="my-4 h-px bg-[#f0f0f0]" />

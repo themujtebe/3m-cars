@@ -63,7 +63,7 @@ export default function PackagesPage() {
           className="mb-2 text-[11px] font-bold tracking-[4px] text-[#a71225] uppercase"
           style={{ fontFamily: "var(--font-tajawal)" }}
         >
-          SERVICE TIERS
+          باقات الخدمة
         </p>
         <h1
           className="text-[42px] font-bold text-[#111]"
@@ -109,13 +109,13 @@ export default function PackagesPage() {
                   className="text-[10px] font-bold tracking-[3px] text-[#999] uppercase"
                   style={{ fontFamily: "var(--font-tajawal)" }}
                 >
-                  {pkg.nameEn}
+                  {pkg.name}
                 </p>
                 <h2
                   className="mt-1 text-[22px] font-bold text-[#111]"
                   style={{ fontFamily: "var(--font-tajawal)" }}
                 >
-                  الباقة {pkg.name}
+                  {pkg.name}
                 </h2>
 
                 {/* Price */}
@@ -178,7 +178,7 @@ export default function PackagesPage() {
             className="mb-4 text-[11px] font-bold tracking-[3px] text-[#999] uppercase"
             style={{ fontFamily: "var(--font-tajawal)" }}
           >
-            TERMS & CONDITIONS
+            الشروط والأحكام
           </p>
           <h2
             className="mb-6 text-[22px] font-bold text-[#111]"

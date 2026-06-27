@@ -1,86 +1,111 @@
 import Link from "next/link";
-import { Pencil, Plus, Trash2 } from "lucide-react";
+import { Pencil, Plus, Trash2, Check } from "lucide-react";
 
 const packages = [
   {
-    name: "الباقة الأساسية",
-    price: "25 د.ب",
-    features: ["عرض سيارة واحدة", "وصف مختصر", "مدة محددة"],
+    name: "الاقتصادية",
+    price: "10",
+    features: ["تصوير 8 صور احترافية", "تعديل الصور بالكامل", "نشر كـ Post في حسابنا"],
   },
   {
-    name: "الباقة المتقدمة",
-    price: "50 د.ب",
-    features: ["عرض سيارة واحدة", "صور أكثر", "ظهور أقوى"],
+    name: "الكلاسيكية",
+    price: "15",
+    features: ["تصوير 10 صور احترافية", "تعديل الصور بالكامل", "نشر كـ Post في حسابنا", "سبونسر Instagram ليومين"],
+    highlighted: true,
   },
   {
-    name: "الباقة المميزة",
-    price: "80 د.ب",
-    features: ["سيارة مميزة", "أفضل ظهور", "تسويق أقوى"],
+    name: "الاحترافية",
+    price: "20",
+    features: ["تصوير 15 صورة احترافية", "تعديل الصور بالكامل", "نشر كـ Story وPost", "أولوية في الظهور"],
   },
 ];
 
+const LABEL = "text-[11px] font-bold tracking-[1.5px] text-[#999] uppercase";
+
 export default function AdminPackagesPage() {
   return (
-    <div className="space-y-6">
-      <section className="rounded-[2rem] border border-white/10 bg-white/[0.03] p-6">
-        <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-          <div>
-            <h2 className="text-3xl font-black text-white">إدارة الباقات</h2>
-            <p className="mt-2 text-sm leading-7 text-zinc-400">
-              أضف أو عدّل الباقات الخاصة بعرض السيارات.
-            </p>
-          </div>
+    <div className="space-y-5">
 
-          <Link
-            href="#"
-            className="inline-flex items-center gap-2 rounded-2xl bg-red-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-red-500"
-          >
-            <Plus size={16} />
-            إضافة باقة
-          </Link>
+      {/* Header */}
+      <div className="flex items-center justify-between">
+        <div>
+          <p className={LABEL} style={{ fontFamily: "var(--font-tajawal)" }}>الباقات</p>
+          <p className="mt-1 text-[13px] text-[#999]" style={{ fontFamily: "var(--font-tajawal)" }}>
+            أضف أو عدّل الباقات الخاصة بعرض السيارات
+          </p>
         </div>
-      </section>
+        <Link
+          href="#"
+          className="flex items-center gap-2 rounded-full bg-[#111] px-5 py-2.5 text-[13px] font-bold text-white transition-colors hover:bg-[#a71225]"
+          style={{ fontFamily: "var(--font-tajawal)" }}
+        >
+          <Plus className="h-4 w-4" />
+          إضافة باقة
+        </Link>
+      </div>
 
-      <section className="grid gap-4 xl:grid-cols-3">
+      {/* Cards */}
+      <div className="grid gap-5 xl:grid-cols-3">
         {packages.map((pkg) => (
           <div
             key={pkg.name}
-            className="rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-6"
+            className={`rounded-2xl border p-6 ${
+              pkg.highlighted
+                ? "border-[#a71225]/30 shadow-[0_4px_24px_rgba(167,18,37,0.08)]"
+                : "border-black/[0.06]"
+            } bg-white`}
           >
-            <h3 className="text-2xl font-bold text-white">{pkg.name}</h3>
-            <p className="mt-3 text-3xl font-black text-red-300">{pkg.price}</p>
+            <h3
+              className="text-[18px] font-bold text-[#111]"
+              style={{ fontFamily: "var(--font-tajawal)" }}
+            >
+              الباقة {pkg.name}
+            </h3>
+            <p
+              className="mt-2 text-[36px] font-bold text-[#a71225]"
+              style={{ fontFamily: "var(--font-tajawal)" }}
+            >
+              {pkg.price}
+              <span className="mr-1 text-[14px] font-normal text-[#999]">د.ب</span>
+            </p>
 
-            <div className="mt-5 space-y-3">
-              {pkg.features.map((feature) => (
-                <div
-                  key={feature}
-                  className="rounded-xl border border-white/10 bg-[#0a0a0a] px-4 py-3 text-sm text-zinc-300"
-                >
-                  {feature}
-                </div>
+            <div className="my-4 h-px bg-[#f0f0f0]" />
+
+            <ul className="flex flex-col gap-3">
+              {pkg.features.map((f) => (
+                <li key={f} className="flex items-start gap-2.5">
+                  <span
+                    className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full"
+                    style={{ background: "rgba(167,18,37,0.08)" }}
+                  >
+                    <Check className="h-3 w-3 text-[#a71225]" />
+                  </span>
+                  <span className="text-[13px] text-[#555]" style={{ fontFamily: "var(--font-tajawal)" }}>{f}</span>
+                </li>
               ))}
-            </div>
+            </ul>
 
-            <div className="mt-6 flex flex-wrap gap-3">
+            <div className="mt-6 flex gap-2">
               <button
                 type="button"
-                className="inline-flex items-center gap-2 rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm font-medium text-white transition hover:border-red-500/25 hover:bg-white/[0.06]"
+                className="flex items-center gap-1.5 rounded-lg border border-black/[0.08] px-4 py-2 text-[12px] font-medium text-[#555] transition-colors hover:border-black/20 hover:text-[#111]"
+                style={{ fontFamily: "var(--font-tajawal)" }}
               >
-                <Pencil size={16} />
+                <Pencil className="h-3 w-3" />
                 تعديل
               </button>
-
               <button
                 type="button"
-                className="inline-flex items-center gap-2 rounded-2xl border border-red-500/20 bg-red-500/10 px-4 py-3 text-sm font-medium text-red-300 transition hover:bg-red-500/15"
+                className="flex items-center gap-1.5 rounded-lg border border-red-200 bg-red-50 px-4 py-2 text-[12px] font-medium text-[#a71225] transition-colors hover:bg-red-100"
+                style={{ fontFamily: "var(--font-tajawal)" }}
               >
-                <Trash2 size={16} />
+                <Trash2 className="h-3 w-3" />
                 حذف
               </button>
             </div>
           </div>
         ))}
-      </section>
+      </div>
     </div>
   );
 }

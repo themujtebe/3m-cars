@@ -5,137 +5,19 @@ import Hero from "@/components/Hero";
 import CarCard from "@/components/CarCard";
 import StatsSection from "@/components/StatsSection";
 import CTASection from "@/components/CTASection";
-import { createClient } from "@/lib/supabase/server";
 import type { Car } from "@/lib/supabase/types";
 
-const MOCK_CARS: Car[] = [
-  {
-    id: "1",
-    title_ar: "تويوتا كامري",
-    title_en: "Toyota Camry",
-    brand: "Toyota",
-    model: "Camry",
-    year: 2023,
-    mileage: 15000,
-    price: 4800,
-    currency: "BHD",
-    description_ar: null,
-    description_en: null,
-    status: "available",
-    featured: true,
-    images: ["https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=800&q=80"],
-    whatsapp_number: "97336414730",
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
-  },
-  {
-    id: "2",
-    title_ar: "BMW 5 Series",
-    title_en: "BMW 5 Series",
-    brand: "BMW",
-    model: "5 Series",
-    year: 2022,
-    mileage: 28000,
-    price: 9500,
-    currency: "BHD",
-    description_ar: null,
-    description_en: null,
-    status: "available",
-    featured: false,
-    images: ["https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=800&q=80"],
-    whatsapp_number: "97336414730",
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
-  },
-  {
-    id: "3",
-    title_ar: "لكزس ES 350",
-    title_en: "Lexus ES 350",
-    brand: "Lexus",
-    model: "ES 350",
-    year: 2023,
-    mileage: 8000,
-    price: 12200,
-    currency: "BHD",
-    description_ar: null,
-    description_en: null,
-    status: "sold",
-    featured: false,
-    images: ["https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&w=800&q=80"],
-    whatsapp_number: "97336414730",
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
-  },
-  {
-    id: "4",
-    title_ar: "مرسيدس E-Class",
-    title_en: "Mercedes E-Class",
-    brand: "Mercedes",
-    model: "E-Class",
-    year: 2022,
-    mileage: 22000,
-    price: 13500,
-    currency: "BHD",
-    description_ar: null,
-    description_en: null,
-    status: "available",
-    featured: false,
-    images: ["https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=800&q=80"],
-    whatsapp_number: "97336414730",
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
-  },
-  {
-    id: "5",
-    title_ar: "تويوتا لاند كروزر",
-    title_en: "Toyota Land Cruiser",
-    brand: "Toyota",
-    model: "Land Cruiser",
-    year: 2021,
-    mileage: 48000,
-    price: 15900,
-    currency: "BHD",
-    description_ar: null,
-    description_en: null,
-    status: "available",
-    featured: false,
-    images: ["https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80"],
-    whatsapp_number: "97336414730",
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
-  },
-  {
-    id: "6",
-    title_ar: "رنج روفر سبورت",
-    title_en: "Range Rover Sport",
-    brand: "Range Rover",
-    model: "Sport",
-    year: 2022,
-    mileage: 29000,
-    price: 18500,
-    currency: "BHD",
-    description_ar: null,
-    description_en: null,
-    status: "available",
-    featured: false,
-    images: ["https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=800&q=80"],
-    whatsapp_number: "97336414730",
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
-  },
-];
-
 async function getLatestCars(): Promise<Car[]> {
-  try {
-    const supabase = await createClient();
-    const { data } = await supabase
-      .from("cars")
-      .select("*")
-      .order("created_at", { ascending: false })
-      .limit(6);
-    if (data && data.length > 0) return data as Car[];
-  } catch {}
-  return MOCK_CARS;
+  if (process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+    try {
+      const { createClient } = await import("@/lib/supabase/server");
+      const supabase = await createClient();
+      const { data } = await supabase.from("cars").select("*").order("created_at", { ascending: false }).limit(6);
+      if (data) return data as Car[];
+    } catch {}
+  }
+  const { localDb } = await import("@/lib/local/db");
+  return localDb.cars.getAll().slice(0, 6);
 }
 
 export default async function HomePage() {
@@ -156,7 +38,7 @@ export default async function HomePage() {
               className="mb-2 text-[11px] font-bold tracking-[3px] text-[#a71225] uppercase"
               style={{ fontFamily: "var(--font-tajawal)" }}
             >
-              MODERN SELECTION
+              اختيارات مميزة
             </p>
             <h2
               className="text-[36px] font-bold text-[#111]"
