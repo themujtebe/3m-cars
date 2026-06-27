@@ -1,1 +1,46 @@
-[]
+[
+  {
+    "title_ar": "فولكس ويقن ",
+    "title_en": null,
+    "brand": "VW",
+    "model": "Golf gti ",
+    "year": 2023,
+    "mileage": 145000,
+    "price": 4800,
+    "currency": "BHD",
+    "status": "available",
+    "featured": false,
+    "description_ar": "بللبلبل",
+    "description_en": null,
+    "images": [
+      "/uploads/1782567299502-fy1y55t7pld.png",
+      "/uploads/1782567454455-4ke001jcexi.png",
+      "/uploads/1782567494783-31sqsq7zepb.png"
+    ],
+    "whatsapp_number": "97336414730",
+    "id": "60404a1e-f36e-4a5e-ac1e-8eb750fcd35a",
+    "created_at": "2026-06-27T13:22:31.316Z",
+    "updated_at": "2026-06-27T21:10:32.446Z"
+  },
+  {
+    "title_ar": "كامري ",
+    "title_en": null,
+    "brand": "تويوتا ",
+    "model": "كامري سي اي ",
+    "year": 2022,
+    "mileage": 15000,
+    "price": 58000,
+    "currency": "BHD",
+    "status": "sold",
+    "featured": false,
+    "description_ar": null,
+    "description_en": null,
+    "images": [
+      "/uploads/1782567720383-uqqyqcvvv7p.png"
+    ],
+    "whatsapp_number": "97336414730",
+    "id": "28095446-1ba0-4807-b426-0603499bbbaf",
+    "created_at": "2026-06-27T13:41:49.527Z",
+    "updated_at": "2026-06-27T21:17:32.546Z"
+  }
+]

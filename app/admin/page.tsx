@@ -1,33 +1,49 @@
 import Link from "next/link";
-import { CarFront, Eye, Star, FolderKanban, Plus, Settings, Image as ImageIcon } from "lucide-react";
+import Image from "next/image";
+import { CarFront, Eye, Star, XCircle, Plus, Settings, Image as ImageIcon } from "lucide-react";
+import type { Car } from "@/lib/supabase/types";
 
-const stats = [
-  { title: "إجمالي السيارات",   value: "24", icon: CarFront,      color: "#a71225" },
-  { title: "السيارات المتاحة",  value: "18", icon: Eye,           color: "#10b981" },
-  { title: "السيارات المميزة",  value: "6",  icon: Star,          color: "#f59e0b" },
-  { title: "المسودات",          value: "4",  icon: FolderKanban,  color: "#6366f1" },
-];
+async function getCars(): Promise<Car[]> {
+  if (process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+    try {
+      const { createClient } = await import("@/lib/supabase/server");
+      const supabase = await createClient();
+      const { data } = await supabase.from("cars").select("*").order("created_at", { ascending: false });
+      if (data) return data as Car[];
+    } catch {}
+  }
+  const { localDb } = await import("@/lib/local/db");
+  return localDb.cars.getAll();
+}
 
-const quickActions = [
-  { title: "إضافة سيارة",    desc: "أضف سيارة جديدة مع الصور والتفاصيل.",      href: "/admin/cars/new",  icon: Plus },
-  { title: "إدارة السيارات", desc: "عرض وتعديل وحذف السيارات المضافة.",         href: "/admin/cars",      icon: CarFront },
-  { title: "إدارة الصور",    desc: "تنظيم صور السيارات وتحديد الرئيسية.",      href: "/admin/media",     icon: ImageIcon },
-  { title: "الإعدادات",      desc: "التحكم ببيانات التواصل وإعدادات الموقع.", href: "/admin/settings",  icon: Settings },
-];
+export default async function AdminDashboardPage() {
+  const cars = await getCars();
 
-const latestCars = [
-  { title: "Mercedes C-Class", price: "8,500 د.ب", year: "2022", status: "متاحة" },
-  { title: "BMW 5 Series",     price: "10,200 د.ب", year: "2021", status: "مُباعة" },
-  { title: "Range Rover Evoque", price: "15,900 د.ب", year: "2023", status: "متاحة" },
-  { title: "Lexus IS",         price: "7,800 د.ب",  year: "2020", status: "مُباعة" },
-];
+  const total     = cars.length;
+  const available = cars.filter((c) => c.status === "available").length;
+  const featured  = cars.filter((c) => c.featured).length;
+  const sold      = cars.filter((c) => c.status === "sold").length;
+  const latest    = cars.slice(0, 5);
 
-const statusStyle: Record<string, string> = {
-  متاحة:  "bg-emerald-50 text-emerald-600 border border-emerald-200",
-  مُباعة: "bg-red-50 text-[#a71225] border border-red-200",
-};
+  const stats = [
+    { title: "إجمالي السيارات",   value: String(total),     icon: CarFront,  color: "#a71225" },
+    { title: "السيارات المتاحة",  value: String(available), icon: Eye,       color: "#10b981" },
+    { title: "السيارات المميزة",  value: String(featured),  icon: Star,      color: "#f59e0b" },
+    { title: "المُباعة",           value: String(sold),      icon: XCircle,   color: "#6366f1" },
+  ];
 
-export default function AdminDashboardPage() {
+  const quickActions = [
+    { title: "إضافة سيارة",    desc: "أضف سيارة جديدة مع الصور والتفاصيل.",      href: "/admin/cars/new",  icon: Plus },
+    { title: "إدارة السيارات", desc: "عرض وتعديل وحذف السيارات المضافة.",         href: "/admin/cars",      icon: CarFront },
+    { title: "إدارة الصور",    desc: "تنظيم صور السيارات وتحديد الرئيسية.",      href: "/admin/media",     icon: ImageIcon },
+    { title: "الإعدادات",      desc: "التحكم ببيانات التواصل وإعدادات الموقع.", href: "/admin/settings",  icon: Settings },
+  ];
+
+  const statusStyle: Record<string, string> = {
+    available: "bg-emerald-50 text-emerald-600 border border-emerald-200",
+    sold:      "bg-red-50 text-[#a71225] border border-red-200",
+  };
+
   return (
     <div className="space-y-6">
 
@@ -128,19 +144,56 @@ export default function AdminDashboardPage() {
               عرض الكل
             </Link>
           </div>
-          <div className="flex flex-col gap-3">
-            {latestCars.map((car) => (
-              <div key={car.title} className="flex items-center justify-between rounded-xl border border-black/[0.06] bg-[#f7f7f7] px-4 py-3">
-                <div>
-                  <p className="text-[14px] font-semibold text-[#111]" style={{ fontFamily: "var(--font-tajawal)" }}>{car.title}</p>
-                  <p className="text-[12px] text-[#999]" style={{ fontFamily: "var(--font-tajawal)" }}>{car.year} · {car.price}</p>
-                </div>
-                <span className={`rounded-full px-3 py-0.5 text-[11px] font-bold ${statusStyle[car.status] ?? ""}`} style={{ fontFamily: "var(--font-tajawal)" }}>
-                  {car.status}
-                </span>
-              </div>
-            ))}
-          </div>
+
+          {latest.length === 0 ? (
+            <div className="flex flex-col items-center justify-center py-8 text-center">
+              <p className="text-[13px] text-[#bbb]" style={{ fontFamily: "var(--font-tajawal)" }}>لا توجد سيارات بعد</p>
+              <Link
+                href="/admin/cars/new"
+                className="mt-3 text-[12px] font-bold text-[#a71225] hover:underline"
+                style={{ fontFamily: "var(--font-tajawal)" }}
+              >
+                + أضف أول سيارة
+              </Link>
+            </div>
+          ) : (
+            <div className="flex flex-col gap-3">
+              {latest.map((car) => (
+                <Link
+                  key={car.id}
+                  href={`/admin/cars/${car.id}/edit`}
+                  className="flex items-center gap-3 rounded-xl border border-black/[0.06] bg-[#f7f7f7] px-3 py-2.5 transition-colors hover:border-[#a71225]/20 hover:bg-white"
+                >
+                  {/* Thumbnail */}
+                  <div className="relative h-10 w-14 shrink-0 overflow-hidden rounded-lg bg-[#e8e8e8]">
+                    {car.images?.[0] ? (
+                      <Image src={car.images[0]} alt={car.title_ar} fill className="object-cover" sizes="56px" />
+                    ) : (
+                      <div className="flex h-full items-center justify-center text-[9px] text-[#ccc]">لا صورة</div>
+                    )}
+                  </div>
+
+                  {/* Info */}
+                  <div className="min-w-0 flex-1">
+                    <p className="truncate text-[13px] font-semibold text-[#111]" style={{ fontFamily: "var(--font-tajawal)" }}>
+                      {car.title_ar}
+                    </p>
+                    <p className="text-[11px] text-[#999]" style={{ fontFamily: "var(--font-tajawal)" }}>
+                      {car.year} · {car.price.toLocaleString("en-US")} {car.currency}
+                    </p>
+                  </div>
+
+                  {/* Status */}
+                  <span
+                    className={`shrink-0 rounded-full px-2.5 py-0.5 text-[10px] font-bold ${statusStyle[car.status] ?? ""}`}
+                    style={{ fontFamily: "var(--font-tajawal)" }}
+                  >
+                    {car.status === "available" ? "متاحة" : "مُباعة"}
+                  </span>
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>

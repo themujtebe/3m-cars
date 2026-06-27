@@ -25,7 +25,7 @@ export default function ImageSlider({ images, alt }: Props) {
   return (
     <div className="select-none">
       {/* Main image */}
-      <div className="relative h-80 w-full overflow-hidden rounded-2xl bg-[#f0f0f0] sm:h-[420px]">
+      <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl bg-[#f0f0f0]">
         <Image
           src={images[current]}
           alt={`${alt} ${current + 1}`}

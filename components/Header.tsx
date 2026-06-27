@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState, useRef, useEffect } from "react";
 import { Moon, User, ChevronDown } from "lucide-react";
@@ -29,18 +30,22 @@ export default function Header() {
 
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 shrink-0">
-          <div
-            className="flex h-11 w-11 items-center justify-center rounded-[10px] bg-[#111]"
-            style={{ fontFamily: "var(--font-tajawal)" }}
-          >
-            <span className="text-sm font-bold text-white">3M</span>
+          <div className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-[10px] bg-[#a71225] p-1.5">
+            <Image
+              src="/Logo.png"
+              alt="3M Cars"
+              width={44}
+              height={44}
+              className="h-full w-full object-contain"
+              priority
+            />
           </div>
           <div className="leading-none">
-            <div className="text-[15px] font-bold text-[#111]" style={{ fontFamily: "var(--font-tajawal)" }}>
-              CARS
+            <div className="text-[15px] font-bold tracking-wide text-[#111]">
+              3M CARS
             </div>
-            <div className="text-[9px] font-bold tracking-[3px] text-[#a71225]" style={{ fontFamily: "var(--font-tajawal)" }}>
-              BOUTIQUE
+            <div className="text-[10px] font-semibold tracking-[2px] text-[#888]">
+              3mcars.bh
             </div>
           </div>
         </Link>

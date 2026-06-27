@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { MapPin, Phone, Mail } from "lucide-react";
 
 function InstagramIcon() {
@@ -31,23 +32,26 @@ export default function Footer() {
   return (
     <footer className="bg-[#f0f0f0] px-10 pb-10 pt-[60px]">
       {/* Top grid */}
-      <div className="grid gap-12 md:grid-cols-[1.5fr_1fr_1fr_1fr]">
+      <div className="grid gap-12 md:grid-cols-[1.5fr_1fr_1fr]">
 
         {/* Col 1 — Brand */}
         <div>
           <div className="flex items-center gap-3">
-            <div
-              className="flex h-11 w-11 items-center justify-center rounded-[10px] bg-[#111]"
-              style={{ fontFamily: "var(--font-tajawal)" }}
-            >
-              <span className="text-sm font-bold text-white">3M</span>
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-[10px] bg-[#a71225] p-1.5">
+              <Image
+                src="/Logo.png"
+                alt="3M Cars"
+                width={44}
+                height={44}
+                className="h-full w-full object-contain"
+              />
             </div>
             <div className="leading-none">
-              <div className="text-[15px] font-bold text-[#111]" style={{ fontFamily: "var(--font-tajawal)" }}>
-                CARS
+              <div className="text-[15px] font-bold tracking-wide text-[#111]">
+                3M CARS
               </div>
-              <div className="text-[9px] font-bold tracking-[3px] text-[#a71225]" style={{ fontFamily: "var(--font-tajawal)" }}>
-                BOUTIQUE
+              <div className="text-[10px] font-semibold tracking-[2px] text-[#888]">
+                3mcars.bh
               </div>
             </div>
           </div>
@@ -79,53 +83,35 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Col 2 — Inventory */}
+        {/* Col 2 — Quick links */}
         <div>
           <h4
             className="mb-5 text-[10px] font-bold tracking-[3px] text-[#999] uppercase"
             style={{ fontFamily: "var(--font-tajawal)" }}
           >
-            المخزون
+            روابط سريعة
           </h4>
           <ul className="flex flex-col gap-3">
-            {["المخزون الرقمي", "بورش", "مرسيدس AMG", "رولز رويس"].map((item) => (
-              <li key={item}>
+            {[
+              { label: "الرئيسية",   href: "/" },
+              { label: "السيارات",   href: "/cars" },
+              { label: "الباقات",    href: "/packages" },
+              { label: "تواصل معنا", href: "/contact" },
+            ].map((item) => (
+              <li key={item.href}>
                 <Link
-                  href="/cars"
+                  href={item.href}
                   className="text-[13px] font-medium text-[#444] transition-colors hover:text-[#a71225]"
                   style={{ fontFamily: "var(--font-tajawal)" }}
                 >
-                  {item}
+                  {item.label}
                 </Link>
               </li>
             ))}
           </ul>
         </div>
 
-        {/* Col 3 — Ecosystem */}
-        <div>
-          <h4
-            className="mb-5 text-[10px] font-bold tracking-[3px] text-[#999] uppercase"
-            style={{ fontFamily: "var(--font-tajawal)" }}
-          >
-            خدماتنا
-          </h4>
-          <ul className="flex flex-col gap-3">
-            {["باقات الخدمة", "الاستشارة الرقمية", "ضمان الجودة", "الشبكة العالمية"].map((item) => (
-              <li key={item}>
-                <Link
-                  href="/packages"
-                  className="text-[13px] font-medium text-[#444] transition-colors hover:text-[#a71225]"
-                  style={{ fontFamily: "var(--font-tajawal)" }}
-                >
-                  {item}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Col 4 — Network */}
+        {/* Col 3 — Contact */}
         <div>
           <h4
             className="mb-5 text-[10px] font-bold tracking-[3px] text-[#999] uppercase"
