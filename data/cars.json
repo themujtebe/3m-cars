@@ -23,24 +23,26 @@
     "updated_at": "2026-06-27T21:10:32.446Z"
   },
   {
-    "title_ar": "كامري ",
+    "title_ar": "نيسان ج تي ار",
     "title_en": null,
-    "brand": "تويوتا ",
-    "model": "كامري سي اي ",
-    "year": 2022,
+    "brand": "نيسان",
+    "model": "جيتي ار",
+    "year": 2019,
     "mileage": 15000,
-    "price": 58000,
+    "price": 35000,
     "currency": "BHD",
-    "status": "sold",
-    "featured": false,
-    "description_ar": null,
+    "status": "available",
+    "featured": true,
+    "description_ar": "• حماية كاملة PPF\r\n• عليها قزوز من شركة ريمكس\r\n• صيانة كاملة و إضافات في Nismo – اليابان\r\n• كمبيوتر Nismo\r\n• تقارير السيارة متوفرة من اليابان\r\n• سيارة نظيفة جدًا ومعتنى بها بعناية عالية\r\n• تقرير السيارة من اليابان grad 4b وموجود عند راعي السيارة\r\n🔥 سيارة أيقونية لهواة JDM وجامعين السيارات النادرة\r\n🚫 غير قابل للبدل\r\n\r\n⚠️ ملاحظة: بالامكان تسجيل السيارة بأسم اي شخص في دول الخليج بلوحات بحرينية\r\n",
     "description_en": null,
     "images": [
-      "/uploads/1782567720383-uqqyqcvvv7p.png"
+      "/uploads/1782595313108-yr88tspoi4s.png",
+      "/uploads/1782595481927-5mj0hafw1ws.png",
+      "/uploads/1782595481932-2e80e7uzq8w.png"
     ],
     "whatsapp_number": "97336414730",
     "id": "28095446-1ba0-4807-b426-0603499bbbaf",
     "created_at": "2026-06-27T13:41:49.527Z",
-    "updated_at": "2026-06-27T21:17:32.546Z"
+    "updated_at": "2026-06-27T21:24:41.936Z"
   }
 ]

@@ -18,16 +18,15 @@ export default function AddCarForm() {
   const router = useRouter();
   const [state, action, isPending] = useActionState(addCar, null);
   const [previews, setPreviews] = useState<string[]>([]);
-  const [showSuccess, setShowSuccess] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
+  const showSuccess = state != null && "success" in state;
+
   useEffect(() => {
-    if (state && "success" in state) {
-      setShowSuccess(true);
-      const t = setTimeout(() => router.push("/admin/cars"), 1800);
-      return () => clearTimeout(t);
-    }
-  }, [state, router]);
+    if (!showSuccess) return;
+    const t = setTimeout(() => router.push("/admin/cars"), 1800);
+    return () => clearTimeout(t);
+  }, [showSuccess, router]);
 
   function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
     const files = Array.from(e.target.files ?? []);

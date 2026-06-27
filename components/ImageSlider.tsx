@@ -50,8 +50,8 @@ export default function ImageSlider({ images, alt }: Props) {
               <ChevronLeft className="h-4 w-4" />
             </button>
             <div
+              dir="ltr"
               className="absolute bottom-3 left-1/2 -translate-x-1/2 rounded-full bg-black/30 px-3 py-1 text-[12px] font-bold text-white backdrop-blur-sm"
-              style={{ fontFamily: "var(--font-tajawal)" }}
             >
               {current + 1} / {total}
             </div>

@@ -2,14 +2,14 @@
 
 import { revalidatePath } from "next/cache";
 
-const useSupabase = () =>
+const isSupabaseEnabled = () =>
   !!(process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY);
 
 export async function setMainImageAction(formData: FormData) {
   const carId    = formData.get("carId")    as string;
   const imageUrl = formData.get("imageUrl") as string;
 
-  if (useSupabase()) {
+  if (isSupabaseEnabled()) {
     const { createAdminClient } = await import("@/lib/supabase/server");
     const supabase = await createAdminClient();
     const { data } = await supabase.from("cars").select("images").eq("id", carId).single();
@@ -34,7 +34,7 @@ export async function deleteCarImageAction(formData: FormData) {
   const carId    = formData.get("carId")    as string;
   const imageUrl = formData.get("imageUrl") as string;
 
-  if (useSupabase()) {
+  if (isSupabaseEnabled()) {
     const { createAdminClient } = await import("@/lib/supabase/server");
     const supabase = await createAdminClient();
     const { data } = await supabase.from("cars").select("images").eq("id", carId).single();

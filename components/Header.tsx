@@ -120,7 +120,7 @@ export default function Header() {
 
           {/* Inquire CTA */}
           <a
-            href="https://wa.me/97336414730?text=السلام عليكم"
+            href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "97336414730"}?text=${encodeURIComponent("السلام عليكم")}`}
             target="_blank"
             rel="noreferrer"
             className="rounded-full bg-[#111] px-6 py-2.5 text-[13px] font-bold text-white transition-colors hover:bg-[#a71225]"

@@ -30,9 +30,9 @@ export default async function HomePage() {
       <StatsSection />
 
       {/* Latest Cars */}
-      <section className="bg-white px-10 py-[72px]">
+      <section className="bg-white px-5 py-14 sm:px-10 sm:py-[72px]">
         {/* Header row */}
-        <div className="mb-8 flex items-end justify-between">
+        <div className="mb-8 flex flex-wrap items-end justify-between gap-3">
           <div>
             <p
               className="mb-2 text-[11px] font-bold tracking-[3px] text-[#a71225] uppercase"
@@ -41,7 +41,7 @@ export default async function HomePage() {
               اختيارات مميزة
             </p>
             <h2
-              className="text-[36px] font-bold text-[#111]"
+              className="text-[28px] font-bold text-[#111] sm:text-[36px]"
               style={{ fontFamily: "var(--font-tajawal)" }}
             >
               أحدث السيارات
@@ -49,10 +49,10 @@ export default async function HomePage() {
           </div>
           <Link
             href="/cars"
-            className="text-[13px] font-bold tracking-[0.5px] text-[#111] uppercase transition-colors hover:text-[#a71225]"
+            className="shrink-0 text-[13px] font-bold tracking-[0.5px] text-[#111] uppercase transition-colors hover:text-[#a71225]"
             style={{ fontFamily: "var(--font-tajawal)" }}
           >
-            VIEW ALL →
+            عرض الكل ←
           </Link>
         </div>
 

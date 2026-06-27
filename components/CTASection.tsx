@@ -1,8 +1,10 @@
 import Link from "next/link";
+import { readSettings } from "@/lib/local/settings";
 
 export default function CTASection() {
+  const { whatsapp } = readSettings();
   return (
-    <section className="relative overflow-hidden bg-[#f7f7f7] px-10 py-[100px] text-center">
+    <section className="relative overflow-hidden bg-[#f7f7f7] px-6 py-16 text-center sm:px-10 sm:py-[100px]">
       <h2
         className="font-bold uppercase leading-[1.0] text-[#111]"
         style={{
@@ -25,7 +27,7 @@ export default function CTASection() {
 
       <div className="mt-10 flex flex-wrap items-center justify-center gap-5">
         <a
-          href="https://wa.me/97336414730?text=السلام عليكم، أريد عرض سيارتي مع 3M Cars"
+          href={`https://wa.me/${whatsapp}?text=${encodeURIComponent("السلام عليكم، أريد عرض سيارتي مع 3M Cars")}`}
           target="_blank"
           rel="noreferrer"
           className="rounded-full bg-[#111] px-9 py-3.5 text-[14px] font-bold text-white transition-colors hover:bg-[#a71225]"

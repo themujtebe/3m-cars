@@ -1,7 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { readSettings } from "@/lib/local/settings";
 import { MessageCircle, Globe, Phone } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
 
 export const metadata = { title: "تواصل معنا | 3M Cars" };
 
@@ -15,30 +15,50 @@ function InstagramIcon({ className }: { className?: string }) {
   );
 }
 
-interface ContactItem {
-  Icon: LucideIcon | typeof InstagramIcon;
-  label: string;
-  value: string;
-  href: string;
-  color: string;
-}
-
-const CONTACTS: ContactItem[] = [
-  { Icon: MessageCircle, label: "واتساب",   value: "+973 36414730", href: "https://wa.me/97336414730?text=السلام عليكم", color: "#25D366" },
-  { Icon: InstagramIcon, label: "إنستغرام", value: "@3mcars.bh",   href: "https://instagram.com/3mcars.bh",             color: "#E1306C" },
-  { Icon: Globe,         label: "الموقع",   value: "3mcars.bh",    href: "https://3mcars.bh",                           color: "#a71225" },
-  { Icon: Phone,         label: "هاتف",     value: "+973 36414730", href: "tel:+97336414730",                           color: "#a71225" },
-];
-
 export default function ContactPage() {
-  const waLink = "https://wa.me/97336414730?text=السلام عليكم، حاب أستفسر عن خدماتكم";
+  const settings = readSettings();
+  const instaHandle = settings.instagram
+    .replace(/https?:\/\/(www\.)?instagram\.com\//, "@")
+    .replace(/\/$/, "");
+  const waLink = `https://wa.me/${settings.whatsapp}?text=${encodeURIComponent("السلام عليكم، حاب أستفسر عن خدماتكم")}`;
+
+  const contacts = [
+    {
+      Icon: MessageCircle,
+      label: "واتساب",
+      value: settings.phone,
+      href: `https://wa.me/${settings.whatsapp}?text=${encodeURIComponent("السلام عليكم")}`,
+      color: "#25D366",
+    },
+    {
+      Icon: InstagramIcon,
+      label: "إنستغرام",
+      value: instaHandle,
+      href: settings.instagram,
+      color: "#E1306C",
+    },
+    {
+      Icon: Globe,
+      label: "الموقع",
+      value: "3mcars.bh",
+      href: "https://3mcars.bh",
+      color: "#a71225",
+    },
+    {
+      Icon: Phone,
+      label: "هاتف",
+      value: settings.phone,
+      href: `tel:${settings.phone.replace(/\s/g, "")}`,
+      color: "#a71225",
+    },
+  ];
 
   return (
     <div className="min-h-screen bg-white text-[#111]">
       <Header />
 
       {/* Page header */}
-      <section className="border-b border-black/[0.06] bg-[#f7f7f7] px-10 py-14 text-center">
+      <section className="border-b border-black/[0.06] bg-[#f7f7f7] px-6 py-14 text-center md:px-10">
         <p
           className="mb-2 text-[11px] font-bold tracking-[4px] text-[#a71225] uppercase"
           style={{ fontFamily: "var(--font-tajawal)" }}
@@ -46,10 +66,10 @@ export default function ContactPage() {
           تواصل معنا
         </p>
         <h1
-          className="text-[42px] font-bold text-[#111]"
+          className="text-[36px] font-bold text-[#111] md:text-[42px]"
           style={{ fontFamily: "var(--font-tajawal)" }}
         >
-          تواصل معنا
+          نحن هنا لمساعدتك
         </h1>
         <p
           className="mx-auto mt-3 max-w-md text-[15px] leading-[1.8] text-[#777]"
@@ -60,9 +80,9 @@ export default function ContactPage() {
       </section>
 
       {/* Contact cards */}
-      <section className="px-10 py-16">
+      <section className="px-6 py-16 md:px-10">
         <div className="mx-auto grid max-w-3xl gap-4 sm:grid-cols-2">
-          {CONTACTS.map(({ Icon, label, value, href, color }) => (
+          {contacts.map(({ Icon, label, value, href, color }) => (
             <a
               key={label}
               href={href}
@@ -71,7 +91,7 @@ export default function ContactPage() {
               className="group flex items-center gap-4 rounded-2xl border border-black/[0.08] bg-white p-5 transition-all duration-300 hover:border-black/[0.16] hover:-translate-y-0.5 hover:shadow-md"
             >
               <div
-                className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl transition-colors"
+                className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl"
                 style={{ background: `${color}12`, border: `1px solid ${color}25` }}
               >
                 <Icon className="h-5 w-5" style={{ color }} />
@@ -84,6 +104,7 @@ export default function ContactPage() {
                   {label}
                 </p>
                 <p
+                  dir="ltr"
                   className="mt-0.5 text-[15px] font-semibold text-[#111]"
                   style={{ fontFamily: "var(--font-tajawal)" }}
                 >

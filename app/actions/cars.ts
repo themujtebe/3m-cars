@@ -3,8 +3,9 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import type { CurrencyCode } from "@/lib/currency";
+import { readSettings } from "@/lib/local/settings";
 
-const useSupabase = () =>
+const isSupabaseEnabled = () =>
   !!(process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY);
 
 /* ───────────── ADD CAR ───────────── */
@@ -25,7 +26,7 @@ export async function addCar(
   const imageFiles     = formData.getAll("images") as File[];
 
   try {
-    if (useSupabase()) {
+    if (isSupabaseEnabled()) {
       const { createAdminClient } = await import("@/lib/supabase/server");
       const supabase = await createAdminClient();
       const imageUrls: string[] = [];
@@ -44,7 +45,7 @@ export async function addCar(
       const { error: insertError } = await supabase.from("cars").insert({
         title_ar, title_en: null, brand, model, year, mileage, price, currency,
         status, featured, description_ar, description_en: null,
-        images: imageUrls, whatsapp_number: "97336414730",
+        images: imageUrls, whatsapp_number: readSettings().whatsapp,
       } as never);
 
       if (insertError) return { error: insertError.message };
@@ -61,7 +62,7 @@ export async function addCar(
       localDb.cars.insert({
         title_ar, title_en: null, brand, model, year, mileage, price, currency,
         status, featured, description_ar, description_en: null,
-        images: imageUrls, whatsapp_number: "97336414730",
+        images: imageUrls, whatsapp_number: readSettings().whatsapp,
       });
     }
   } catch (e) {
@@ -79,7 +80,7 @@ export async function updateCarStatus(formData: FormData) {
   const id     = formData.get("id") as string;
   const status = formData.get("status") as "available" | "sold";
 
-  if (useSupabase()) {
+  if (isSupabaseEnabled()) {
     const { createAdminClient } = await import("@/lib/supabase/server");
     const supabase = await createAdminClient();
     await supabase.from("cars").update({ status } as never).eq("id", id);
@@ -113,7 +114,7 @@ export async function updateCar(
   const newImageFiles  = formData.getAll("new_images") as File[];
 
   try {
-    if (useSupabase()) {
+    if (isSupabaseEnabled()) {
       const { createAdminClient } = await import("@/lib/supabase/server");
       const supabase = await createAdminClient();
       const imageUrls: string[] = [...keepImages];
@@ -166,7 +167,7 @@ export async function updateCar(
 export async function deleteCarAction(formData: FormData) {
   const id = formData.get("id") as string;
 
-  if (useSupabase()) {
+  if (isSupabaseEnabled()) {
     const { createAdminClient } = await import("@/lib/supabase/server");
     const supabase = await createAdminClient();
     const { data: carData } = await supabase.from("cars").select("images").eq("id", id).single();
@@ -192,7 +193,7 @@ export async function deleteCarAction(formData: FormData) {
 
 /* ───────────── DELETE CAR (string id) ───────────── */
 export async function deleteCar(id: string) {
-  if (useSupabase()) {
+  if (isSupabaseEnabled()) {
     const { createAdminClient } = await import("@/lib/supabase/server");
     const supabase = await createAdminClient();
     const { data: carData } = await supabase.from("cars").select("images").eq("id", id).single();

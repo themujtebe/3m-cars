@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { MapPin, Phone, Mail } from "lucide-react";
+import { readSettings } from "@/lib/local/settings";
 
 function InstagramIcon() {
   return (
@@ -29,8 +30,9 @@ function FacebookIcon() {
 }
 
 export default function Footer() {
+  const { phone, instagram } = readSettings();
   return (
-    <footer className="bg-[#f0f0f0] px-10 pb-10 pt-[60px]">
+    <footer className="bg-[#f0f0f0] px-5 pb-10 pt-12 sm:px-10 sm:pt-[60px]">
       {/* Top grid */}
       <div className="grid gap-12 md:grid-cols-[1.5fr_1fr_1fr]">
 
@@ -66,7 +68,7 @@ export default function Footer() {
           {/* Socials */}
           <div className="mt-5 flex gap-2.5">
             {[
-              { icon: <InstagramIcon />, href: "https://instagram.com/3mcars.bh" },
+              { icon: <InstagramIcon />, href: instagram },
               { icon: <TwitterIcon />, href: "#" },
               { icon: <FacebookIcon />, href: "#" },
             ].map((s, i) => (
@@ -122,7 +124,7 @@ export default function Footer() {
           <ul className="flex flex-col gap-4">
             {[
               { icon: <MapPin className="h-3.5 w-3.5" />, text: "مملكة البحرين" },
-              { icon: <Phone className="h-3.5 w-3.5" />, text: "+973 36414730", href: "tel:+97336414730" },
+              { icon: <Phone className="h-3.5 w-3.5" />, text: phone, href: `tel:${phone.replace(/\s/g, "")}` },
               { icon: <Mail className="h-3.5 w-3.5" />, text: "INFO@3MCARS.VIP", href: "mailto:INFO@3MCARS.VIP" },
             ].map((item, i) => (
               <li key={i}>
