@@ -31,7 +31,7 @@ export default function Hero() {
           className="mb-6 text-[11px] font-bold tracking-[4px] text-[#a71225] uppercase"
           style={{ fontFamily: "var(--font-tajawal)" }}
         >
-          التميز في كل تفصيل
+          وجهة عشاق السيارات في الخليج
         </p>
 
         {/* H1 */}
@@ -43,9 +43,11 @@ export default function Hero() {
             letterSpacing: "-1px",
           }}
         >
-          <span className="text-[#a71225]">اعرض</span> سيارتك
+          <span className="text-[#a71225]">وجهتك</span> الأولى
           <br />
-          بثقة واحترافية
+          لبيع وشراء السيارات
+          <br />
+          الرياضية والكلاسيكية
         </h1>
 
         {/* Sub */}
@@ -53,7 +55,7 @@ export default function Hero() {
           className="mt-8 max-w-[480px] leading-[1.7] text-[#555]"
           style={{ fontFamily: "var(--font-tajawal)", fontSize: "16px" }}
         >
-          منصة 3M Cars تتولى التصوير الاحترافي، التعديل، والنشر على حسابنا بالبحرين. أكثر من ٢٠٠ سيارة بصور تبيع.
+          تصفح مجموعة مختارة من السيارات الرياضية والكلاسيكية، أو اعرض سيارتك باحترافية من خلال منصة تجمع البائعين والمشترين من مختلف دول الخليج.
         </p>
 
         {/* Buttons */}
