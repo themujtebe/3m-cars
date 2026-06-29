@@ -40,12 +40,12 @@ const STATS = [
 
 export default function StatsSection() {
   return (
-    <section className="bg-[#f7f7f7] px-10 py-[60px]">
-      <div className="grid grid-cols-2 gap-5 sm:grid-cols-4">
+    <section className="bg-[#f7f7f7] px-6 py-[60px] sm:px-10">
+      <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-5">
         {STATS.map((stat, i) => (
           <div
             key={i}
-            className="rounded-[20px] border bg-white p-8 text-center transition-all duration-300 hover:-translate-y-0.5"
+            className="flex flex-col items-center justify-center rounded-[20px] border bg-white p-5 text-center transition-all duration-300 hover:-translate-y-0.5 sm:p-8"
             style={{
               borderColor: stat.highlight ? "rgba(167,18,37,0.3)" : "rgba(0,0,0,0.06)",
               boxShadow: stat.highlight ? "0 4px 24px rgba(167,18,37,0.08)" : undefined,
@@ -53,7 +53,7 @@ export default function StatsSection() {
           >
             {/* Icon circle */}
             <div
-              className="mx-auto mb-5 flex h-11 w-11 items-center justify-center rounded-full"
+              className="mb-4 flex h-10 w-10 items-center justify-center rounded-full sm:mb-5 sm:h-11 sm:w-11"
               style={{ background: "rgba(167,18,37,0.08)" }}
             >
               {stat.icon}
@@ -61,15 +61,19 @@ export default function StatsSection() {
 
             {/* Number */}
             <div
-              className="text-[48px] font-bold leading-none text-[#111]"
-              style={{ fontFamily: "var(--font-tajawal)", fontWeight: 900 }}
+              className="font-bold leading-none text-[#111]"
+              style={{
+                fontFamily: "var(--font-tajawal)",
+                fontWeight: 900,
+                fontSize: "clamp(26px, 6vw, 48px)",
+              }}
             >
               {stat.value}
             </div>
 
             {/* Label */}
             <p
-              className="mt-3 text-[13px] text-[#777]"
+              className="mt-2 text-[12px] text-[#777] sm:mt-3 sm:text-[13px]"
               style={{ fontFamily: "var(--font-tajawal)" }}
             >
               {stat.label}
