@@ -1,16 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
-import {
-  CarFront,
-  FolderKanban,
-  Image as ImageIcon,
-  LayoutDashboard,
-  PlusSquare,
-  Settings,
-  ArrowUpRight,
-} from "lucide-react";
+import { CarFront, FolderKanban, Image as ImageIcon, LayoutDashboard, PlusSquare, Settings, ArrowUpRight } from "lucide-react";
 
 const links = [
   { title: "لوحة التحكم",   href: "/admin",           icon: LayoutDashboard },
@@ -25,17 +18,17 @@ export default function AdminSidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="hidden w-[260px] shrink-0 border-l border-black/[0.06] bg-white xl:flex xl:flex-col">
+    <aside className="hidden w-[260px] shrink-0 border-l border-black/[0.06] bg-white xl:flex xl:flex-col dark:bg-[#1f2937] dark:border-white/[0.08]">
       <div className="sticky top-0 flex h-screen flex-col">
 
         {/* Logo */}
-        <div className="border-b border-black/[0.06] px-6 py-5">
+        <div className="border-b border-black/[0.06] dark:border-white/[0.08] px-6 py-5">
           <Link href="/admin" className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-[10px] bg-[#111]">
-              <span className="text-sm font-bold text-white" style={{ fontFamily: "var(--font-tajawal)" }}>3M</span>
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-[10px] bg-[#a71225] p-1">
+              <Image src="/Logo.png" alt="3M Cars" width={40} height={40} className="h-full w-full object-contain" />
             </div>
             <div className="leading-none">
-              <div className="text-[14px] font-bold text-[#111]" style={{ fontFamily: "var(--font-tajawal)" }}>CARS</div>
+              <div className="text-[14px] font-bold text-[#111] dark:text-[#f9fafb]" style={{ fontFamily: "var(--font-tajawal)" }}>3M CARS</div>
               <div className="text-[9px] font-bold tracking-[3px] text-[#a71225]" style={{ fontFamily: "var(--font-tajawal)" }}>ADMIN</div>
             </div>
           </Link>
@@ -43,31 +36,23 @@ export default function AdminSidebar() {
 
         {/* Nav */}
         <nav className="flex-1 overflow-y-auto px-3 py-4">
-          <p className="mb-2 px-3 text-[10px] font-bold tracking-[2px] text-[#bbb] uppercase" style={{ fontFamily: "var(--font-tajawal)" }}>
-            MENU
-          </p>
+          <p className="mb-2 px-3 text-[10px] font-bold tracking-[2px] text-[#bbb] dark:text-[#6b7280] uppercase" style={{ fontFamily: "var(--font-tajawal)" }}>MENU</p>
           <div className="flex flex-col gap-1">
             {links.map((link) => {
               const Icon = link.icon;
-              const active =
-                pathname === link.href ||
-                (link.href !== "/admin" && pathname.startsWith(link.href));
-
+              const active = pathname === link.href || (link.href !== "/admin" && pathname.startsWith(link.href));
               return (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`flex items-center gap-3 rounded-xl px-3 py-2.5 text-[14px] font-medium transition-colors ${
+                  className={`flex items-center gap-3 rounded-xl px-3 py-2.5 text-[14px] font-medium transition-all ${
                     active
-                      ? "bg-[#a71225]/8 text-[#a71225]"
-                      : "text-[#555] hover:bg-black/[0.04] hover:text-[#111]"
+                      ? "bg-[#a71225]/[0.08] text-[#a71225] dark:bg-[#a71225]/[0.14] dark:dm-active-link"
+                      : "text-[#555] hover:bg-black/[0.04] hover:text-[#111] dark:text-[#9ca3af] dark:hover:bg-white/[0.05] dark:hover:text-[#f9fafb]"
                   }`}
                   style={{ fontFamily: "var(--font-tajawal)" }}
                 >
-                  <Icon
-                    size={17}
-                    className={active ? "text-[#a71225]" : "text-[#999]"}
-                  />
+                  <Icon size={17} className={active ? "text-[#a71225]" : "text-[#999] dark:text-[#6b7280]"} />
                   {link.title}
                 </Link>
               );
@@ -76,11 +61,11 @@ export default function AdminSidebar() {
         </nav>
 
         {/* Footer */}
-        <div className="border-t border-black/[0.06] px-3 py-4">
+        <div className="border-t border-black/[0.06] dark:border-white/[0.08] px-3 py-4">
           <Link
             href="/"
             target="_blank"
-            className="flex items-center justify-between rounded-xl border border-black/[0.08] px-3 py-2.5 text-[13px] font-medium text-[#555] transition-colors hover:border-[#a71225]/30 hover:text-[#a71225]"
+            className="flex items-center justify-between rounded-xl border border-black/[0.08] px-3 py-2.5 text-[13px] font-medium text-[#555] transition-colors hover:border-[#a71225]/30 hover:text-[#a71225] dark:border-white/[0.08] dark:text-[#9ca3af] dark:hover:border-[#a71225]/50 dark:hover:text-[#a71225]"
             style={{ fontFamily: "var(--font-tajawal)" }}
           >
             عرض الموقع

@@ -6,15 +6,13 @@ import { ArrowLeft } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[calc(100vh-72px)] overflow-hidden bg-white">
-
-      {/* Background car — 10% opacity */}
+    <section className="relative min-h-[calc(100vh-72px)] overflow-hidden bg-white dark:bg-[#111827]">
       <div className="absolute inset-0 overflow-hidden">
         <Image
           src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1800&q=80"
           alt=""
           fill
-          className="object-cover opacity-[0.08]"
+          className="object-cover opacity-[0.08] dark:opacity-[0.12]"
           style={{
             maskImage: "linear-gradient(to right, transparent 0%, black 30%, black 70%, transparent 100%)",
             WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 30%, black 70%, transparent 100%)",
@@ -23,25 +21,14 @@ export default function Hero() {
         />
       </div>
 
-      {/* Content */}
       <div className="relative z-10 flex min-h-[calc(100vh-72px)] flex-col justify-center px-10 pb-16 pt-16 max-w-[1400px] mx-auto">
-
-        {/* Eyebrow */}
-        <p
-          className="mb-6 text-[11px] font-bold tracking-[4px] text-[#a71225] uppercase"
-          style={{ fontFamily: "var(--font-tajawal)" }}
-        >
+        <p className="mb-6 text-[11px] font-bold tracking-[4px] text-[#a71225] uppercase" style={{ fontFamily: "var(--font-tajawal)" }}>
           وجهة عشاق السيارات في الخليج
         </p>
 
-        {/* H1 */}
         <h1
-          className="leading-[0.92] font-bold uppercase text-[#111]"
-          style={{
-            fontFamily: "var(--font-tajawal)",
-            fontSize: "clamp(52px, 8vw, 110px)",
-            letterSpacing: "-1px",
-          }}
+          className="leading-[0.92] font-bold uppercase text-[#111] dark:text-[#f9fafb]"
+          style={{ fontFamily: "var(--font-tajawal)", fontSize: "clamp(52px, 8vw, 110px)", letterSpacing: "-1px" }}
         >
           <span className="text-[#a71225]">وجهتك</span> الأولى
           <br />
@@ -50,15 +37,10 @@ export default function Hero() {
           والكلاسيكية
         </h1>
 
-        {/* Sub */}
-        <p
-          className="mt-8 max-w-[480px] leading-[1.7] text-[#555]"
-          style={{ fontFamily: "var(--font-tajawal)", fontSize: "16px" }}
-        >
+        <p className="mt-8 max-w-[480px] leading-[1.7] text-[#555] dark:text-[#9ca3af]" style={{ fontFamily: "var(--font-tajawal)", fontSize: "16px" }}>
           اكتشف سيارات مميزة، أو اعرض سيارتك باحترافية لتصل إلى آلاف المهتمين في الخليج.
         </p>
 
-        {/* Buttons */}
         <div className="mt-10 flex flex-wrap items-center gap-6">
           <Link
             href="/cars"
@@ -70,7 +52,7 @@ export default function Hero() {
           </Link>
           <Link
             href="/packages"
-            className="group flex items-center gap-3 text-[14px] font-semibold text-[#111] transition-colors hover:text-[#a71225]"
+            className="group flex items-center gap-3 text-[14px] font-semibold text-[#111] transition-colors hover:text-[#a71225] dark:text-[#d1d5db] dark:hover:text-[#a71225]"
             style={{ fontFamily: "var(--font-tajawal)" }}
           >
             اعرض معنا
@@ -78,20 +60,9 @@ export default function Hero() {
           </Link>
         </div>
 
-        {/* Bottom badges */}
         <div className="absolute bottom-10 left-10 flex flex-col gap-1">
-          <p
-            className="text-[10px] font-bold tracking-[2px] text-[#999]"
-            style={{ fontFamily: "var(--font-tajawal)" }}
-          >
-            تأسست في البحرين
-          </p>
-          <p
-            className="text-[10px] font-bold tracking-[2px] text-[#999]"
-            style={{ fontFamily: "var(--font-tajawal)" }}
-          >
-            شبكة عالمية
-          </p>
+          <p className="text-[10px] font-bold tracking-[2px] text-[#999] dark:text-[#6b7280]" style={{ fontFamily: "var(--font-tajawal)" }}>تأسست في البحرين</p>
+          <p className="text-[10px] font-bold tracking-[2px] text-[#999] dark:text-[#6b7280]" style={{ fontFamily: "var(--font-tajawal)" }}>شبكة عالمية</p>
         </div>
       </div>
     </section>

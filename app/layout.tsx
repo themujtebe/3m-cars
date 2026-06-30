@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Tajawal } from "next/font/google";
+import ThemeProvider from "@/components/ThemeProvider";
 import "./globals.css";
 
 const tajawal = Tajawal({
@@ -23,9 +24,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ar" dir="rtl" className={tajawal.variable}>
       <body
-        className="antialiased bg-white text-[#111]"
+        className="antialiased"
         style={{ fontFamily: "var(--font-tajawal), Tajawal, sans-serif" }}
       >
+        <ThemeProvider />
         {children}
       </body>
     </html>

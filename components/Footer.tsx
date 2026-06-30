@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { MapPin, Phone, Mail } from "lucide-react";
-import { readSettings } from "@/lib/local/settings";
 
 function InstagramIcon() {
   return (
@@ -30,45 +29,29 @@ function FacebookIcon() {
 }
 
 export default function Footer() {
-  const { phone, instagram } = readSettings();
   return (
-    <footer className="bg-[#f0f0f0] px-5 pb-10 pt-12 sm:px-10 sm:pt-[60px]">
-      {/* Top grid */}
+    <footer className="bg-[#f0f0f0] dark:bg-[#111827] px-10 pb-10 pt-[60px] border-t border-black/[0.06] dark:border-white/[0.06]">
       <div className="grid gap-12 md:grid-cols-[1.5fr_1fr_1fr]">
 
         {/* Col 1 — Brand */}
         <div>
           <div className="flex items-center gap-3">
             <div className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-[10px] bg-[#a71225] p-1.5">
-              <Image
-                src="/Logo.png"
-                alt="3M Cars"
-                width={44}
-                height={44}
-                className="h-full w-full object-contain"
-              />
+              <Image src="/Logo.png" alt="3M Cars" width={44} height={44} className="h-full w-full object-contain" />
             </div>
             <div className="leading-none">
-              <div className="text-[15px] font-bold tracking-wide text-[#111]">
-                3M CARS
-              </div>
-              <div className="text-[10px] font-semibold tracking-[2px] text-[#888]">
-                3mcars.bh
-              </div>
+              <div className="text-[15px] font-bold tracking-wide text-[#111] dark:text-[#f9fafb]">3M CARS</div>
+              <div className="text-[10px] font-semibold tracking-[2px] text-[#888] dark:text-[#6b7280]">3mcars.bh</div>
             </div>
           </div>
 
-          <p
-            className="mt-4 max-w-[260px] text-[13px] leading-[1.8] text-[#666]"
-            style={{ fontFamily: "var(--font-tajawal)" }}
-          >
+          <p className="mt-4 max-w-[260px] text-[13px] leading-[1.8] text-[#666] dark:text-[#9ca3af]" style={{ fontFamily: "var(--font-tajawal)" }}>
             منصة متكاملة لعرض وبيع السيارات في البحرين بصور احترافية وتسويق فعّال يصل لأوسع شريحة من المشترين.
           </p>
 
-          {/* Socials */}
           <div className="mt-5 flex gap-2.5">
             {[
-              { icon: <InstagramIcon />, href: instagram },
+              { icon: <InstagramIcon />, href: "https://instagram.com/3mcars.bh" },
               { icon: <TwitterIcon />, href: "#" },
               { icon: <FacebookIcon />, href: "#" },
             ].map((s, i) => (
@@ -77,7 +60,7 @@ export default function Footer() {
                 href={s.href}
                 target="_blank"
                 rel="noreferrer"
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-black/[0.15] text-[#555] transition-all hover:border-[#111] hover:text-[#111]"
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-black/[0.15] text-[#555] transition-all hover:border-[#111] hover:text-[#111] dark:border-white/[0.15] dark:text-[#9ca3af] dark:hover:border-white dark:hover:text-white"
               >
                 {s.icon}
               </a>
@@ -87,10 +70,7 @@ export default function Footer() {
 
         {/* Col 2 — Quick links */}
         <div>
-          <h4
-            className="mb-5 text-[10px] font-bold tracking-[3px] text-[#999] uppercase"
-            style={{ fontFamily: "var(--font-tajawal)" }}
-          >
+          <h4 className="mb-5 text-[10px] font-bold tracking-[3px] text-[#999] dark:text-[#6b7280] uppercase" style={{ fontFamily: "var(--font-tajawal)" }}>
             روابط سريعة
           </h4>
           <ul className="flex flex-col gap-3">
@@ -103,7 +83,7 @@ export default function Footer() {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="text-[13px] font-medium text-[#444] transition-colors hover:text-[#a71225]"
+                  className="text-[13px] font-medium text-[#444] transition-colors hover:text-[#a71225] dark:text-[#d1d5db] dark:hover:text-[#a71225]"
                   style={{ fontFamily: "var(--font-tajawal)" }}
                 >
                   {item.label}
@@ -115,28 +95,22 @@ export default function Footer() {
 
         {/* Col 3 — Contact */}
         <div>
-          <h4
-            className="mb-5 text-[10px] font-bold tracking-[3px] text-[#999] uppercase"
-            style={{ fontFamily: "var(--font-tajawal)" }}
-          >
+          <h4 className="mb-5 text-[10px] font-bold tracking-[3px] text-[#999] dark:text-[#6b7280] uppercase" style={{ fontFamily: "var(--font-tajawal)" }}>
             تواصل معنا
           </h4>
           <ul className="flex flex-col gap-4">
             {[
               { icon: <MapPin className="h-3.5 w-3.5" />, text: "مملكة البحرين" },
-              { icon: <Phone className="h-3.5 w-3.5" />, text: phone, href: `tel:${phone.replace(/\s/g, "")}` },
+              { icon: <Phone className="h-3.5 w-3.5" />, text: "+973 36414730", href: "tel:+97336414730" },
               { icon: <Mail className="h-3.5 w-3.5" />, text: "INFO@3MCARS.VIP", href: "mailto:INFO@3MCARS.VIP" },
             ].map((item, i) => (
               <li key={i}>
                 <a
                   href={item.href ?? "#"}
-                  className="flex items-center gap-3 text-[13px] font-medium text-[#444] transition-colors hover:text-[#a71225]"
+                  className="flex items-center gap-3 text-[13px] font-medium text-[#444] transition-colors hover:text-[#a71225] dark:text-[#d1d5db] dark:hover:text-[#a71225]"
                   style={{ fontFamily: "var(--font-tajawal)" }}
                 >
-                  <span
-                    className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[#a71225]"
-                    style={{ background: "rgba(167,18,37,0.08)" }}
-                  >
+                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[#a71225]" style={{ background: "rgba(167,18,37,0.1)" }}>
                     {item.icon}
                   </span>
                   {item.text}
@@ -148,14 +122,14 @@ export default function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div className="mt-12 flex flex-col items-center justify-between gap-2 border-t border-black/[0.08] pt-6 sm:flex-row">
-        <p className="text-[12px] text-[#aaa]" style={{ fontFamily: "var(--font-tajawal)" }}>
+      <div className="mt-12 flex flex-col items-center justify-between gap-2 border-t border-black/[0.08] dark:border-white/[0.08] pt-6 sm:flex-row">
+        <p className="text-[12px] text-[#aaa] dark:text-[#6b7280]" style={{ fontFamily: "var(--font-tajawal)" }}>
           © 3M Cars 2026. جميع الحقوق محفوظة.
         </p>
-        <div className="flex gap-4 text-[12px] text-[#aaa]" style={{ fontFamily: "var(--font-tajawal)" }}>
-          <Link href="#" className="hover:text-[#555] transition-colors">سياسة الخصوصية</Link>
+        <div className="flex gap-4 text-[12px] text-[#aaa] dark:text-[#6b7280]" style={{ fontFamily: "var(--font-tajawal)" }}>
+          <Link href="#" className="transition-colors hover:text-[#555] dark:hover:text-[#d1d5db]">سياسة الخصوصية</Link>
           <span>|</span>
-          <Link href="#" className="hover:text-[#555] transition-colors">الشروط والأحكام</Link>
+          <Link href="#" className="transition-colors hover:text-[#555] dark:hover:text-[#d1d5db]">الشروط والأحكام</Link>
         </div>
       </div>
     </footer>

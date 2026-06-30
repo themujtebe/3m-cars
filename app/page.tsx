@@ -24,43 +24,23 @@ export default async function HomePage() {
   const cars = await getLatestCars();
 
   return (
-    <div className="min-h-screen bg-white text-[#111]">
+    <div className="min-h-screen bg-white dark:bg-[#111827]">
       <Header />
       <Hero />
       <StatsSection />
 
-      {/* Latest Cars */}
-      <section className="bg-white px-5 py-14 sm:px-10 sm:py-[72px]">
-        {/* Header row */}
+      <section className="bg-white dark:bg-[#111827] px-5 py-14 sm:px-10 sm:py-[72px]">
         <div className="mb-8 flex flex-wrap items-end justify-between gap-3">
           <div>
-            <p
-              className="mb-2 text-[11px] font-bold tracking-[3px] text-[#a71225] uppercase"
-              style={{ fontFamily: "var(--font-tajawal)" }}
-            >
-              اختيارات مميزة
-            </p>
-            <h2
-              className="text-[28px] font-bold text-[#111] sm:text-[36px]"
-              style={{ fontFamily: "var(--font-tajawal)" }}
-            >
-              أحدث السيارات
-            </h2>
+            <p className="mb-2 text-[11px] font-bold tracking-[3px] text-[#a71225] uppercase" style={{ fontFamily: "var(--font-tajawal)" }}>اختيارات مميزة</p>
+            <h2 className="text-[28px] font-bold text-[#111] dark:text-[#f9fafb] sm:text-[36px]" style={{ fontFamily: "var(--font-tajawal)" }}>أحدث السيارات</h2>
           </div>
-          <Link
-            href="/cars"
-            className="shrink-0 text-[13px] font-bold tracking-[0.5px] text-[#111] uppercase transition-colors hover:text-[#a71225]"
-            style={{ fontFamily: "var(--font-tajawal)" }}
-          >
+          <Link href="/cars" className="shrink-0 text-[13px] font-bold tracking-[0.5px] text-[#111] uppercase transition-colors hover:text-[#a71225] dark:text-[#d1d5db] dark:hover:text-[#a71225]" style={{ fontFamily: "var(--font-tajawal)" }}>
             عرض الكل ←
           </Link>
         </div>
-
-        {/* Grid */}
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {cars.map((car) => (
-            <CarCard key={car.id} car={car} />
-          ))}
+          {cars.map((car) => <CarCard key={car.id} car={car} />)}
         </div>
       </section>
 

@@ -1,17 +1,106 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --color-primary:    #111111;
-  --color-red:        #a71225;
-  --color-white:      #ffffff;
-  --color-gray-bg:    #f7f7f7;
-  --color-gray-light: #f0f0f0;
-  --color-border:     rgba(0,0,0,0.08);
-  --color-text-muted: #777777;
+  --bg:           #ffffff;
+  --bg-page:      #f7f7f7;
+  --surface:      #ffffff;
+  --surface-2:    #f0f0f0;
+  --border:       rgba(0,0,0,0.08);
+  --text:         #111111;
+  --text-2:       #555555;
+  --text-muted:   #777777;
+  --text-faint:   #aaaaaa;
+  --red:          #a71225;
+}
+
+.dark {
+  --bg:           #111827;
+  --bg-page:      #0f172a;
+  --surface:      #1f2937;
+  --surface-2:    #374151;
+  --border:       rgba(255,255,255,0.08);
+  --text:         #f9fafb;
+  --text-2:       #d1d5db;
+  --text-muted:   #9ca3af;
+  --text-faint:   #6b7280;
+  --red:          #ef4444;
 }
 
 body {
-  background: #ffffff;
-  color: #111111;
+  background: var(--bg);
+  color: var(--text);
   font-family: 'Tajawal', sans-serif;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* ── Premium Dark Mode Glow System ──────────────────────────────── */
+
+/* Luminous card: subtle inner border + depth shadow */
+.dm-card {
+  transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+}
+.dark .dm-card {
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.055),
+    0 6px 28px rgba(0,0,0,0.55);
+}
+.dark .dm-card:hover {
+  box-shadow:
+    0 0 0 1px rgba(167,18,37,0.35),
+    0 0 24px rgba(167,18,37,0.10),
+    0 10px 40px rgba(0,0,0,0.65);
+}
+
+/* Flat panels (no hover glow needed) */
+.dark .dm-panel {
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.055),
+    0 4px 20px rgba(0,0,0,0.45);
+}
+
+/* Red accent text glow */
+.dark .dm-price {
+  text-shadow: 0 0 22px rgba(239,68,68,0.45);
+}
+
+/* Red number glow (stats) */
+.dark .dm-stat-value {
+  text-shadow: 0 0 30px rgba(239,68,68,0.3);
+}
+
+/* Header bottom luminous line in dark */
+.dark .dm-header {
+  border-bottom-color: transparent !important;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.06),
+    0 4px 24px rgba(0,0,0,0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(31,41,55,0.92) !important;
+}
+
+/* Active nav link glow indicator */
+.dark .dm-active-link {
+  box-shadow: inset 3px 0 0 #a71225, 0 0 16px rgba(167,18,37,0.12);
+}
+
+/* Stat card highlight in dark */
+.dark .dm-stat-card {
+  box-shadow:
+    0 0 0 1px rgba(167,18,37,0.25),
+    0 0 20px rgba(167,18,37,0.08),
+    0 6px 28px rgba(0,0,0,0.5);
+}
+.dark .dm-stat-card-muted {
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.055),
+    0 6px 28px rgba(0,0,0,0.5);
+}
+.dark .dm-stat-card:hover,
+.dark .dm-stat-card-muted:hover {
+  box-shadow:
+    0 0 0 1px rgba(167,18,37,0.4),
+    0 0 28px rgba(167,18,37,0.14),
+    0 10px 40px rgba(0,0,0,0.65);
 }
