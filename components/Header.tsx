@@ -114,11 +114,10 @@ export default function Header() {
           {/* Admin link */}
           <Link
             href="/admin"
-            className="hidden items-center gap-1.5 text-[13px] font-semibold text-[#111] transition-colors hover:text-[#a71225] dark:text-[#c9c9ce] dark:hover:text-[#a71225] sm:flex"
-            style={{ fontFamily: "var(--font-tajawal)" }}
+            className="hidden items-center text-[#111] transition-colors hover:text-[#a71225] dark:text-[#c9c9ce] dark:hover:text-[#a71225] sm:flex"
+            aria-label="البوابة"
           >
             <User className="h-4 w-4" />
-            البوابة
           </Link>
 
           {/* Hamburger */}
