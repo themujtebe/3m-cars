@@ -10,9 +10,11 @@ const INPUT = [
   "w-full rounded-xl border border-black/[0.08] bg-[#f7f7f7] px-4 py-2.5",
   "text-[14px] text-[#111] outline-none placeholder:text-[#bbb]",
   "focus:border-[#a71225]/40 focus:bg-white transition-colors",
+  "dark:border-white/[0.08] dark:bg-[#1c1c1f] dark:text-[#f5f5f4] dark:placeholder:text-[#6b6b70] dark:focus:border-[#e8323f]/50 dark:focus:bg-[#1c1c1f]",
 ].join(" ");
 
-const LABEL = "mb-1.5 block text-[11px] font-bold tracking-[1.5px] text-[#999] uppercase";
+const LABEL = "mb-1.5 block text-[11px] font-bold tracking-[1.5px] text-[#999] uppercase dark:text-[#6b6b70]";
+const SECTION = "dm-panel rounded-2xl border border-black/[0.06] bg-white p-6 dark:bg-[#131315] dark:border-white/[0.08]";
 
 export default function AddCarForm() {
   const router = useRouter();
@@ -43,12 +45,12 @@ export default function AddCarForm() {
       {/* Loading overlay */}
       {isPending && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
-          <div className="flex flex-col items-center gap-4 rounded-2xl bg-white px-10 py-8 shadow-2xl">
-            <Loader2 className="h-10 w-10 animate-spin text-[#a71225]" />
-            <p className="text-[15px] font-semibold text-[#111]" style={{ fontFamily: "var(--font-tajawal)" }}>
+          <div className="flex flex-col items-center gap-4 rounded-2xl bg-white px-10 py-8 shadow-2xl dark:bg-[#131315] dark:shadow-black/60">
+            <Loader2 className="h-10 w-10 animate-spin text-[#a71225] dark:text-[#e8323f]" />
+            <p className="text-[15px] font-semibold text-[#111] dark:text-[#f5f5f4]" style={{ fontFamily: "var(--font-tajawal)" }}>
               جارٍ رفع السيارة...
             </p>
-            <p className="text-[13px] text-[#999]" style={{ fontFamily: "var(--font-tajawal)" }}>
+            <p className="text-[13px] text-[#999] dark:text-[#6b6b70]" style={{ fontFamily: "var(--font-tajawal)" }}>
               يرجى الانتظار حتى يكتمل الرفع
             </p>
           </div>
@@ -58,14 +60,14 @@ export default function AddCarForm() {
       {/* Success popup */}
       {showSuccess && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
-          <div className="flex flex-col items-center gap-4 rounded-2xl bg-white px-10 py-8 shadow-2xl">
-            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-emerald-50">
-              <CheckCircle className="h-9 w-9 text-emerald-500" />
+          <div className="flex flex-col items-center gap-4 rounded-2xl bg-white px-10 py-8 shadow-2xl dark:bg-[#131315] dark:shadow-black/60">
+            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-emerald-50 dark:bg-emerald-950">
+              <CheckCircle className="h-9 w-9 text-emerald-500 dark:text-emerald-400" />
             </div>
-            <p className="text-[17px] font-bold text-[#111]" style={{ fontFamily: "var(--font-tajawal)" }}>
+            <p className="text-[17px] font-bold text-[#111] dark:text-[#f5f5f4]" style={{ fontFamily: "var(--font-tajawal)" }}>
               تمت إضافة السيارة بنجاح!
             </p>
-            <p className="text-[13px] text-[#999]" style={{ fontFamily: "var(--font-tajawal)" }}>
+            <p className="text-[13px] text-[#999] dark:text-[#6b6b70]" style={{ fontFamily: "var(--font-tajawal)" }}>
               سيتم توجيهك لقائمة السيارات...
             </p>
           </div>
@@ -76,14 +78,14 @@ export default function AddCarForm() {
 
         {/* Error banner */}
         {state && "error" in state && (
-          <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-[14px] text-[#a71225]" style={{ fontFamily: "var(--font-tajawal)" }}>
+          <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-[14px] text-[#a71225] dark:border-red-800 dark:bg-red-950 dark:text-red-400" style={{ fontFamily: "var(--font-tajawal)" }}>
             ⚠️ {state.error}
           </div>
         )}
 
         {/* Basic info */}
-        <section className="rounded-2xl border border-black/[0.06] bg-white p-6">
-          <h3 className="mb-5 text-[16px] font-bold text-[#111]" style={{ fontFamily: "var(--font-tajawal)" }}>
+        <section className={SECTION}>
+          <h3 className="mb-5 text-[16px] font-bold text-[#111] dark:text-[#f5f5f4]" style={{ fontFamily: "var(--font-tajawal)" }}>
             البيانات الأساسية
           </h3>
           <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
@@ -111,8 +113,8 @@ export default function AddCarForm() {
         </section>
 
         {/* Settings */}
-        <section className="rounded-2xl border border-black/[0.06] bg-white p-6">
-          <h3 className="mb-5 text-[16px] font-bold text-[#111]" style={{ fontFamily: "var(--font-tajawal)" }}>
+        <section className={SECTION}>
+          <h3 className="mb-5 text-[16px] font-bold text-[#111] dark:text-[#f5f5f4]" style={{ fontFamily: "var(--font-tajawal)" }}>
             الإعدادات
           </h3>
           <div className="grid gap-4 sm:grid-cols-3">
@@ -145,8 +147,8 @@ export default function AddCarForm() {
         </section>
 
         {/* Description */}
-        <section className="rounded-2xl border border-black/[0.06] bg-white p-6">
-          <h3 className="mb-5 text-[16px] font-bold text-[#111]" style={{ fontFamily: "var(--font-tajawal)" }}>
+        <section className={SECTION}>
+          <h3 className="mb-5 text-[16px] font-bold text-[#111] dark:text-[#f5f5f4]" style={{ fontFamily: "var(--font-tajawal)" }}>
             الوصف
           </h3>
           <textarea
@@ -159,20 +161,20 @@ export default function AddCarForm() {
         </section>
 
         {/* Images */}
-        <section className="rounded-2xl border border-black/[0.06] bg-white p-6">
-          <h3 className="mb-1 text-[16px] font-bold text-[#111]" style={{ fontFamily: "var(--font-tajawal)" }}>
+        <section className={SECTION}>
+          <h3 className="mb-1 text-[16px] font-bold text-[#111] dark:text-[#f5f5f4]" style={{ fontFamily: "var(--font-tajawal)" }}>
             الصور
           </h3>
-          <p className="mb-4 text-[13px] text-[#999]" style={{ fontFamily: "var(--font-tajawal)" }}>
+          <p className="mb-4 text-[13px] text-[#999] dark:text-[#6b6b70]" style={{ fontFamily: "var(--font-tajawal)" }}>
             يمكن رفع حتى ٨ صور — JPG أو PNG أو WebP
           </p>
 
           {previews.length === 0 ? (
-            <label className="flex cursor-pointer flex-col items-center justify-center gap-3 rounded-xl border-2 border-dashed border-black/[0.10] bg-[#f7f7f7] px-6 py-10 text-center transition-colors hover:border-[#a71225]/30 hover:bg-white">
-              <Upload className="h-8 w-8 text-[#bbb]" />
+            <label className="flex cursor-pointer flex-col items-center justify-center gap-3 rounded-xl border-2 border-dashed border-black/[0.10] bg-[#f7f7f7] px-6 py-10 text-center transition-colors hover:border-[#a71225]/30 hover:bg-white dark:border-white/[0.12] dark:bg-[#1c1c1f] dark:hover:border-[#e8323f]/40 dark:hover:bg-[#1c1c1f]">
+              <Upload className="h-8 w-8 text-[#bbb] dark:text-[#6b6b70]" />
               <div>
-                <p className="text-[14px] font-semibold text-[#555]" style={{ fontFamily: "var(--font-tajawal)" }}>اضغط لرفع الصور</p>
-                <p className="text-[12px] text-[#aaa]" style={{ fontFamily: "var(--font-tajawal)" }}>JPG, PNG, WebP — حتى ٨ صور</p>
+                <p className="text-[14px] font-semibold text-[#555] dark:text-[#c9c9ce]" style={{ fontFamily: "var(--font-tajawal)" }}>اضغط لرفع الصور</p>
+                <p className="text-[12px] text-[#aaa] dark:text-[#6b6b70]" style={{ fontFamily: "var(--font-tajawal)" }}>JPG, PNG, WebP — حتى ٨ صور</p>
               </div>
               <input
                 ref={fileInputRef}
@@ -188,7 +190,7 @@ export default function AddCarForm() {
             <div className="space-y-3">
               <div className="grid grid-cols-4 gap-3">
                 {previews.map((url, i) => (
-                  <div key={url} className="relative aspect-square overflow-hidden rounded-xl bg-[#f0f0f0]">
+                  <div key={url} className="relative aspect-square overflow-hidden rounded-xl bg-[#f0f0f0] dark:bg-[#1c1c1f]">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={url} alt="" className="h-full w-full object-cover" />
                     <button
@@ -201,8 +203,8 @@ export default function AddCarForm() {
                   </div>
                 ))}
                 {previews.length < 8 && (
-                  <label className="flex aspect-square cursor-pointer items-center justify-center rounded-xl border-2 border-dashed border-black/[0.10] bg-[#f7f7f7] transition-colors hover:border-[#a71225]/30">
-                    <Upload className="h-5 w-5 text-[#ccc]" />
+                  <label className="flex aspect-square cursor-pointer items-center justify-center rounded-xl border-2 border-dashed border-black/[0.10] bg-[#f7f7f7] transition-colors hover:border-[#a71225]/30 dark:border-white/[0.12] dark:bg-[#1c1c1f] dark:hover:border-[#e8323f]/40">
+                    <Upload className="h-5 w-5 text-[#ccc] dark:text-[#6b6b70]" />
                     <input
                       name="images"
                       type="file"
@@ -214,7 +216,7 @@ export default function AddCarForm() {
                   </label>
                 )}
               </div>
-              <p className="text-[12px] text-[#aaa]" style={{ fontFamily: "var(--font-tajawal)" }}>
+              <p className="text-[12px] text-[#aaa] dark:text-[#6b6b70]" style={{ fontFamily: "var(--font-tajawal)" }}>
                 {previews.length} / ٨ صور محددة
               </p>
             </div>
@@ -226,7 +228,7 @@ export default function AddCarForm() {
           <button
             type="submit"
             disabled={isPending}
-            className="flex items-center gap-2 rounded-full bg-[#111] px-8 py-3 text-[14px] font-bold text-white transition-colors hover:bg-[#a71225] disabled:opacity-60"
+            className="flex items-center gap-2 rounded-full bg-[#111] px-8 py-3 text-[14px] font-bold text-white transition-colors hover:bg-[#a71225] disabled:opacity-60 dark:bg-[#f5f5f4] dark:text-[#0a0a0b] dark:hover:bg-[#e8323f] dark:hover:text-white"
             style={{ fontFamily: "var(--font-tajawal)" }}
           >
             {isPending && <Loader2 className="h-4 w-4 animate-spin" />}
@@ -234,7 +236,7 @@ export default function AddCarForm() {
           </button>
           <Link
             href="/admin/cars"
-            className="rounded-full border border-black/[0.10] px-8 py-3 text-[14px] font-semibold text-[#555] transition-colors hover:border-black/20"
+            className="rounded-full border border-black/[0.10] px-8 py-3 text-[14px] font-semibold text-[#555] transition-colors hover:border-black/20 dark:border-white/[0.10] dark:text-[#96969c] dark:hover:border-white/20"
             style={{ fontFamily: "var(--font-tajawal)" }}
           >
             إلغاء
