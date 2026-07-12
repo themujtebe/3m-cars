@@ -18,7 +18,7 @@ export default function AdminSidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="hidden w-[260px] shrink-0 border-l border-black/[0.06] bg-white xl:flex xl:flex-col dark:bg-[#1f2937] dark:border-white/[0.08]">
+    <aside className="hidden w-[260px] shrink-0 border-l border-black/[0.06] bg-white xl:flex xl:flex-col dark:bg-[#131315] dark:border-white/[0.08]">
       <div className="sticky top-0 flex h-screen flex-col">
 
         {/* Logo */}
@@ -28,7 +28,7 @@ export default function AdminSidebar() {
               <Image src="/Logo.png" alt="3M Cars" width={40} height={40} className="h-full w-full object-contain" />
             </div>
             <div className="leading-none">
-              <div className="text-[14px] font-bold text-[#111] dark:text-[#f9fafb]" style={{ fontFamily: "var(--font-tajawal)" }}>3M CARS</div>
+              <div className="text-[14px] font-bold text-[#111] dark:text-[#f5f5f4]" style={{ fontFamily: "var(--font-tajawal)" }}>3M CARS</div>
               <div className="text-[9px] font-bold tracking-[3px] text-[#a71225]" style={{ fontFamily: "var(--font-tajawal)" }}>ADMIN</div>
             </div>
           </Link>
@@ -36,7 +36,7 @@ export default function AdminSidebar() {
 
         {/* Nav */}
         <nav className="flex-1 overflow-y-auto px-3 py-4">
-          <p className="mb-2 px-3 text-[10px] font-bold tracking-[2px] text-[#bbb] dark:text-[#6b7280] uppercase" style={{ fontFamily: "var(--font-tajawal)" }}>MENU</p>
+          <p className="mb-2 px-3 text-[10px] font-bold tracking-[2px] text-[#bbb] dark:text-[#6b6b70] uppercase" style={{ fontFamily: "var(--font-tajawal)" }}>MENU</p>
           <div className="flex flex-col gap-1">
             {links.map((link) => {
               const Icon = link.icon;
@@ -48,11 +48,11 @@ export default function AdminSidebar() {
                   className={`flex items-center gap-3 rounded-xl px-3 py-2.5 text-[14px] font-medium transition-all ${
                     active
                       ? "bg-[#a71225]/[0.08] text-[#a71225] dark:bg-[#a71225]/[0.14] dark:dm-active-link"
-                      : "text-[#555] hover:bg-black/[0.04] hover:text-[#111] dark:text-[#9ca3af] dark:hover:bg-white/[0.05] dark:hover:text-[#f9fafb]"
+                      : "text-[#555] hover:bg-black/[0.04] hover:text-[#111] dark:text-[#96969c] dark:hover:bg-white/[0.05] dark:hover:text-[#f5f5f4]"
                   }`}
                   style={{ fontFamily: "var(--font-tajawal)" }}
                 >
-                  <Icon size={17} className={active ? "text-[#a71225]" : "text-[#999] dark:text-[#6b7280]"} />
+                  <Icon size={17} className={active ? "text-[#a71225]" : "text-[#999] dark:text-[#6b6b70]"} />
                   {link.title}
                 </Link>
               );
@@ -65,7 +65,7 @@ export default function AdminSidebar() {
           <Link
             href="/"
             target="_blank"
-            className="flex items-center justify-between rounded-xl border border-black/[0.08] px-3 py-2.5 text-[13px] font-medium text-[#555] transition-colors hover:border-[#a71225]/30 hover:text-[#a71225] dark:border-white/[0.08] dark:text-[#9ca3af] dark:hover:border-[#a71225]/50 dark:hover:text-[#a71225]"
+            className="flex items-center justify-between rounded-xl border border-black/[0.08] px-3 py-2.5 text-[13px] font-medium text-[#555] transition-colors hover:border-[#a71225]/30 hover:text-[#a71225] dark:border-white/[0.08] dark:text-[#96969c] dark:hover:border-[#e8323f]/50 dark:hover:text-[#a71225]"
             style={{ fontFamily: "var(--font-tajawal)" }}
           >
             عرض الموقع

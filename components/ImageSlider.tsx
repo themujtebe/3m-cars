@@ -14,14 +14,14 @@ export default function ImageSlider({ images, alt }: Props) {
   const next = () => setCurrent((p) => (p + 1) % total);
 
   if (total === 0) return (
-    <div className="flex h-80 w-full items-center justify-center rounded-2xl bg-[#f7f7f7] text-[#bbb] dark:bg-[#374151] dark:text-[#6b7280]" style={{ fontFamily: "var(--font-tajawal)" }}>
+    <div className="flex h-80 w-full items-center justify-center rounded-2xl bg-[#f7f7f7] text-[#bbb] dark:bg-[#1c1c1f] dark:text-[#6b6b70]" style={{ fontFamily: "var(--font-tajawal)" }}>
       لا توجد صور
     </div>
   );
 
   return (
     <div className="select-none">
-      <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl bg-[#f0f0f0] dark:bg-[#374151]">
+      <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl bg-[#f0f0f0] dark:bg-[#1c1c1f]">
         <Image src={images[current]} alt={`${alt} ${current + 1}`} fill className="object-cover" sizes="(max-width: 768px) 100vw, 60vw" priority />
         {total > 1 && (
           <>
@@ -40,7 +40,7 @@ export default function ImageSlider({ images, alt }: Props) {
       {total > 1 && (
         <div className="mt-3 flex gap-2 overflow-x-auto pb-1">
           {images.map((img, i) => (
-            <button key={i} onClick={() => setCurrent(i)} className={`relative h-16 w-24 shrink-0 overflow-hidden rounded-xl transition-all ${i === current ? "ring-2 ring-[#a71225] ring-offset-2 dark:ring-offset-[#111827]" : "opacity-50 hover:opacity-80"}`}>
+            <button key={i} onClick={() => setCurrent(i)} className={`relative h-16 w-24 shrink-0 overflow-hidden rounded-xl transition-all ${i === current ? "ring-2 ring-[#a71225] ring-offset-2 dark:ring-offset-[#0a0a0b]" : "opacity-50 hover:opacity-80"}`}>
               <Image src={img} alt={`thumb ${i + 1}`} fill className="object-cover" sizes="96px" />
             </button>
           ))}

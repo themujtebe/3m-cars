@@ -31,7 +31,7 @@ export default function CarDetailClient({ car }: Props) {
     <div className="space-y-4">
 
       {/* Title card */}
-      <div className="rounded-2xl border border-black/[0.06] bg-white p-6 shadow-sm dark:bg-[#1f2937] dark:border-white/[0.08]">
+      <div className="rounded-2xl border border-black/[0.06] bg-white p-6 shadow-sm dark:bg-[#131315] dark:border-white/[0.08]">
         <div className="mb-4 flex items-center gap-2">
           {car.featured && !isSold && (
             <span className="rounded-full bg-[#a71225] px-3 py-1 text-[11px] font-bold text-white" style={{ fontFamily: "var(--font-tajawal)" }}>
@@ -41,7 +41,7 @@ export default function CarDetailClient({ car }: Props) {
           <span
             className={`rounded-full px-3 py-1 text-[11px] font-bold ${
               isSold
-                ? "bg-[#111] text-white dark:bg-[#374151] dark:text-[#d1d5db]"
+                ? "bg-[#111] text-white dark:bg-[#1c1c1f] dark:text-[#c9c9ce]"
                 : "bg-emerald-50 text-emerald-700 border border-emerald-200 dark:bg-emerald-950 dark:text-emerald-400 dark:border-emerald-800"
             }`}
             style={{ fontFamily: "var(--font-tajawal)" }}
@@ -50,27 +50,27 @@ export default function CarDetailClient({ car }: Props) {
           </span>
         </div>
 
-        <h1 className="text-[28px] font-black leading-snug text-[#0a0a0a] dark:text-[#f9fafb]" style={{ fontFamily: "var(--font-tajawal)" }}>
+        <h1 className="text-[28px] font-black leading-snug text-[#0a0a0a] dark:text-[#f5f5f4]" style={{ fontFamily: "var(--font-tajawal)" }}>
           {car.title_ar}
         </h1>
-        <p className="mt-2 text-[14px] font-semibold text-[#777] dark:text-[#9ca3af]" style={{ fontFamily: "var(--font-tajawal)" }}>
+        <p className="mt-2 text-[14px] font-semibold text-[#777] dark:text-[#96969c]" style={{ fontFamily: "var(--font-tajawal)" }}>
           {car.brand} · {car.model} · {car.year}
         </p>
 
         {/* Price */}
         <div className="mt-5 border-t border-black/[0.06] pt-5 dark:border-white/[0.06]">
           {isSold ? (
-            <p className="text-[22px] font-bold text-[#bbb] dark:text-[#4b5563]" style={{ fontFamily: "var(--font-tajawal)" }}>مُباعة</p>
+            <p className="text-[22px] font-bold text-[#bbb] dark:text-[#4b4b50]" style={{ fontFamily: "var(--font-tajawal)" }}>مُباعة</p>
           ) : (
             <>
-              <p className="mb-1 text-[11px] font-bold tracking-[2px] text-[#bbb] dark:text-[#6b7280] uppercase">السعر</p>
+              <p className="mb-1 text-[11px] font-bold tracking-[2px] text-[#bbb] dark:text-[#6b6b70] uppercase">السعر</p>
               <div className="flex items-center gap-3">
-                <span className="text-[38px] font-black leading-none text-[#a71225]" style={{ fontFamily: "var(--font-tajawal)" }}>
+                <span className="dm-price text-[38px] font-black leading-none text-[#a71225] dark:text-[#e8323f]" style={{ fontFamily: "var(--font-tajawal)" }}>
                   {convertedPrice}
                 </span>
                 <div className="flex flex-col items-start">
                   <span className="text-[20px] leading-none">{CURRENCIES[currency].flag}</span>
-                  <span className="mt-0.5 text-[12px] font-bold text-[#999] dark:text-[#6b7280]">{currency}</span>
+                  <span className="mt-0.5 text-[12px] font-bold text-[#999] dark:text-[#6b6b70]">{currency}</span>
                 </div>
               </div>
               <div className="mt-4 flex flex-wrap gap-2">
@@ -80,8 +80,8 @@ export default function CarDetailClient({ car }: Props) {
                     onClick={() => setCurrency(c)}
                     className={`flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-[11px] font-bold transition-colors ${
                       currency === c
-                        ? "bg-[#111] text-white dark:bg-[#f9fafb] dark:text-[#111]"
-                        : "bg-[#f5f5f5] text-[#666] hover:bg-[#eaeaea] dark:bg-[#374151] dark:text-[#d1d5db] dark:hover:bg-[#4b5563]"
+                        ? "bg-[#111] text-white dark:bg-[#f5f5f4] dark:text-[#0a0a0b]"
+                        : "bg-[#f5f5f5] text-[#666] hover:bg-[#eaeaea] dark:bg-[#1c1c1f] dark:text-[#c9c9ce] dark:hover:bg-[#262629]"
                     }`}
                   >
                     <span>{CURRENCIES[c].flag}</span>
@@ -95,7 +95,7 @@ export default function CarDetailClient({ car }: Props) {
       </div>
 
       {/* Specs */}
-      <div className="rounded-2xl border border-black/[0.06] bg-white p-6 shadow-sm dark:bg-[#1f2937] dark:border-white/[0.08]">
+      <div className="rounded-2xl border border-black/[0.06] bg-white p-6 shadow-sm dark:bg-[#131315] dark:border-white/[0.08]">
         <p className="mb-4 text-[11px] font-bold tracking-[3px] text-[#a71225] uppercase">المواصفات</p>
         <div className="grid grid-cols-2 gap-3">
           {[
@@ -106,11 +106,11 @@ export default function CarDetailClient({ car }: Props) {
             { label: "العملة",       value: car.currency },
             { label: "الحالة",       value: isSold ? "مُباعة" : "متاحة" },
           ].map(({ label, value }) => (
-            <div key={label} className="rounded-xl bg-[#f7f7f7] px-4 py-3 dark:bg-[#374151]">
-              <p className="text-[10px] font-bold tracking-[1.5px] text-[#aaa] dark:text-[#6b7280] uppercase" style={{ fontFamily: "var(--font-tajawal)" }}>
+            <div key={label} className="rounded-xl bg-[#f7f7f7] px-4 py-3 dark:bg-[#1c1c1f]">
+              <p className="text-[10px] font-bold tracking-[1.5px] text-[#aaa] dark:text-[#6b6b70] uppercase" style={{ fontFamily: "var(--font-tajawal)" }}>
                 {label}
               </p>
-              <p className="mt-1 text-[14px] font-semibold text-[#111] dark:text-[#f9fafb]" style={{ fontFamily: "var(--font-tajawal)" }}>
+              <p className="mt-1 text-[14px] font-semibold text-[#111] dark:text-[#f5f5f4]" style={{ fontFamily: "var(--font-tajawal)" }}>
                 {value}
               </p>
             </div>
@@ -119,7 +119,7 @@ export default function CarDetailClient({ car }: Props) {
       </div>
 
       {/* Actions */}
-      <div className="rounded-2xl border border-black/[0.06] bg-white p-6 shadow-sm space-y-3 dark:bg-[#1f2937] dark:border-white/[0.08]">
+      <div className="rounded-2xl border border-black/[0.06] bg-white p-6 shadow-sm space-y-3 dark:bg-[#131315] dark:border-white/[0.08]">
         {!isSold ? (
           <a
             href={waLink}
@@ -134,14 +134,14 @@ export default function CarDetailClient({ car }: Props) {
             تواصل مع البائع عبر واتساب
           </a>
         ) : (
-          <div className="flex w-full items-center justify-center rounded-xl bg-[#f0f0f0] py-3.5 text-[15px] font-semibold text-[#bbb] dark:bg-[#374151] dark:text-[#6b7280]" style={{ fontFamily: "var(--font-tajawal)" }}>
+          <div className="flex w-full items-center justify-center rounded-xl bg-[#f0f0f0] py-3.5 text-[15px] font-semibold text-[#bbb] dark:bg-[#1c1c1f] dark:text-[#6b6b70]" style={{ fontFamily: "var(--font-tajawal)" }}>
             هذه السيارة مُباعة
           </div>
         )}
 
         <button
           onClick={handleShare}
-          className="flex w-full items-center justify-center gap-2 rounded-xl border border-black/[0.08] py-3 text-[14px] font-semibold text-[#555] transition-colors hover:border-black/20 hover:text-[#111] dark:border-white/[0.08] dark:text-[#9ca3af] dark:hover:border-white/20 dark:hover:text-[#f9fafb]"
+          className="flex w-full items-center justify-center gap-2 rounded-xl border border-black/[0.08] py-3 text-[14px] font-semibold text-[#555] transition-colors hover:border-black/20 hover:text-[#111] dark:border-white/[0.08] dark:text-[#96969c] dark:hover:border-white/20 dark:hover:text-[#f5f5f4]"
           style={{ fontFamily: "var(--font-tajawal)" }}
         >
           {copied ? <Check className="h-4 w-4 text-emerald-500" /> : <Share2 className="h-4 w-4" />}

@@ -24,18 +24,18 @@ export default async function HomePage() {
   const cars = await getLatestCars();
 
   return (
-    <div className="min-h-screen bg-white dark:bg-[#111827]">
+    <div className="min-h-screen bg-white dark:bg-[#0a0a0b]">
       <Header />
       <Hero />
       <StatsSection />
 
-      <section className="bg-white dark:bg-[#111827] px-5 py-14 sm:px-10 sm:py-[72px]">
+      <section className="bg-white dark:bg-[#0a0a0b] px-5 py-14 sm:px-10 sm:py-[72px]">
         <div className="mb-8 flex flex-wrap items-end justify-between gap-3">
           <div>
             <p className="mb-2 text-[11px] font-bold tracking-[3px] text-[#a71225] uppercase" style={{ fontFamily: "var(--font-tajawal)" }}>اختيارات مميزة</p>
-            <h2 className="text-[28px] font-bold text-[#111] dark:text-[#f9fafb] sm:text-[36px]" style={{ fontFamily: "var(--font-tajawal)" }}>أحدث السيارات</h2>
+            <h2 className="text-[28px] font-bold text-[#111] dark:text-[#f5f5f4] sm:text-[36px]" style={{ fontFamily: "var(--font-tajawal)" }}>أحدث السيارات</h2>
           </div>
-          <Link href="/cars" className="shrink-0 text-[13px] font-bold tracking-[0.5px] text-[#111] uppercase transition-colors hover:text-[#a71225] dark:text-[#d1d5db] dark:hover:text-[#a71225]" style={{ fontFamily: "var(--font-tajawal)" }}>
+          <Link href="/cars" className="shrink-0 text-[13px] font-bold tracking-[0.5px] text-[#111] uppercase transition-colors hover:text-[#a71225] dark:text-[#c9c9ce] dark:hover:text-[#a71225]" style={{ fontFamily: "var(--font-tajawal)" }}>
             عرض الكل ←
           </Link>
         </div>
