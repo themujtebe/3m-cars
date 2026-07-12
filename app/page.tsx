@@ -24,12 +24,12 @@ export default async function HomePage() {
   const cars = await getLatestCars();
 
   return (
-    <div className="min-h-screen bg-white dark:bg-[#0a0a0b]">
+    <div className="min-h-screen bg-white dark:bg-[#17171a]">
       <Header />
       <Hero />
       <StatsSection />
 
-      <section className="bg-white dark:bg-[#0a0a0b] px-5 py-14 sm:px-10 sm:py-[72px]">
+      <section className="bg-white dark:bg-[#17171a] px-5 py-14 sm:px-10 sm:py-[72px]">
         <div className="mb-8 flex flex-wrap items-end justify-between gap-3">
           <div>
             <p className="mb-2 text-[11px] font-bold tracking-[3px] text-[#a71225] uppercase" style={{ fontFamily: "var(--font-tajawal)" }}>اختيارات مميزة</p>

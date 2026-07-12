@@ -26,7 +26,7 @@ export default function AdminTopbar() {
   const isDashboard = pathname === "/admin";
 
   return (
-    <header className="sticky top-0 z-30 border-b border-black/[0.06] bg-white dark:bg-[#131315] dark:border-white/[0.08]">
+    <header className="sticky top-0 z-30 border-b border-black/[0.06] bg-white dark:bg-[#1e1e22] dark:border-white/[0.08]">
       <div className="flex items-center justify-between gap-4 px-6 py-4 xl:px-8">
 
         <div className="flex items-center gap-3">
@@ -64,7 +64,7 @@ export default function AdminTopbar() {
 
           <Link
             href="/admin/cars/new"
-            className="flex items-center gap-2 rounded-full bg-[#111] px-5 py-2.5 text-[13px] font-bold text-white transition-colors hover:bg-[#a71225] dark:bg-[#f5f5f4] dark:text-[#0a0a0b] dark:hover:bg-[#e8323f] dark:hover:text-white"
+            className="flex items-center gap-2 rounded-full bg-[#111] px-5 py-2.5 text-[13px] font-bold text-white transition-colors hover:bg-[#a71225] dark:bg-[#f5f5f4] dark:text-[#17171a] dark:hover:bg-[#e8323f] dark:hover:text-white"
             style={{ fontFamily: "var(--font-tajawal)" }}
           >
             <Plus size={15} />

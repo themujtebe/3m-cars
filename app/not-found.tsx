@@ -4,11 +4,11 @@ import Footer from "@/components/Footer";
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen bg-white text-[#111] dark:bg-[#0a0a0b] dark:text-[#f5f5f4]">
+    <div className="min-h-screen bg-white text-[#111] dark:bg-[#17171a] dark:text-[#f5f5f4]">
       <Header />
       <div className="flex min-h-[60vh] flex-col items-center justify-center px-10 text-center">
         <p
-          className="text-[80px] font-bold leading-none text-[#f0f0f0] dark:text-[#1c1c1f]"
+          className="text-[80px] font-bold leading-none text-[#f0f0f0] dark:text-[#28282d]"
           style={{ fontFamily: "var(--font-tajawal)" }}
         >
           404
@@ -27,7 +27,7 @@ export default function NotFound() {
         </p>
         <Link
           href="/"
-          className="mt-8 rounded-full bg-[#111] px-8 py-3 text-[14px] font-bold text-white transition-colors hover:bg-[#a71225] dark:bg-[#f5f5f4] dark:text-[#0a0a0b] dark:hover:bg-[#e8323f] dark:hover:text-white"
+          className="mt-8 rounded-full bg-[#111] px-8 py-3 text-[14px] font-bold text-white transition-colors hover:bg-[#a71225] dark:bg-[#f5f5f4] dark:text-[#17171a] dark:hover:bg-[#e8323f] dark:hover:text-white"
           style={{ fontFamily: "var(--font-tajawal)" }}
         >
           العودة للرئيسية

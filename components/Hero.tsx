@@ -6,7 +6,7 @@ import { ArrowLeft } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="dm-spotlight relative min-h-[calc(100vh-72px)] overflow-hidden bg-white dark:bg-[#0a0a0b]">
+    <section className="dm-spotlight relative min-h-[calc(100vh-72px)] overflow-hidden bg-white dark:bg-[#17171a]">
       <div className="absolute inset-0 overflow-hidden">
         <Image
           src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1800&q=80"

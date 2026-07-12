@@ -4,7 +4,7 @@ import { readSettings } from "@/lib/local/settings";
 export default function CTASection() {
   const { whatsapp } = readSettings();
   return (
-    <section className="dm-spotlight relative overflow-hidden bg-[#f7f7f7] dark:bg-[#0a0a0b] px-6 py-16 text-center sm:px-10 sm:py-[100px]">
+    <section className="dm-spotlight relative overflow-hidden bg-[#f7f7f7] dark:bg-[#17171a] px-6 py-16 text-center sm:px-10 sm:py-[100px]">
       <h2
         className="font-bold uppercase leading-[1.0] text-[#111] dark:text-[#f5f5f4]"
         style={{ fontFamily: "var(--font-tajawal)", fontSize: "clamp(40px, 6vw, 80px)", letterSpacing: "-1px" }}
@@ -23,7 +23,7 @@ export default function CTASection() {
           href={`https://wa.me/${whatsapp}?text=${encodeURIComponent("السلام عليكم، أريد عرض سيارتي مع 3M Cars")}`}
           target="_blank"
           rel="noreferrer"
-          className="rounded-full bg-[#111] px-9 py-3.5 text-[14px] font-bold text-white transition-colors hover:bg-[#a71225] dark:bg-[#f5f5f4] dark:text-[#0a0a0b] dark:hover:bg-[#e8323f] dark:hover:text-white"
+          className="rounded-full bg-[#111] px-9 py-3.5 text-[14px] font-bold text-white transition-colors hover:bg-[#a71225] dark:bg-[#f5f5f4] dark:text-[#17171a] dark:hover:bg-[#e8323f] dark:hover:text-white"
           style={{ fontFamily: "var(--font-tajawal)" }}
         >
           ابدأ الآن

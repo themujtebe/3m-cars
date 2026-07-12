@@ -9,7 +9,7 @@ const INPUT = [
   "w-full rounded-xl border border-black/[0.08] bg-[#f7f7f7] px-4 py-2.5",
   "text-[14px] text-[#111] outline-none placeholder:text-[#bbb]",
   "focus:border-[#a71225]/40 focus:bg-white transition-colors",
-  "dark:border-white/[0.08] dark:bg-[#1c1c1f] dark:text-[#f5f5f4] dark:placeholder:text-[#6b6b70] dark:focus:border-[#e8323f]/50 dark:focus:bg-[#1c1c1f]",
+  "dark:border-white/[0.08] dark:bg-[#28282d] dark:text-[#f5f5f4] dark:placeholder:text-[#6b6b70] dark:focus:border-[#e8323f]/50 dark:focus:bg-[#28282d]",
 ].join(" ");
 
 const LABEL = "mb-1.5 block text-[11px] font-bold tracking-[1.5px] text-[#999] uppercase dark:text-[#6b6b70]";
@@ -34,7 +34,7 @@ function PackageForm({
   return (
     <form
       action={formAction}
-      className="dm-panel space-y-4 rounded-2xl border border-[#a71225]/20 bg-white p-6 dark:border-[#e8323f]/25 dark:bg-[#131315]"
+      className="dm-panel space-y-4 rounded-2xl border border-[#a71225]/20 bg-white p-6 dark:border-[#e8323f]/25 dark:bg-[#1e1e22]"
     >
       {isEdit && <input type="hidden" name="id" value={pkg?.id} />}
 
@@ -103,7 +103,7 @@ function PackageForm({
         <button
           type="submit"
           disabled={isPending}
-          className="flex items-center gap-2 rounded-full bg-[#111] px-6 py-2.5 text-[13px] font-bold text-white transition-colors hover:bg-[#a71225] disabled:opacity-60 dark:bg-[#f5f5f4] dark:text-[#0a0a0b] dark:hover:bg-[#e8323f] dark:hover:text-white"
+          className="flex items-center gap-2 rounded-full bg-[#111] px-6 py-2.5 text-[13px] font-bold text-white transition-colors hover:bg-[#a71225] disabled:opacity-60 dark:bg-[#f5f5f4] dark:text-[#17171a] dark:hover:bg-[#e8323f] dark:hover:text-white"
           style={{ fontFamily: "var(--font-tajawal)" }}
         >
           {isPending && <Loader2 className="h-3.5 w-3.5 animate-spin" />}
@@ -141,7 +141,7 @@ export default function PackagesManager({ packages }: { packages: Package[] }) {
         {!showAdd && (
           <button
             onClick={() => { setShowAdd(true); setEditingId(null); }}
-            className="flex items-center gap-2 rounded-full bg-[#111] px-5 py-2.5 text-[13px] font-bold text-white transition-colors hover:bg-[#a71225] dark:bg-[#f5f5f4] dark:text-[#0a0a0b] dark:hover:bg-[#e8323f] dark:hover:text-white"
+            className="flex items-center gap-2 rounded-full bg-[#111] px-5 py-2.5 text-[13px] font-bold text-white transition-colors hover:bg-[#a71225] dark:bg-[#f5f5f4] dark:text-[#17171a] dark:hover:bg-[#e8323f] dark:hover:text-white"
             style={{ fontFamily: "var(--font-tajawal)" }}
           >
             <Plus className="h-4 w-4" />
@@ -157,7 +157,7 @@ export default function PackagesManager({ packages }: { packages: Package[] }) {
 
       {/* Cards */}
       {packages.length === 0 && !showAdd ? (
-        <div className="rounded-2xl border border-black/[0.06] bg-white py-16 text-center dark:bg-[#131315] dark:border-white/[0.08]">
+        <div className="rounded-2xl border border-black/[0.06] bg-white py-16 text-center dark:bg-[#1e1e22] dark:border-white/[0.08]">
           <p className="text-[14px] text-[#bbb] dark:text-[#4b4b50]" style={{ fontFamily: "var(--font-tajawal)" }}>لا توجد باقات — أضف أول باقة</p>
         </div>
       ) : (
@@ -173,7 +173,7 @@ export default function PackagesManager({ packages }: { packages: Package[] }) {
             ) : (
               <div
                 key={pkg.id}
-                className={`dm-card rounded-2xl border bg-white p-6 dark:bg-[#131315] ${
+                className={`dm-card rounded-2xl border bg-white p-6 dark:bg-[#1e1e22] ${
                   pkg.highlighted
                     ? "border-[#a71225]/30 shadow-[0_4px_24px_rgba(167,18,37,0.08)] dark:border-[#e8323f]/35"
                     : "border-black/[0.06] dark:border-white/[0.08]"

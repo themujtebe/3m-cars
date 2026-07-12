@@ -54,11 +54,11 @@ export default function ContactPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-white text-[#111] dark:bg-[#0a0a0b] dark:text-[#f5f5f4]">
+    <div className="min-h-screen bg-white text-[#111] dark:bg-[#17171a] dark:text-[#f5f5f4]">
       <Header />
 
       {/* Page header */}
-      <section className="dm-spotlight border-b border-black/[0.06] bg-[#f7f7f7] px-6 py-14 text-center md:px-10 dark:bg-[#0a0a0b] dark:border-white/[0.06]">
+      <section className="dm-spotlight border-b border-black/[0.06] bg-[#f7f7f7] px-6 py-14 text-center md:px-10 dark:bg-[#17171a] dark:border-white/[0.06]">
         <p
           className="mb-2 text-[11px] font-bold tracking-[4px] text-[#a71225] uppercase"
           style={{ fontFamily: "var(--font-tajawal)" }}
@@ -80,7 +80,7 @@ export default function ContactPage() {
       </section>
 
       {/* Contact cards */}
-      <section className="px-6 py-16 md:px-10 dark:bg-[#0a0a0b]">
+      <section className="px-6 py-16 md:px-10 dark:bg-[#17171a]">
         <div className="mx-auto grid max-w-3xl gap-4 sm:grid-cols-2">
           {contacts.map(({ Icon, label, value, href, color }) => (
             <a
@@ -88,7 +88,7 @@ export default function ContactPage() {
               href={href}
               target="_blank"
               rel="noreferrer"
-              className="dm-card group flex items-center gap-4 rounded-2xl border border-black/[0.08] bg-white p-5 transition-all duration-300 hover:border-black/[0.16] hover:-translate-y-0.5 hover:shadow-md dark:bg-[#131315] dark:border-white/[0.08] dark:hover:-translate-y-0.5"
+              className="dm-card group flex items-center gap-4 rounded-2xl border border-black/[0.08] bg-white p-5 transition-all duration-300 hover:border-black/[0.16] hover:-translate-y-0.5 hover:shadow-md dark:bg-[#1e1e22] dark:border-white/[0.08] dark:hover:-translate-y-0.5"
             >
               <div
                 className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl"

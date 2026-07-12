@@ -8,7 +8,7 @@ import { SlidersHorizontal, RotateCcw } from "lucide-react";
 type SortOption = "newest" | "oldest" | "price-low" | "price-high";
 
 const selectClass =
-  "h-11 w-full rounded-xl border border-black/[0.08] bg-white px-4 text-right text-[14px] text-[#333] outline-none focus:border-[#a71225]/40 transition-colors appearance-none dark:bg-[#131315] dark:border-white/[0.08] dark:text-[#c9c9ce] dark:focus:border-[#a71225]/60";
+  "h-11 w-full rounded-xl border border-black/[0.08] bg-white px-4 text-right text-[14px] text-[#333] outline-none focus:border-[#a71225]/40 transition-colors appearance-none dark:bg-[#1e1e22] dark:border-white/[0.08] dark:text-[#c9c9ce] dark:focus:border-[#a71225]/60";
 
 export default function CarsClient({ initialCars }: { initialCars: Car[] }) {
   const [brand, setBrand]         = useState("");
@@ -42,14 +42,14 @@ export default function CarsClient({ initialCars }: { initialCars: Car[] }) {
   return (
     <>
       {/* Page header */}
-      <section className="border-b border-black/[0.06] bg-[#f7f7f7] dark:bg-[#0a0a0b] dark:border-white/[0.06] px-10 py-14">
+      <section className="border-b border-black/[0.06] bg-[#f7f7f7] dark:bg-[#17171a] dark:border-white/[0.06] px-10 py-14">
         <p className="mb-2 text-[11px] font-bold tracking-[4px] text-[#a71225]" style={{ fontFamily: "var(--font-tajawal)" }}>معرضنا</p>
         <h1 className="text-[42px] font-bold text-[#111] dark:text-[#f5f5f4]" style={{ fontFamily: "var(--font-tajawal)" }}>السيارات المتوفرة</h1>
         <p className="mt-2 text-[15px] text-[#777] dark:text-[#96969c]" style={{ fontFamily: "var(--font-tajawal)" }}>تصفح مجموعتنا من السيارات المختارة بعناية</p>
       </section>
 
       {/* Filters */}
-      <section className="border-b border-black/[0.06] bg-white dark:bg-[#0a0a0b] dark:border-white/[0.06] px-10 py-6">
+      <section className="border-b border-black/[0.06] bg-white dark:bg-[#17171a] dark:border-white/[0.06] px-10 py-6">
         <div className="flex flex-wrap items-end gap-4">
           <div className="flex-1 min-w-[160px]">
             <label className="mb-1.5 block text-[11px] font-bold tracking-[2px] text-[#999] dark:text-[#6b6b70]" style={{ fontFamily: "var(--font-tajawal)" }}>الماركة</label>
@@ -88,7 +88,7 @@ export default function CarsClient({ initialCars }: { initialCars: Car[] }) {
           <div className="flex gap-3">
             <button
               onClick={handleSearch}
-              className="flex items-center gap-2 rounded-xl bg-[#111] px-6 py-2.5 text-[13px] font-bold text-white transition-colors hover:bg-[#a71225] dark:bg-[#f5f5f4] dark:text-[#0a0a0b] dark:hover:bg-[#e8323f] dark:hover:text-white"
+              className="flex items-center gap-2 rounded-xl bg-[#111] px-6 py-2.5 text-[13px] font-bold text-white transition-colors hover:bg-[#a71225] dark:bg-[#f5f5f4] dark:text-[#17171a] dark:hover:bg-[#e8323f] dark:hover:text-white"
               style={{ fontFamily: "var(--font-tajawal)" }}
             >
               <SlidersHorizontal className="h-4 w-4" />
@@ -105,7 +105,7 @@ export default function CarsClient({ initialCars }: { initialCars: Car[] }) {
       </section>
 
       {/* Results */}
-      <section className="px-10 py-10 bg-white dark:bg-[#0a0a0b]">
+      <section className="px-10 py-10 bg-white dark:bg-[#17171a]">
         <p className="mb-6 text-[13px] text-[#999] dark:text-[#6b6b70]" style={{ fontFamily: "var(--font-tajawal)" }}>
           {filteredCars.length} سيارة
         </p>
@@ -115,7 +115,7 @@ export default function CarsClient({ initialCars }: { initialCars: Car[] }) {
             {filteredCars.map((car) => <CarCard key={car.id} car={car} />)}
           </div>
         ) : (
-          <div className="rounded-2xl border border-black/[0.06] bg-[#f7f7f7] py-20 text-center dark:bg-[#131315] dark:border-white/[0.06]">
+          <div className="rounded-2xl border border-black/[0.06] bg-[#f7f7f7] py-20 text-center dark:bg-[#1e1e22] dark:border-white/[0.06]">
             <p className="text-[15px] text-[#999] dark:text-[#6b6b70]" style={{ fontFamily: "var(--font-tajawal)" }}>
               لا توجد سيارات مطابقة للفلاتر المختارة
             </p>

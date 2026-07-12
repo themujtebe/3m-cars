@@ -21,7 +21,7 @@ async function getAllCars(): Promise<Car[]> {
 export default async function CarsPage() {
   const cars = await getAllCars();
   return (
-    <div className="min-h-screen bg-white dark:bg-[#0a0a0b]">
+    <div className="min-h-screen bg-white dark:bg-[#17171a]">
       <Header />
       <CarsClient initialCars={cars} />
       <Footer />

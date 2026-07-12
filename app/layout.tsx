@@ -26,7 +26,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `try{var t=JSON.parse(localStorage.getItem('3mcars-theme')||'{}');if(t.state&&t.state.dark){document.documentElement.classList.add('dark')}}catch(e){}`,
+            __html: `try{var raw=localStorage.getItem('3mcars-theme');var dark;if(raw){var t=JSON.parse(raw);dark=t.state&&t.state.dark}else{dark=window.matchMedia('(prefers-color-scheme: dark)').matches}if(dark){document.documentElement.classList.add('dark')}}catch(e){}`,
           }}
         />
       </head>

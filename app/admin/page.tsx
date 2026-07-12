@@ -47,7 +47,7 @@ export default async function AdminDashboardPage() {
     <div className="space-y-6">
 
       {/* Welcome banner */}
-      <div className="rounded-2xl border border-black/[0.06] bg-white p-6 md:p-8 dark:bg-[#131315] dark:border-white/[0.08]">
+      <div className="rounded-2xl border border-black/[0.06] bg-white p-6 md:p-8 dark:bg-[#1e1e22] dark:border-white/[0.08]">
         <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
           <div>
             <p className="text-[11px] font-bold tracking-[3px] text-[#a71225] uppercase" style={{ fontFamily: "var(--font-tajawal)" }}>DASHBOARD</p>
@@ -55,7 +55,7 @@ export default async function AdminDashboardPage() {
             <p className="mt-2 max-w-lg text-[14px] leading-[1.8] text-[#777] dark:text-[#96969c]" style={{ fontFamily: "var(--font-tajawal)" }}>تحكم بالسيارات والباقات والصور والإعدادات بسهولة ويسر.</p>
           </div>
           <div className="flex gap-3">
-            <Link href="/admin/cars/new" className="flex items-center gap-2 rounded-full bg-[#111] px-6 py-2.5 text-[13px] font-bold text-white transition-colors hover:bg-[#a71225] dark:bg-[#f5f5f4] dark:text-[#0a0a0b] dark:hover:bg-[#e8323f] dark:hover:text-white" style={{ fontFamily: "var(--font-tajawal)" }}>
+            <Link href="/admin/cars/new" className="flex items-center gap-2 rounded-full bg-[#111] px-6 py-2.5 text-[13px] font-bold text-white transition-colors hover:bg-[#a71225] dark:bg-[#f5f5f4] dark:text-[#17171a] dark:hover:bg-[#e8323f] dark:hover:text-white" style={{ fontFamily: "var(--font-tajawal)" }}>
               <Plus size={15} />إضافة سيارة
             </Link>
             <Link href="/admin/cars" className="flex items-center gap-2 rounded-full border border-black/[0.10] px-6 py-2.5 text-[13px] font-semibold text-[#555] transition-colors hover:border-black/20 dark:border-white/[0.10] dark:text-[#96969c] dark:hover:border-white/20" style={{ fontFamily: "var(--font-tajawal)" }}>
@@ -70,7 +70,7 @@ export default async function AdminDashboardPage() {
         {stats.map((s) => {
           const Icon = s.icon;
           return (
-            <div key={s.title} className="rounded-2xl border border-black/[0.06] bg-white p-5 dark:bg-[#131315] dark:border-white/[0.08]">
+            <div key={s.title} className="rounded-2xl border border-black/[0.06] bg-white p-5 dark:bg-[#1e1e22] dark:border-white/[0.08]">
               <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl" style={{ background: `${s.color}14` }}>
                 <Icon size={18} style={{ color: s.color }} />
               </div>
@@ -84,14 +84,14 @@ export default async function AdminDashboardPage() {
       {/* Quick actions + latest */}
       <div className="grid gap-5 xl:grid-cols-[1.2fr_0.8fr]">
 
-        <div className="rounded-2xl border border-black/[0.06] bg-white p-6 dark:bg-[#131315] dark:border-white/[0.08]">
+        <div className="rounded-2xl border border-black/[0.06] bg-white p-6 dark:bg-[#1e1e22] dark:border-white/[0.08]">
           <h3 className="mb-1 text-[17px] font-bold text-[#111] dark:text-[#f5f5f4]" style={{ fontFamily: "var(--font-tajawal)" }}>إجراءات سريعة</h3>
           <p className="mb-5 text-[13px] text-[#999] dark:text-[#6b6b70]" style={{ fontFamily: "var(--font-tajawal)" }}>اختصارات للوصول السريع</p>
           <div className="grid gap-3 sm:grid-cols-2">
             {quickActions.map((a) => {
               const Icon = a.icon;
               return (
-                <Link key={a.title} href={a.href} className="group rounded-xl border border-black/[0.06] bg-[#f7f7f7] p-4 transition-all hover:border-[#a71225]/25 hover:bg-white hover:shadow-sm dark:bg-[#1c1c1f] dark:border-white/[0.06] dark:hover:bg-[#262629]">
+                <Link key={a.title} href={a.href} className="group rounded-xl border border-black/[0.06] bg-[#f7f7f7] p-4 transition-all hover:border-[#a71225]/25 hover:bg-white hover:shadow-sm dark:bg-[#28282d] dark:border-white/[0.06] dark:hover:bg-[#323238]">
                   <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-lg" style={{ background: "rgba(167,18,37,0.08)" }}>
                     <Icon size={16} className="text-[#a71225]" />
                   </div>
@@ -103,7 +103,7 @@ export default async function AdminDashboardPage() {
           </div>
         </div>
 
-        <div className="rounded-2xl border border-black/[0.06] bg-white p-6 dark:bg-[#131315] dark:border-white/[0.08]">
+        <div className="rounded-2xl border border-black/[0.06] bg-white p-6 dark:bg-[#1e1e22] dark:border-white/[0.08]">
           <div className="mb-5 flex items-center justify-between">
             <div>
               <h3 className="text-[17px] font-bold text-[#111] dark:text-[#f5f5f4]" style={{ fontFamily: "var(--font-tajawal)" }}>آخر السيارات</h3>
@@ -120,8 +120,8 @@ export default async function AdminDashboardPage() {
           ) : (
             <div className="flex flex-col gap-3">
               {latest.map((car) => (
-                <Link key={car.id} href={`/admin/cars/${car.id}/edit`} className="flex items-center gap-3 rounded-xl border border-black/[0.06] bg-[#f7f7f7] px-3 py-2.5 transition-colors hover:border-[#a71225]/20 hover:bg-white dark:bg-[#1c1c1f] dark:border-white/[0.06] dark:hover:bg-[#262629]">
-                  <div className="relative h-10 w-14 shrink-0 overflow-hidden rounded-lg bg-[#e8e8e8] dark:bg-[#262629]">
+                <Link key={car.id} href={`/admin/cars/${car.id}/edit`} className="flex items-center gap-3 rounded-xl border border-black/[0.06] bg-[#f7f7f7] px-3 py-2.5 transition-colors hover:border-[#a71225]/20 hover:bg-white dark:bg-[#28282d] dark:border-white/[0.06] dark:hover:bg-[#323238]">
+                  <div className="relative h-10 w-14 shrink-0 overflow-hidden rounded-lg bg-[#e8e8e8] dark:bg-[#323238]">
                     {car.images?.[0] ? (
                       <Image src={car.images[0]} alt={car.title_ar} fill className="object-cover" sizes="56px" />
                     ) : (

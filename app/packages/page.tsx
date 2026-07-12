@@ -12,11 +12,11 @@ export default function PackagesPage() {
   const { whatsapp } = readSettings();
 
   return (
-    <div className="min-h-screen bg-white text-[#111] dark:bg-[#0a0a0b] dark:text-[#f5f5f4]">
+    <div className="min-h-screen bg-white text-[#111] dark:bg-[#17171a] dark:text-[#f5f5f4]">
       <Header />
 
       {/* Page header */}
-      <section className="dm-spotlight border-b border-black/[0.06] bg-[#f7f7f7] px-6 py-14 text-center md:px-10 dark:bg-[#0a0a0b] dark:border-white/[0.06]">
+      <section className="dm-spotlight border-b border-black/[0.06] bg-[#f7f7f7] px-6 py-14 text-center md:px-10 dark:bg-[#17171a] dark:border-white/[0.06]">
         <p
           className="mb-2 text-[11px] font-bold tracking-[4px] text-[#a71225] uppercase"
           style={{ fontFamily: "var(--font-tajawal)" }}
@@ -38,7 +38,7 @@ export default function PackagesPage() {
       </section>
 
       {/* Packages grid */}
-      <section className="px-6 py-16 md:px-10 dark:bg-[#0a0a0b]">
+      <section className="px-6 py-16 md:px-10 dark:bg-[#17171a]">
         {packages.length === 0 ? (
           <p className="text-center text-[15px] text-[#aaa] dark:text-[#4b4b50]" style={{ fontFamily: "var(--font-tajawal)" }}>
             لا توجد باقات متاحة حالياً
@@ -52,7 +52,7 @@ export default function PackagesPage() {
               return (
                 <div
                   key={pkg.id}
-                  className={`dm-card relative rounded-2xl border p-8 transition-all duration-300 hover:-translate-y-1 dark:bg-[#131315] ${
+                  className={`dm-card relative rounded-2xl border p-8 transition-all duration-300 hover:-translate-y-1 dark:bg-[#1e1e22] ${
                     pkg.highlighted
                       ? "border-[#a71225]/30 shadow-[0_4px_32px_rgba(167,18,37,0.10)] dark:border-[#e8323f]/35"
                       : "border-black/[0.08] hover:border-black/[0.15] dark:border-white/[0.08] dark:hover:border-white/[0.16]"
@@ -129,7 +129,7 @@ export default function PackagesPage() {
       </section>
 
       {/* Terms */}
-      <section className="border-t border-black/[0.06] bg-[#f7f7f7] px-6 py-14 md:px-10 dark:bg-[#0a0a0b] dark:border-white/[0.06]">
+      <section className="border-t border-black/[0.06] bg-[#f7f7f7] px-6 py-14 md:px-10 dark:bg-[#17171a] dark:border-white/[0.06]">
         <div className="mx-auto max-w-3xl">
           <p
             className="mb-4 text-[11px] font-bold tracking-[3px] text-[#999] uppercase dark:text-[#6b6b70]"

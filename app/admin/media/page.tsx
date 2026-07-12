@@ -38,7 +38,7 @@ export default async function AdminMediaPage() {
       </div>
 
       {allImages.length === 0 ? (
-        <div className="rounded-2xl border border-black/[0.06] bg-white py-16 text-center dark:bg-[#131315] dark:border-white/[0.08]">
+        <div className="rounded-2xl border border-black/[0.06] bg-white py-16 text-center dark:bg-[#1e1e22] dark:border-white/[0.08]">
           <p className="text-[14px] text-[#bbb] dark:text-[#4b4b50]" style={{ fontFamily: "var(--font-tajawal)" }}>
             لا توجد صور — أضف سيارات مع صور أولاً
           </p>
@@ -55,12 +55,12 @@ export default async function AdminMediaPage() {
           {allImages.map(({ car, url, isMain }) => (
             <div
               key={`${car.id}-${url}`}
-              className={`dm-card rounded-2xl border bg-white p-4 dark:bg-[#131315] ${
+              className={`dm-card rounded-2xl border bg-white p-4 dark:bg-[#1e1e22] ${
                 isMain ? "border-[#a71225]/25 dark:border-[#e8323f]/35" : "border-black/[0.06] dark:border-white/[0.08]"
               }`}
             >
               {/* Image */}
-              <div className="relative h-44 overflow-hidden rounded-xl bg-[#f0f0f0] dark:bg-[#1c1c1f]">
+              <div className="relative h-44 overflow-hidden rounded-xl bg-[#f0f0f0] dark:bg-[#28282d]">
                 <Image
                   src={url}
                   alt={car.title_ar}

@@ -30,7 +30,7 @@ export default async function AdminCarsPage() {
         </p>
         <Link
           href="/admin/cars/new"
-          className="flex items-center gap-2 rounded-full bg-[#111] px-5 py-2.5 text-[13px] font-bold text-white transition-colors hover:bg-[#a71225] dark:bg-[#f5f5f4] dark:text-[#0a0a0b] dark:hover:bg-[#e8323f] dark:hover:text-white"
+          className="flex items-center gap-2 rounded-full bg-[#111] px-5 py-2.5 text-[13px] font-bold text-white transition-colors hover:bg-[#a71225] dark:bg-[#f5f5f4] dark:text-[#17171a] dark:hover:bg-[#e8323f] dark:hover:text-white"
           style={{ fontFamily: "var(--font-tajawal)" }}
         >
           <Plus className="h-4 w-4" />
@@ -38,7 +38,7 @@ export default async function AdminCarsPage() {
         </Link>
       </div>
 
-      <div className="rounded-2xl border border-black/[0.06] bg-white overflow-hidden dark:bg-[#131315] dark:border-white/[0.08]">
+      <div className="rounded-2xl border border-black/[0.06] bg-white overflow-hidden dark:bg-[#1e1e22] dark:border-white/[0.08]">
         {cars.length === 0 ? (
           <div className="py-16 text-center text-[14px] text-[#bbb] dark:text-[#4b4b50]" style={{ fontFamily: "var(--font-tajawal)" }}>
             لا توجد سيارات — أضف أول سيارة
@@ -46,8 +46,8 @@ export default async function AdminCarsPage() {
         ) : (
           <div className="divide-y divide-black/[0.05] dark:divide-white/[0.05]">
             {cars.map((car) => (
-              <div key={car.id} className="flex items-center gap-4 px-5 py-4 transition-colors hover:bg-[#f7f7f7] dark:hover:bg-[#1c1c1f]">
-                <div className="relative h-14 w-20 shrink-0 overflow-hidden rounded-xl bg-[#f0f0f0] dark:bg-[#1c1c1f]">
+              <div key={car.id} className="flex items-center gap-4 px-5 py-4 transition-colors hover:bg-[#f7f7f7] dark:hover:bg-[#28282d]">
+                <div className="relative h-14 w-20 shrink-0 overflow-hidden rounded-xl bg-[#f0f0f0] dark:bg-[#28282d]">
                   {car.images?.[0] ? (
                     <Image src={car.images[0]} alt={car.title_ar} fill className="object-cover" sizes="80px" />
                   ) : (

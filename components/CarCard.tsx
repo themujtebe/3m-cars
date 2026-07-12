@@ -24,10 +24,10 @@ export default function CarCard({ car }: CarCardProps) {
   return (
     <div
       onClick={() => router.push(`/cars/${car.id}`)}
-      className="dm-card group cursor-pointer rounded-2xl border border-black/[0.08] overflow-hidden bg-white transition-all duration-300 hover:border-[#a71225]/35 hover:shadow-[0_8px_32px_rgba(0,0,0,0.10)] hover:-translate-y-[3px] dark:bg-[#131315] dark:border-white/[0.08] dark:hover:border-[#e8323f]/50 dark:hover:-translate-y-[4px]"
+      className="dm-card group cursor-pointer rounded-2xl border border-black/[0.08] overflow-hidden bg-white transition-all duration-300 hover:border-[#a71225]/35 hover:shadow-[0_8px_32px_rgba(0,0,0,0.10)] hover:-translate-y-[3px] dark:bg-[#1e1e22] dark:border-white/[0.08] dark:hover:border-[#e8323f]/50 dark:hover:-translate-y-[4px]"
     >
       {/* Image */}
-      <div className="relative aspect-[4/5] overflow-hidden bg-[#f0f0f0] dark:bg-[#1c1c1f]">
+      <div className="relative aspect-[4/5] overflow-hidden bg-[#f0f0f0] dark:bg-[#28282d]">
         <Image
           src={coverImage}
           alt={car.title_ar}
@@ -57,7 +57,7 @@ export default function CarCard({ car }: CarCardProps) {
 
         <div className="mt-3 flex flex-wrap gap-2">
           {[String(car.year), `${car.mileage.toLocaleString("en-US")} كم`, car.brand].map((val) => (
-            <span key={val} className="rounded-md bg-[#f0f0f0] px-2.5 py-1 text-[12px] font-semibold text-[#555] dark:bg-[#1c1c1f] dark:text-[#c9c9ce]" style={{ fontFamily: "var(--font-tajawal)" }}>
+            <span key={val} className="rounded-md bg-[#f0f0f0] px-2.5 py-1 text-[12px] font-semibold text-[#555] dark:bg-[#28282d] dark:text-[#c9c9ce]" style={{ fontFamily: "var(--font-tajawal)" }}>
               {val}
             </span>
           ))}

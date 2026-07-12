@@ -26,7 +26,7 @@ export default async function CarDetailPage({ params }: { params: Promise<{ id: 
   if (!car) notFound();
 
   return (
-    <div className="min-h-screen bg-[#f7f7f7] dark:bg-[#0a0a0b] text-[#111] dark:text-[#f5f5f4]">
+    <div className="min-h-screen bg-[#f7f7f7] dark:bg-[#17171a] text-[#111] dark:text-[#f5f5f4]">
       <Header />
 
       <div className="mx-auto max-w-6xl px-6 py-8">
@@ -41,11 +41,11 @@ export default async function CarDetailPage({ params }: { params: Promise<{ id: 
 
         <div className="grid gap-6 lg:grid-cols-[1fr_360px]">
           <div className="space-y-5">
-            <div className="rounded-2xl overflow-hidden bg-white dark:bg-[#131315] shadow-sm">
+            <div className="rounded-2xl overflow-hidden bg-white dark:bg-[#1e1e22] shadow-sm">
               <ImageSlider images={car.images ?? []} alt={car.title_ar} />
             </div>
             {car.description_ar && (
-              <div className="rounded-2xl border border-black/[0.06] bg-white p-6 shadow-sm dark:bg-[#131315] dark:border-white/[0.08]">
+              <div className="rounded-2xl border border-black/[0.06] bg-white p-6 shadow-sm dark:bg-[#1e1e22] dark:border-white/[0.08]">
                 <p className="mb-3 text-[11px] font-bold tracking-[3px] text-[#a71225] uppercase">التفاصيل</p>
                 <p className="text-[15px] leading-[2] text-[#555] dark:text-[#96969c]" style={{ fontFamily: "var(--font-tajawal)" }}>
                   {car.description_ar}

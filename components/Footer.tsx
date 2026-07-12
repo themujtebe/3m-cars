@@ -30,7 +30,7 @@ function FacebookIcon() {
 
 export default function Footer() {
   return (
-    <footer className="bg-[#f0f0f0] dark:bg-[#0a0a0b] px-10 pb-10 pt-[60px] border-t border-black/[0.06] dark:border-white/[0.06]">
+    <footer className="bg-[#f0f0f0] dark:bg-[#17171a] px-10 pb-10 pt-[60px] border-t border-black/[0.06] dark:border-white/[0.06]">
       <div className="grid gap-12 md:grid-cols-[1.5fr_1fr_1fr]">
 
         {/* Col 1 — Brand */}

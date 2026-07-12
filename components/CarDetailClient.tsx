@@ -31,7 +31,7 @@ export default function CarDetailClient({ car }: Props) {
     <div className="space-y-4">
 
       {/* Title card */}
-      <div className="rounded-2xl border border-black/[0.06] bg-white p-6 shadow-sm dark:bg-[#131315] dark:border-white/[0.08]">
+      <div className="rounded-2xl border border-black/[0.06] bg-white p-6 shadow-sm dark:bg-[#1e1e22] dark:border-white/[0.08]">
         <div className="mb-4 flex items-center gap-2">
           {car.featured && !isSold && (
             <span className="rounded-full bg-[#a71225] px-3 py-1 text-[11px] font-bold text-white" style={{ fontFamily: "var(--font-tajawal)" }}>
@@ -41,7 +41,7 @@ export default function CarDetailClient({ car }: Props) {
           <span
             className={`rounded-full px-3 py-1 text-[11px] font-bold ${
               isSold
-                ? "bg-[#111] text-white dark:bg-[#1c1c1f] dark:text-[#c9c9ce]"
+                ? "bg-[#111] text-white dark:bg-[#28282d] dark:text-[#c9c9ce]"
                 : "bg-emerald-50 text-emerald-700 border border-emerald-200 dark:bg-emerald-950 dark:text-emerald-400 dark:border-emerald-800"
             }`}
             style={{ fontFamily: "var(--font-tajawal)" }}
@@ -80,8 +80,8 @@ export default function CarDetailClient({ car }: Props) {
                     onClick={() => setCurrency(c)}
                     className={`flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-[11px] font-bold transition-colors ${
                       currency === c
-                        ? "bg-[#111] text-white dark:bg-[#f5f5f4] dark:text-[#0a0a0b]"
-                        : "bg-[#f5f5f5] text-[#666] hover:bg-[#eaeaea] dark:bg-[#1c1c1f] dark:text-[#c9c9ce] dark:hover:bg-[#262629]"
+                        ? "bg-[#111] text-white dark:bg-[#f5f5f4] dark:text-[#17171a]"
+                        : "bg-[#f5f5f5] text-[#666] hover:bg-[#eaeaea] dark:bg-[#28282d] dark:text-[#c9c9ce] dark:hover:bg-[#323238]"
                     }`}
                   >
                     <span>{CURRENCIES[c].flag}</span>
@@ -95,7 +95,7 @@ export default function CarDetailClient({ car }: Props) {
       </div>
 
       {/* Specs */}
-      <div className="rounded-2xl border border-black/[0.06] bg-white p-6 shadow-sm dark:bg-[#131315] dark:border-white/[0.08]">
+      <div className="rounded-2xl border border-black/[0.06] bg-white p-6 shadow-sm dark:bg-[#1e1e22] dark:border-white/[0.08]">
         <p className="mb-4 text-[11px] font-bold tracking-[3px] text-[#a71225] uppercase">المواصفات</p>
         <div className="grid grid-cols-2 gap-3">
           {[
@@ -106,7 +106,7 @@ export default function CarDetailClient({ car }: Props) {
             { label: "العملة",       value: car.currency },
             { label: "الحالة",       value: isSold ? "مُباعة" : "متاحة" },
           ].map(({ label, value }) => (
-            <div key={label} className="rounded-xl bg-[#f7f7f7] px-4 py-3 dark:bg-[#1c1c1f]">
+            <div key={label} className="rounded-xl bg-[#f7f7f7] px-4 py-3 dark:bg-[#28282d]">
               <p className="text-[10px] font-bold tracking-[1.5px] text-[#aaa] dark:text-[#6b6b70] uppercase" style={{ fontFamily: "var(--font-tajawal)" }}>
                 {label}
               </p>
@@ -119,7 +119,7 @@ export default function CarDetailClient({ car }: Props) {
       </div>
 
       {/* Actions */}
-      <div className="rounded-2xl border border-black/[0.06] bg-white p-6 shadow-sm space-y-3 dark:bg-[#131315] dark:border-white/[0.08]">
+      <div className="rounded-2xl border border-black/[0.06] bg-white p-6 shadow-sm space-y-3 dark:bg-[#1e1e22] dark:border-white/[0.08]">
         {!isSold ? (
           <a
             href={waLink}
@@ -134,7 +134,7 @@ export default function CarDetailClient({ car }: Props) {
             تواصل مع البائع عبر واتساب
           </a>
         ) : (
-          <div className="flex w-full items-center justify-center rounded-xl bg-[#f0f0f0] py-3.5 text-[15px] font-semibold text-[#bbb] dark:bg-[#1c1c1f] dark:text-[#6b6b70]" style={{ fontFamily: "var(--font-tajawal)" }}>
+          <div className="flex w-full items-center justify-center rounded-xl bg-[#f0f0f0] py-3.5 text-[15px] font-semibold text-[#bbb] dark:bg-[#28282d] dark:text-[#6b6b70]" style={{ fontFamily: "var(--font-tajawal)" }}>
             هذه السيارة مُباعة
           </div>
         )}

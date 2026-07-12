@@ -38,7 +38,7 @@ export default function Header() {
   const isActive = (href: string) => pathname === href;
 
   return (
-    <header className="dm-header sticky top-0 z-50 h-[72px] border-b border-black/[0.07] bg-white dark:bg-[#131315] dark:border-white/[0.08]">
+    <header className="dm-header sticky top-0 z-50 h-[72px] border-b border-black/[0.07] bg-white dark:bg-[#1e1e22] dark:border-white/[0.08]">
       <div className="mx-auto flex h-full max-w-[1400px] items-center justify-between px-5 sm:px-10">
 
         {/* Logo */}
@@ -83,7 +83,7 @@ export default function Header() {
               <ChevronDown className="h-3 w-3" />
             </button>
             {currOpen && (
-              <div className="absolute left-0 top-full mt-2 w-40 rounded-xl border border-black/[0.08] bg-white shadow-xl dark:bg-[#131315] dark:border-white/[0.08] dark:shadow-black/40">
+              <div className="absolute left-0 top-full mt-2 w-40 rounded-xl border border-black/[0.08] bg-white shadow-xl dark:bg-[#1e1e22] dark:border-white/[0.08] dark:shadow-black/40">
                 {(Object.keys(CURRENCIES) as CurrencyCode[]).map((code) => (
                   <button
                     key={code}
@@ -134,7 +134,7 @@ export default function Header() {
             href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "97336414730"}?text=${encodeURIComponent("السلام عليكم")}`}
             target="_blank"
             rel="noreferrer"
-            className="rounded-full bg-[#111] px-5 py-2.5 text-[13px] font-bold text-white transition-colors hover:bg-[#a71225] dark:bg-[#1c1c1f] dark:hover:bg-[#e8323f] sm:px-6"
+            className="rounded-full bg-[#111] px-5 py-2.5 text-[13px] font-bold text-white transition-colors hover:bg-[#a71225] dark:bg-[#28282d] dark:hover:bg-[#e8323f] sm:px-6"
             style={{ fontFamily: "var(--font-tajawal)" }}
           >
             تواصل
@@ -144,7 +144,7 @@ export default function Header() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="absolute inset-x-0 top-full border-b border-black/[0.07] bg-white shadow-lg dark:bg-[#131315] dark:border-white/[0.08] md:hidden">
+        <div className="absolute inset-x-0 top-full border-b border-black/[0.07] bg-white shadow-lg dark:bg-[#1e1e22] dark:border-white/[0.08] md:hidden">
           <nav className="flex flex-col gap-0.5 px-4 py-3" style={{ fontFamily: "var(--font-tajawal)" }}>
             {NAV_LINKS.map(({ href, label }) => (
               <Link

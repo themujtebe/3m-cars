@@ -19,12 +19,12 @@ const STATS = [
 
 export default function StatsSection() {
   return (
-    <section className="bg-[#f7f7f7] dark:bg-[#0a0a0b] px-6 py-[60px] sm:px-10">
+    <section className="bg-[#f7f7f7] dark:bg-[#17171a] px-6 py-[60px] sm:px-10">
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-5">
         {STATS.map((stat, i) => (
           <div
             key={i}
-            className={`flex flex-col items-center justify-center rounded-[20px] border bg-white p-5 text-center transition-all duration-300 hover:-translate-y-1 sm:p-8 dark:bg-[#131315] ${stat.highlight ? "dm-stat-card" : "dm-stat-card-muted"}`}
+            className={`flex flex-col items-center justify-center rounded-[20px] border bg-white p-5 text-center transition-all duration-300 hover:-translate-y-1 sm:p-8 dark:bg-[#1e1e22] ${stat.highlight ? "dm-stat-card" : "dm-stat-card-muted"}`}
             style={{
               borderColor: stat.highlight ? "rgba(167,18,37,0.3)" : "rgba(0,0,0,0.06)",
             }}
