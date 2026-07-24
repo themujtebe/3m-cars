@@ -42,6 +42,29 @@
     "whatsapp_number": "97336414730",
     "id": "28095446-1ba0-4807-b426-0603499bbbaf",
     "created_at": "2026-06-27T13:41:49.527Z",
-    "updated_at": "2026-06-29T06:52:34.380Z"
+    "updated_at": "2026-07-24T19:16:17.535Z"
+  },
+  {
+    "title_ar": "نيسان فتك",
+    "title_en": null,
+    "brand": "nissan",
+    "model": "VTC",
+    "year": 2014,
+    "mileage": 13000,
+    "price": 10000,
+    "currency": "BHD",
+    "status": "available",
+    "featured": true,
+    "description_ar": "المواصفات :\r\nالسيارة بحالة ممتازة، تم عمل ميجر سيرفس على حوالي 6,000 كم، والموتر ولله الحمد خالي من الحوادث وصبغ وكالة بالكامل، فلتر aFe Momentum، هدرز من 973 ، إكزوز كامل 3 إنش كاتم تفصيل ، برمجة فهد الملا\r\nرنقات Braid أصلية (قيمتها تقارب 800 دينار)، شاشة أندرويد (والشاشة الأصلية موجودة)، جميع أغراض الوكالة موجودة ومرفقة مع الموتر.\r\n",
+    "description_en": null,
+    "images": [
+      "/uploads/1784920504965-opa93bd7w9o.png",
+      "/uploads/1784920504969-ydm8km63hr.png",
+      "/uploads/1784920504973-u7n3y3oge0d.png"
+    ],
+    "whatsapp_number": "97336414730",
+    "id": "0fbbfc7d-145f-459d-951b-751c77628dcc",
+    "created_at": "2026-07-24T19:13:01.760Z",
+    "updated_at": "2026-07-24T19:15:04.976Z"
   }
 ]
