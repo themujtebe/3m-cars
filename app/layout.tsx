@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Tajawal } from "next/font/google";
-import ThemeProvider from "@/components/ThemeProvider";
 import "./globals.css";
 
 const tajawal = Tajawal({
@@ -22,19 +21,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ar" dir="rtl" className={tajawal.variable} suppressHydrationWarning>
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `try{var raw=localStorage.getItem('3mcars-theme');var dark;if(raw){var t=JSON.parse(raw);dark=t.state&&t.state.dark}else{dark=window.matchMedia('(prefers-color-scheme: dark)').matches}if(dark){document.documentElement.classList.add('dark')}}catch(e){}`,
-          }}
-        />
-      </head>
+    <html lang="ar" dir="rtl" className={tajawal.variable}>
       <body
         className="antialiased"
         style={{ fontFamily: "var(--font-tajawal), Tajawal, sans-serif" }}
       >
-        <ThemeProvider />
         {children}
       </body>
     </html>

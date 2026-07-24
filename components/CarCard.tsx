@@ -24,10 +24,10 @@ export default function CarCard({ car }: CarCardProps) {
   return (
     <div
       onClick={() => router.push(`/cars/${car.id}`)}
-      className="dm-card group cursor-pointer rounded-2xl border border-black/[0.08] overflow-hidden bg-white transition-all duration-300 hover:border-[#a71225]/35 hover:shadow-[0_8px_32px_rgba(0,0,0,0.10)] hover:-translate-y-[3px] dark:bg-[#1e1e22] dark:border-white/[0.08] dark:hover:border-[#e8323f]/50 dark:hover:-translate-y-[4px]"
+      className=" group cursor-pointer rounded-2xl border border-black/[0.08] overflow-hidden bg-white transition-all duration-300 hover:border-[#a71225]/35 hover:shadow-[0_8px_32px_rgba(0,0,0,0.10)] hover:-translate-y-[3px]    "
     >
       {/* Image */}
-      <div className="relative aspect-[4/5] overflow-hidden bg-[#f0f0f0] dark:bg-[#28282d]">
+      <div className="relative aspect-[4/5] overflow-hidden bg-[#f0f0f0] ">
         <Image
           src={coverImage}
           alt={car.title_ar}
@@ -41,8 +41,8 @@ export default function CarCard({ car }: CarCardProps) {
           </span>
         )}
         {isSold && (
-          <div className="absolute inset-0 flex items-center justify-center bg-white/60 dark:bg-black/60">
-            <span className="border-2 border-[#111] px-4 py-1 text-[22px] font-bold tracking-[4px] text-[#111] dark:border-white dark:text-white" style={{ fontFamily: "var(--font-tajawal)" }}>
+          <div className="absolute inset-0 flex items-center justify-center bg-white/60 ">
+            <span className="border-2 border-[#111] px-4 py-1 text-[22px] font-bold tracking-[4px] text-[#111]  " style={{ fontFamily: "var(--font-tajawal)" }}>
               مُباع
             </span>
           </div>
@@ -51,27 +51,27 @@ export default function CarCard({ car }: CarCardProps) {
 
       {/* Body */}
       <div className="px-5 py-4">
-        <h3 className="text-[18px] font-bold text-[#111] leading-snug dark:text-[#f5f5f4]" style={{ fontFamily: "var(--font-tajawal)" }}>
+        <h3 className="text-[18px] font-bold text-[#111] leading-snug " style={{ fontFamily: "var(--font-tajawal)" }}>
           {car.title_ar}
         </h3>
 
         <div className="mt-3 flex flex-wrap gap-2">
           {[String(car.year), `${car.mileage.toLocaleString("en-US")} كم`, car.brand].map((val) => (
-            <span key={val} className="rounded-md bg-[#f0f0f0] px-2.5 py-1 text-[12px] font-semibold text-[#555] dark:bg-[#28282d] dark:text-[#c9c9ce]" style={{ fontFamily: "var(--font-tajawal)" }}>
+            <span key={val} className="rounded-md bg-[#f0f0f0] px-2.5 py-1 text-[12px] font-semibold text-[#555]  " style={{ fontFamily: "var(--font-tajawal)" }}>
               {val}
             </span>
           ))}
         </div>
 
-        <div className="my-4 h-px bg-[#f0f0f0] dark:bg-white/[0.06]" />
+        <div className="my-4 h-px bg-[#f0f0f0] " />
 
         <div className="flex items-center justify-between gap-3">
           <div>
             <div className="mb-1 flex items-center gap-1.5">
               <span className="text-[16px] leading-none">{CURRENCIES[currency].flag}</span>
-              <span className="text-[11px] font-bold text-[#aaa] dark:text-[#6b6b70]">{currency}</span>
+              <span className="text-[11px] font-bold text-[#aaa] ">{currency}</span>
             </div>
-            <span className="dm-price text-[26px] font-bold text-[#a71225] dark:text-[#e8323f]" style={{ fontFamily: "var(--font-tajawal)" }}>
+            <span className=" text-[26px] font-bold text-[#a71225] " style={{ fontFamily: "var(--font-tajawal)" }}>
               {isSold ? "—" : convertedPrice}
             </span>
           </div>

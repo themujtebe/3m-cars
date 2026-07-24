@@ -9,10 +9,10 @@ const INPUT = [
   "w-full rounded-xl border border-black/[0.08] bg-[#f7f7f7] px-4 py-2.5",
   "text-[14px] text-[#111] outline-none placeholder:text-[#bbb]",
   "focus:border-[#a71225]/40 focus:bg-white transition-colors",
-  "dark:border-white/[0.08] dark:bg-[#28282d] dark:text-[#f5f5f4] dark:placeholder:text-[#6b6b70] dark:focus:border-[#e8323f]/50 dark:focus:bg-[#28282d]",
+  "     ",
 ].join(" ");
 
-const LABEL = "mb-1.5 block text-[11px] font-bold tracking-[1.5px] text-[#999] uppercase dark:text-[#6b6b70]";
+const LABEL = "mb-1.5 block text-[11px] font-bold tracking-[1.5px] text-[#999] uppercase ";
 
 /* ── Reusable form (add + edit) ── */
 function PackageForm({
@@ -34,12 +34,12 @@ function PackageForm({
   return (
     <form
       action={formAction}
-      className="dm-panel space-y-4 rounded-2xl border border-[#a71225]/20 bg-white p-6 dark:border-[#e8323f]/25 dark:bg-[#1e1e22]"
+      className=" space-y-4 rounded-2xl border border-[#a71225]/20 bg-white p-6  "
     >
       {isEdit && <input type="hidden" name="id" value={pkg?.id} />}
 
       {state && "error" in state && (
-        <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-[13px] text-[#a71225] dark:border-red-800 dark:bg-red-950 dark:text-red-400" style={{ fontFamily: "var(--font-tajawal)" }}>
+        <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-[13px] text-[#a71225]   " style={{ fontFamily: "var(--font-tajawal)" }}>
           ⚠️ {state.error}
         </div>
       )}
@@ -73,7 +73,7 @@ function PackageForm({
 
       <div>
         <label className={LABEL} style={{ fontFamily: "var(--font-tajawal)" }}>
-          المميزات <span className="normal-case font-normal text-[#bbb] dark:text-[#6b6b70]">(كل سطر ميزة)</span>
+          المميزات <span className="normal-case font-normal text-[#bbb] ">(كل سطر ميزة)</span>
         </label>
         <textarea
           name="features"
@@ -103,7 +103,7 @@ function PackageForm({
         <button
           type="submit"
           disabled={isPending}
-          className="flex items-center gap-2 rounded-full bg-[#111] px-6 py-2.5 text-[13px] font-bold text-white transition-colors hover:bg-[#a71225] disabled:opacity-60 dark:bg-[#f5f5f4] dark:text-[#17171a] dark:hover:bg-[#e8323f] dark:hover:text-white"
+          className="flex items-center gap-2 rounded-full bg-[#111] px-6 py-2.5 text-[13px] font-bold text-white transition-colors hover:bg-[#a71225] disabled:opacity-60    "
           style={{ fontFamily: "var(--font-tajawal)" }}
         >
           {isPending && <Loader2 className="h-3.5 w-3.5 animate-spin" />}
@@ -112,7 +112,7 @@ function PackageForm({
         <button
           type="button"
           onClick={onDone}
-          className="rounded-full border border-black/[0.10] px-6 py-2.5 text-[13px] font-semibold text-[#555] transition-colors hover:border-black/20 dark:border-white/[0.10] dark:text-[#96969c] dark:hover:border-white/20"
+          className="rounded-full border border-black/[0.10] px-6 py-2.5 text-[13px] font-semibold text-[#555] transition-colors hover:border-black/20   "
           style={{ fontFamily: "var(--font-tajawal)" }}
         >
           إلغاء
@@ -134,14 +134,14 @@ export default function PackagesManager({ packages }: { packages: Package[] }) {
       <div className="flex items-center justify-between">
         <div>
           <p className="text-[11px] font-bold tracking-[3px] text-[#a71225] uppercase">الباقات</p>
-          <p className="mt-1 text-[13px] text-[#999] dark:text-[#6b6b70]" style={{ fontFamily: "var(--font-tajawal)" }}>
+          <p className="mt-1 text-[13px] text-[#999] " style={{ fontFamily: "var(--font-tajawal)" }}>
             أضف أو عدّل الباقات الخاصة بعرض السيارات
           </p>
         </div>
         {!showAdd && (
           <button
             onClick={() => { setShowAdd(true); setEditingId(null); }}
-            className="flex items-center gap-2 rounded-full bg-[#111] px-5 py-2.5 text-[13px] font-bold text-white transition-colors hover:bg-[#a71225] dark:bg-[#f5f5f4] dark:text-[#17171a] dark:hover:bg-[#e8323f] dark:hover:text-white"
+            className="flex items-center gap-2 rounded-full bg-[#111] px-5 py-2.5 text-[13px] font-bold text-white transition-colors hover:bg-[#a71225]    "
             style={{ fontFamily: "var(--font-tajawal)" }}
           >
             <Plus className="h-4 w-4" />
@@ -157,8 +157,8 @@ export default function PackagesManager({ packages }: { packages: Package[] }) {
 
       {/* Cards */}
       {packages.length === 0 && !showAdd ? (
-        <div className="rounded-2xl border border-black/[0.06] bg-white py-16 text-center dark:bg-[#1e1e22] dark:border-white/[0.08]">
-          <p className="text-[14px] text-[#bbb] dark:text-[#4b4b50]" style={{ fontFamily: "var(--font-tajawal)" }}>لا توجد باقات — أضف أول باقة</p>
+        <div className="rounded-2xl border border-black/[0.06] bg-white py-16 text-center  ">
+          <p className="text-[14px] text-[#bbb] " style={{ fontFamily: "var(--font-tajawal)" }}>لا توجد باقات — أضف أول باقة</p>
         </div>
       ) : (
         <div className="grid gap-5 xl:grid-cols-3">
@@ -173,15 +173,15 @@ export default function PackagesManager({ packages }: { packages: Package[] }) {
             ) : (
               <div
                 key={pkg.id}
-                className={`dm-card rounded-2xl border bg-white p-6 dark:bg-[#1e1e22] ${
+                className={` rounded-2xl border bg-white p-6  ${
                   pkg.highlighted
-                    ? "border-[#a71225]/30 shadow-[0_4px_24px_rgba(167,18,37,0.08)] dark:border-[#e8323f]/35"
-                    : "border-black/[0.06] dark:border-white/[0.08]"
+                    ? "border-[#a71225]/30 shadow-[0_4px_24px_rgba(167,18,37,0.08)] "
+                    : "border-black/[0.06] "
                 }`}
               >
                 {pkg.highlighted && (
                   <span
-                    className="mb-3 inline-flex items-center gap-1 rounded-full bg-[#a71225] px-2.5 py-0.5 text-[10px] font-bold text-white dark:bg-[#e8323f]"
+                    className="mb-3 inline-flex items-center gap-1 rounded-full bg-[#a71225] px-2.5 py-0.5 text-[10px] font-bold text-white "
                     style={{ fontFamily: "var(--font-tajawal)" }}
                   >
                     <Check className="h-2.5 w-2.5" />
@@ -189,26 +189,26 @@ export default function PackagesManager({ packages }: { packages: Package[] }) {
                   </span>
                 )}
 
-                <h3 className="text-[18px] font-bold text-[#111] dark:text-[#f5f5f4]" style={{ fontFamily: "var(--font-tajawal)" }}>
+                <h3 className="text-[18px] font-bold text-[#111] " style={{ fontFamily: "var(--font-tajawal)" }}>
                   الباقة {pkg.name}
                 </h3>
-                <p className="dm-price mt-2 text-[36px] font-bold text-[#a71225] dark:text-[#e8323f]" style={{ fontFamily: "var(--font-tajawal)" }}>
+                <p className=" mt-2 text-[36px] font-bold text-[#a71225] " style={{ fontFamily: "var(--font-tajawal)" }}>
                   {pkg.price}
-                  <span className="mr-1 text-[14px] font-normal text-[#999] dark:text-[#6b6b70]">د.ب</span>
+                  <span className="mr-1 text-[14px] font-normal text-[#999] ">د.ب</span>
                 </p>
 
-                <div className="my-4 h-px bg-[#f0f0f0] dark:bg-white/[0.06]" />
+                <div className="my-4 h-px bg-[#f0f0f0] " />
 
                 <ul className="flex flex-col gap-3">
                   {pkg.features.map((f) => (
                     <li key={f} className="flex items-start gap-2.5">
                       <span
-                        className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full dark:bg-white/[0.06]"
+                        className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full "
                         style={{ background: "rgba(167,18,37,0.08)" }}
                       >
-                        <Check className="h-3 w-3 text-[#a71225] dark:text-[#e8323f]" />
+                        <Check className="h-3 w-3 text-[#a71225] " />
                       </span>
-                      <span className="text-[13px] text-[#555] dark:text-[#c9c9ce]" style={{ fontFamily: "var(--font-tajawal)" }}>{f}</span>
+                      <span className="text-[13px] text-[#555] " style={{ fontFamily: "var(--font-tajawal)" }}>{f}</span>
                     </li>
                   ))}
                 </ul>
@@ -217,7 +217,7 @@ export default function PackagesManager({ packages }: { packages: Package[] }) {
                   <button
                     type="button"
                     onClick={() => { setEditingId(pkg.id); setShowAdd(false); }}
-                    className="flex items-center gap-1.5 rounded-lg border border-black/[0.08] px-4 py-2 text-[12px] font-medium text-[#555] transition-colors hover:border-black/20 hover:text-[#111] dark:border-white/[0.08] dark:text-[#96969c] dark:hover:border-white/20 dark:hover:text-[#f5f5f4]"
+                    className="flex items-center gap-1.5 rounded-lg border border-black/[0.08] px-4 py-2 text-[12px] font-medium text-[#555] transition-colors hover:border-black/20 hover:text-[#111]    "
                     style={{ fontFamily: "var(--font-tajawal)" }}
                   >
                     <Pencil className="h-3 w-3" />
@@ -232,7 +232,7 @@ export default function PackagesManager({ packages }: { packages: Package[] }) {
                     <input type="hidden" name="id" value={pkg.id} />
                     <button
                       type="submit"
-                      className="flex items-center gap-1.5 rounded-lg border border-red-200 bg-red-50 px-4 py-2 text-[12px] font-medium text-[#a71225] transition-colors hover:bg-red-100 dark:border-red-800 dark:bg-red-950 dark:text-red-400 dark:hover:bg-red-900"
+                      className="flex items-center gap-1.5 rounded-lg border border-red-200 bg-red-50 px-4 py-2 text-[12px] font-medium text-[#a71225] transition-colors hover:bg-red-100    "
                       style={{ fontFamily: "var(--font-tajawal)" }}
                     >
                       <Trash2 className="h-3 w-3" />

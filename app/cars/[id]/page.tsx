@@ -26,28 +26,28 @@ export default async function CarDetailPage({ params }: { params: Promise<{ id: 
   if (!car) notFound();
 
   return (
-    <div className="min-h-screen bg-[#f7f7f7] dark:bg-[#17171a] text-[#111] dark:text-[#f5f5f4]">
+    <div className="min-h-screen bg-[#f7f7f7]  text-[#111] ">
       <Header />
 
       <div className="mx-auto max-w-6xl px-6 py-8">
         {/* Breadcrumb */}
-        <div className="mb-6 flex items-center gap-2 text-[13px] text-[#999] dark:text-[#6b6b70]" style={{ fontFamily: "var(--font-tajawal)" }}>
-          <Link href="/" className="transition-colors hover:text-[#111] dark:hover:text-[#f5f5f4]">الرئيسية</Link>
+        <div className="mb-6 flex items-center gap-2 text-[13px] text-[#999] " style={{ fontFamily: "var(--font-tajawal)" }}>
+          <Link href="/" className="transition-colors hover:text-[#111] ">الرئيسية</Link>
           <ArrowRight className="h-3.5 w-3.5 rotate-180" />
-          <Link href="/cars" className="transition-colors hover:text-[#111] dark:hover:text-[#f5f5f4]">السيارات</Link>
+          <Link href="/cars" className="transition-colors hover:text-[#111] ">السيارات</Link>
           <ArrowRight className="h-3.5 w-3.5 rotate-180" />
-          <span className="font-medium text-[#111] dark:text-[#f5f5f4]">{car.title_ar}</span>
+          <span className="font-medium text-[#111] ">{car.title_ar}</span>
         </div>
 
         <div className="grid gap-6 lg:grid-cols-[1fr_360px]">
           <div className="space-y-5">
-            <div className="rounded-2xl overflow-hidden bg-white dark:bg-[#1e1e22] shadow-sm">
+            <div className="rounded-2xl overflow-hidden bg-white  shadow-sm">
               <ImageSlider images={car.images ?? []} alt={car.title_ar} />
             </div>
             {car.description_ar && (
-              <div className="rounded-2xl border border-black/[0.06] bg-white p-6 shadow-sm dark:bg-[#1e1e22] dark:border-white/[0.08]">
+              <div className="rounded-2xl border border-black/[0.06] bg-white p-6 shadow-sm  ">
                 <p className="mb-3 text-[11px] font-bold tracking-[3px] text-[#a71225] uppercase">التفاصيل</p>
-                <p className="text-[15px] leading-[2] text-[#555] dark:text-[#96969c]" style={{ fontFamily: "var(--font-tajawal)" }}>
+                <p className="text-[15px] leading-[2] text-[#555] " style={{ fontFamily: "var(--font-tajawal)" }}>
                   {car.description_ar}
                 </p>
               </div>

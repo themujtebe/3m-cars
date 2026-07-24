@@ -12,11 +12,11 @@ const INPUT = [
   "w-full rounded-xl border border-black/[0.08] bg-[#f7f7f7] px-4 py-2.5",
   "text-[14px] text-[#111] outline-none placeholder:text-[#bbb]",
   "focus:border-[#a71225]/40 focus:bg-white transition-colors",
-  "dark:border-white/[0.08] dark:bg-[#28282d] dark:text-[#f5f5f4] dark:placeholder:text-[#6b6b70] dark:focus:border-[#e8323f]/50 dark:focus:bg-[#28282d]",
+  "     ",
 ].join(" ");
 
-const LABEL = "mb-1.5 block text-[11px] font-bold tracking-[1.5px] text-[#999] uppercase dark:text-[#6b6b70]";
-const SECTION = "dm-panel rounded-2xl border border-black/[0.06] bg-white p-6 dark:bg-[#1e1e22] dark:border-white/[0.08]";
+const LABEL = "mb-1.5 block text-[11px] font-bold tracking-[1.5px] text-[#999] uppercase ";
+const SECTION = " rounded-2xl border border-black/[0.06] bg-white p-6  ";
 
 interface Props { car: Car }
 
@@ -84,12 +84,12 @@ export default function EditCarForm({ car }: Props) {
       {/* Loading overlay */}
       {isPending && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
-          <div className="flex flex-col items-center gap-4 rounded-2xl bg-white px-10 py-8 shadow-2xl dark:bg-[#1e1e22] dark:shadow-black/60">
-            <Loader2 className="h-10 w-10 animate-spin text-[#a71225] dark:text-[#e8323f]" />
-            <p className="text-[15px] font-semibold text-[#111] dark:text-[#f5f5f4]" style={{ fontFamily: "var(--font-tajawal)" }}>
+          <div className="flex flex-col items-center gap-4 rounded-2xl bg-white px-10 py-8 shadow-2xl  ">
+            <Loader2 className="h-10 w-10 animate-spin text-[#a71225] " />
+            <p className="text-[15px] font-semibold text-[#111] " style={{ fontFamily: "var(--font-tajawal)" }}>
               جارٍ حفظ التعديلات...
             </p>
-            <p className="text-[13px] text-[#999] dark:text-[#6b6b70]" style={{ fontFamily: "var(--font-tajawal)" }}>
+            <p className="text-[13px] text-[#999] " style={{ fontFamily: "var(--font-tajawal)" }}>
               يرجى الانتظار
             </p>
           </div>
@@ -99,14 +99,14 @@ export default function EditCarForm({ car }: Props) {
       {/* Success popup */}
       {showSuccess && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
-          <div className="flex flex-col items-center gap-4 rounded-2xl bg-white px-10 py-8 shadow-2xl dark:bg-[#1e1e22] dark:shadow-black/60">
-            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-emerald-50 dark:bg-emerald-950">
-              <CheckCircle className="h-9 w-9 text-emerald-500 dark:text-emerald-400" />
+          <div className="flex flex-col items-center gap-4 rounded-2xl bg-white px-10 py-8 shadow-2xl  ">
+            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-emerald-50 ">
+              <CheckCircle className="h-9 w-9 text-emerald-500 " />
             </div>
-            <p className="text-[17px] font-bold text-[#111] dark:text-[#f5f5f4]" style={{ fontFamily: "var(--font-tajawal)" }}>
+            <p className="text-[17px] font-bold text-[#111] " style={{ fontFamily: "var(--font-tajawal)" }}>
               تم حفظ التعديلات بنجاح!
             </p>
-            <p className="text-[13px] text-[#999] dark:text-[#6b6b70]" style={{ fontFamily: "var(--font-tajawal)" }}>
+            <p className="text-[13px] text-[#999] " style={{ fontFamily: "var(--font-tajawal)" }}>
               سيتم توجيهك لقائمة السيارات...
             </p>
           </div>
@@ -118,14 +118,14 @@ export default function EditCarForm({ car }: Props) {
 
         {/* Error banner */}
         {error && (
-          <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-[14px] text-[#a71225] dark:border-red-800 dark:bg-red-950 dark:text-red-400" style={{ fontFamily: "var(--font-tajawal)" }}>
+          <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-[14px] text-[#a71225]   " style={{ fontFamily: "var(--font-tajawal)" }}>
             ⚠️ {error}
           </div>
         )}
 
         {/* Basic info */}
         <section className={SECTION}>
-          <h3 className="mb-5 text-[16px] font-bold text-[#111] dark:text-[#f5f5f4]" style={{ fontFamily: "var(--font-tajawal)" }}>
+          <h3 className="mb-5 text-[16px] font-bold text-[#111] " style={{ fontFamily: "var(--font-tajawal)" }}>
             البيانات الأساسية
           </h3>
           <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
@@ -154,7 +154,7 @@ export default function EditCarForm({ car }: Props) {
 
         {/* Settings */}
         <section className={SECTION}>
-          <h3 className="mb-5 text-[16px] font-bold text-[#111] dark:text-[#f5f5f4]" style={{ fontFamily: "var(--font-tajawal)" }}>
+          <h3 className="mb-5 text-[16px] font-bold text-[#111] " style={{ fontFamily: "var(--font-tajawal)" }}>
             الإعدادات
           </h3>
           <div className="grid gap-4 sm:grid-cols-3">
@@ -185,7 +185,7 @@ export default function EditCarForm({ car }: Props) {
 
         {/* Description */}
         <section className={SECTION}>
-          <h3 className="mb-5 text-[16px] font-bold text-[#111] dark:text-[#f5f5f4]" style={{ fontFamily: "var(--font-tajawal)" }}>الوصف</h3>
+          <h3 className="mb-5 text-[16px] font-bold text-[#111] " style={{ fontFamily: "var(--font-tajawal)" }}>الوصف</h3>
           <textarea
             name="description_ar"
             rows={4}
@@ -198,22 +198,22 @@ export default function EditCarForm({ car }: Props) {
         {/* Images */}
         <section className={SECTION}>
           <div className="mb-4 flex items-center justify-between">
-            <h3 className="text-[16px] font-bold text-[#111] dark:text-[#f5f5f4]" style={{ fontFamily: "var(--font-tajawal)" }}>الصور</h3>
-            <span className="text-[12px] text-[#aaa] dark:text-[#6b6b70]" style={{ fontFamily: "var(--font-tajawal)" }}>
+            <h3 className="text-[16px] font-bold text-[#111] " style={{ fontFamily: "var(--font-tajawal)" }}>الصور</h3>
+            <span className="text-[12px] text-[#aaa] " style={{ fontFamily: "var(--font-tajawal)" }}>
               {totalImages} / ٨
             </span>
           </div>
 
           {totalImages === 0 ? (
-            <label className="flex cursor-pointer flex-col items-center justify-center gap-3 rounded-xl border-2 border-dashed border-black/[0.10] bg-[#f7f7f7] px-6 py-10 text-center transition-colors hover:border-[#a71225]/30 hover:bg-white dark:border-white/[0.12] dark:bg-[#28282d] dark:hover:border-[#e8323f]/40 dark:hover:bg-[#28282d]">
-              <Plus className="h-8 w-8 text-[#bbb] dark:text-[#6b6b70]" />
-              <p className="text-[14px] font-semibold text-[#555] dark:text-[#c9c9ce]" style={{ fontFamily: "var(--font-tajawal)" }}>اضغط لإضافة صور</p>
+            <label className="flex cursor-pointer flex-col items-center justify-center gap-3 rounded-xl border-2 border-dashed border-black/[0.10] bg-[#f7f7f7] px-6 py-10 text-center transition-colors hover:border-[#a71225]/30 hover:bg-white    ">
+              <Plus className="h-8 w-8 text-[#bbb] " />
+              <p className="text-[14px] font-semibold text-[#555] " style={{ fontFamily: "var(--font-tajawal)" }}>اضغط لإضافة صور</p>
               <input ref={fileInputRef} type="file" multiple accept="image/jpeg,image/png,image/webp" className="sr-only" onChange={handleNewImages} />
             </label>
           ) : (
             <div className="grid grid-cols-4 gap-3">
               {keptImages.map((url) => (
-                <div key={url} className="relative aspect-square overflow-hidden rounded-xl bg-[#f0f0f0] dark:bg-[#28282d]">
+                <div key={url} className="relative aspect-square overflow-hidden rounded-xl bg-[#f0f0f0] ">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={url} alt="" className="h-full w-full object-cover" />
                   <button
@@ -227,7 +227,7 @@ export default function EditCarForm({ car }: Props) {
               ))}
 
               {newPreviews.map((url, i) => (
-                <div key={url} className="relative aspect-square overflow-hidden rounded-xl bg-[#f0f0f0] dark:bg-[#28282d]">
+                <div key={url} className="relative aspect-square overflow-hidden rounded-xl bg-[#f0f0f0] ">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={url} alt="" className="h-full w-full object-cover" />
                   <div className="absolute bottom-0 inset-x-0 bg-emerald-500/80 py-0.5 text-center text-[10px] font-bold text-white" style={{ fontFamily: "var(--font-tajawal)" }}>
@@ -244,9 +244,9 @@ export default function EditCarForm({ car }: Props) {
               ))}
 
               {totalImages < 8 && (
-                <label className="flex aspect-square cursor-pointer flex-col items-center justify-center gap-1 rounded-xl border-2 border-dashed border-black/[0.10] bg-[#f7f7f7] transition-colors hover:border-[#a71225]/30 hover:bg-white dark:border-white/[0.12] dark:bg-[#28282d] dark:hover:border-[#e8323f]/40 dark:hover:bg-[#28282d]">
-                  <Plus className="h-5 w-5 text-[#ccc] dark:text-[#6b6b70]" />
-                  <span className="text-[10px] text-[#bbb] dark:text-[#6b6b70]" style={{ fontFamily: "var(--font-tajawal)" }}>إضافة</span>
+                <label className="flex aspect-square cursor-pointer flex-col items-center justify-center gap-1 rounded-xl border-2 border-dashed border-black/[0.10] bg-[#f7f7f7] transition-colors hover:border-[#a71225]/30 hover:bg-white    ">
+                  <Plus className="h-5 w-5 text-[#ccc] " />
+                  <span className="text-[10px] text-[#bbb] " style={{ fontFamily: "var(--font-tajawal)" }}>إضافة</span>
                   <input type="file" multiple accept="image/jpeg,image/png,image/webp" className="sr-only" onChange={handleNewImages} />
                 </label>
               )}
@@ -259,7 +259,7 @@ export default function EditCarForm({ car }: Props) {
           <button
             type="submit"
             disabled={isPending}
-            className="flex items-center gap-2 rounded-full bg-[#111] px-8 py-3 text-[14px] font-bold text-white transition-colors hover:bg-[#a71225] disabled:opacity-60 dark:bg-[#f5f5f4] dark:text-[#17171a] dark:hover:bg-[#e8323f] dark:hover:text-white"
+            className="flex items-center gap-2 rounded-full bg-[#111] px-8 py-3 text-[14px] font-bold text-white transition-colors hover:bg-[#a71225] disabled:opacity-60    "
             style={{ fontFamily: "var(--font-tajawal)" }}
           >
             {isPending && <Loader2 className="h-4 w-4 animate-spin" />}
@@ -273,7 +273,7 @@ export default function EditCarForm({ car }: Props) {
                 startTransition(() => deleteCar(car.id));
               }
             }}
-            className="rounded-full border border-red-200 bg-red-50 px-6 py-3 text-[14px] font-semibold text-[#a71225] transition-colors hover:bg-red-100 dark:border-red-800 dark:bg-red-950 dark:text-red-400 dark:hover:bg-red-900"
+            className="rounded-full border border-red-200 bg-red-50 px-6 py-3 text-[14px] font-semibold text-[#a71225] transition-colors hover:bg-red-100    "
             style={{ fontFamily: "var(--font-tajawal)" }}
           >
             حذف السيارة
@@ -281,7 +281,7 @@ export default function EditCarForm({ car }: Props) {
 
           <Link
             href="/admin/cars"
-            className="rounded-full border border-black/[0.08] px-6 py-3 text-[14px] font-semibold text-[#555] transition-colors hover:border-black/20 dark:border-white/[0.10] dark:text-[#96969c] dark:hover:border-white/20"
+            className="rounded-full border border-black/[0.08] px-6 py-3 text-[14px] font-semibold text-[#555] transition-colors hover:border-black/20   "
             style={{ fontFamily: "var(--font-tajawal)" }}
           >
             إلغاء

@@ -54,11 +54,11 @@ export default function ContactPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-white text-[#111] dark:bg-[#17171a] dark:text-[#f5f5f4]">
+    <div className="min-h-screen bg-white text-[#111]  ">
       <Header />
 
       {/* Page header */}
-      <section className="dm-spotlight border-b border-black/[0.06] bg-[#f7f7f7] px-6 py-14 text-center md:px-10 dark:bg-[#17171a] dark:border-white/[0.06]">
+      <section className=" border-b border-black/[0.06] bg-[#f7f7f7] px-6 py-14 text-center md:px-10  ">
         <p
           className="mb-2 text-[11px] font-bold tracking-[4px] text-[#a71225] uppercase"
           style={{ fontFamily: "var(--font-tajawal)" }}
@@ -66,13 +66,13 @@ export default function ContactPage() {
           تواصل معنا
         </p>
         <h1
-          className="text-[36px] font-bold text-[#111] md:text-[42px] dark:text-[#f5f5f4]"
+          className="text-[36px] font-bold text-[#111] md:text-[42px] "
           style={{ fontFamily: "var(--font-tajawal)" }}
         >
           نحن هنا لمساعدتك
         </h1>
         <p
-          className="mx-auto mt-3 max-w-md text-[15px] leading-[1.8] text-[#777] dark:text-[#96969c]"
+          className="mx-auto mt-3 max-w-md text-[15px] leading-[1.8] text-[#777] "
           style={{ fontFamily: "var(--font-tajawal)" }}
         >
           سواء كنت تبحث عن سيارة أو تريد عرض سيارتك — نحن هنا دائماً
@@ -80,7 +80,7 @@ export default function ContactPage() {
       </section>
 
       {/* Contact cards */}
-      <section className="px-6 py-16 md:px-10 dark:bg-[#17171a]">
+      <section className="px-6 py-16 md:px-10 ">
         <div className="mx-auto grid max-w-3xl gap-4 sm:grid-cols-2">
           {contacts.map(({ Icon, label, value, href, color }) => (
             <a
@@ -88,7 +88,7 @@ export default function ContactPage() {
               href={href}
               target="_blank"
               rel="noreferrer"
-              className="dm-card group flex items-center gap-4 rounded-2xl border border-black/[0.08] bg-white p-5 transition-all duration-300 hover:border-black/[0.16] hover:-translate-y-0.5 hover:shadow-md dark:bg-[#1e1e22] dark:border-white/[0.08] dark:hover:-translate-y-0.5"
+              className=" group flex items-center gap-4 rounded-2xl border border-black/[0.08] bg-white p-5 transition-all duration-300 hover:border-black/[0.16] hover:-translate-y-0.5 hover:shadow-md   "
             >
               <div
                 className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl"
@@ -98,14 +98,14 @@ export default function ContactPage() {
               </div>
               <div>
                 <p
-                  className="text-[11px] font-bold tracking-[1.5px] text-[#999] uppercase dark:text-[#6b6b70]"
+                  className="text-[11px] font-bold tracking-[1.5px] text-[#999] uppercase "
                   style={{ fontFamily: "var(--font-tajawal)" }}
                 >
                   {label}
                 </p>
                 <p
                   dir="ltr"
-                  className="mt-0.5 text-[15px] font-semibold text-[#111] dark:text-[#f5f5f4]"
+                  className="mt-0.5 text-[15px] font-semibold text-[#111] "
                   style={{ fontFamily: "var(--font-tajawal)" }}
                 >
                   {value}
@@ -116,21 +116,21 @@ export default function ContactPage() {
         </div>
 
         {/* WhatsApp CTA */}
-        <div className="mx-auto mt-12 max-w-3xl rounded-2xl border border-[#a71225]/15 bg-[#a71225]/[0.03] px-8 py-10 text-center dark:border-[#e8323f]/25 dark:bg-[#e8323f]/[0.05]">
+        <div className="mx-auto mt-12 max-w-3xl rounded-2xl border border-[#a71225]/15 bg-[#a71225]/[0.03] px-8 py-10 text-center  ">
           <p
-            className="mb-1 text-[11px] font-bold tracking-[3px] text-[#a71225] uppercase dark:text-[#e8323f]"
+            className="mb-1 text-[11px] font-bold tracking-[3px] text-[#a71225] uppercase "
             style={{ fontFamily: "var(--font-tajawal)" }}
           >
             تواصل مباشر
           </p>
           <h2
-            className="text-[24px] font-bold text-[#111] dark:text-[#f5f5f4]"
+            className="text-[24px] font-bold text-[#111] "
             style={{ fontFamily: "var(--font-tajawal)" }}
           >
             تحدث معنا الآن على واتساب
           </h2>
           <p
-            className="mt-2 text-[14px] text-[#777] dark:text-[#96969c]"
+            className="mt-2 text-[14px] text-[#777] "
             style={{ fontFamily: "var(--font-tajawal)" }}
           >
             متاحون طوال الأسبوع للرد على استفساراتك

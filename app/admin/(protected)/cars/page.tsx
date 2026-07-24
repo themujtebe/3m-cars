@@ -25,12 +25,12 @@ export default async function AdminCarsPage() {
   return (
     <div className="space-y-5">
       <div className="flex items-center justify-between">
-        <p className="text-[13px] text-[#999] dark:text-[#6b6b70]" style={{ fontFamily: "var(--font-tajawal)" }}>
+        <p className="text-[13px] text-[#999] " style={{ fontFamily: "var(--font-tajawal)" }}>
           {cars.length} سيارة — {available} متاحة · {sold} مُباعة
         </p>
         <Link
           href="/admin/cars/new"
-          className="flex items-center gap-2 rounded-full bg-[#111] px-5 py-2.5 text-[13px] font-bold text-white transition-colors hover:bg-[#a71225] dark:bg-[#f5f5f4] dark:text-[#17171a] dark:hover:bg-[#e8323f] dark:hover:text-white"
+          className="flex items-center gap-2 rounded-full bg-[#111] px-5 py-2.5 text-[13px] font-bold text-white transition-colors hover:bg-[#a71225]    "
           style={{ fontFamily: "var(--font-tajawal)" }}
         >
           <Plus className="h-4 w-4" />
@@ -38,53 +38,53 @@ export default async function AdminCarsPage() {
         </Link>
       </div>
 
-      <div className="rounded-2xl border border-black/[0.06] bg-white overflow-hidden dark:bg-[#1e1e22] dark:border-white/[0.08]">
+      <div className="rounded-2xl border border-black/[0.06] bg-white overflow-hidden  ">
         {cars.length === 0 ? (
-          <div className="py-16 text-center text-[14px] text-[#bbb] dark:text-[#4b4b50]" style={{ fontFamily: "var(--font-tajawal)" }}>
+          <div className="py-16 text-center text-[14px] text-[#bbb] " style={{ fontFamily: "var(--font-tajawal)" }}>
             لا توجد سيارات — أضف أول سيارة
           </div>
         ) : (
-          <div className="divide-y divide-black/[0.05] dark:divide-white/[0.05]">
+          <div className="divide-y divide-black/[0.05] ">
             {cars.map((car) => (
-              <div key={car.id} className="flex items-center gap-4 px-5 py-4 transition-colors hover:bg-[#f7f7f7] dark:hover:bg-[#28282d]">
-                <div className="relative h-14 w-20 shrink-0 overflow-hidden rounded-xl bg-[#f0f0f0] dark:bg-[#28282d]">
+              <div key={car.id} className="flex items-center gap-4 px-5 py-4 transition-colors hover:bg-[#f7f7f7] ">
+                <div className="relative h-14 w-20 shrink-0 overflow-hidden rounded-xl bg-[#f0f0f0] ">
                   {car.images?.[0] ? (
                     <Image src={car.images[0]} alt={car.title_ar} fill className="object-cover" sizes="80px" />
                   ) : (
-                    <div className="flex h-full items-center justify-center text-[11px] text-[#ccc] dark:text-[#6b6b70]">لا صورة</div>
+                    <div className="flex h-full items-center justify-center text-[11px] text-[#ccc] ">لا صورة</div>
                   )}
                 </div>
 
                 <div className="flex-1 min-w-0">
-                  <p className="truncate text-[15px] font-semibold text-[#111] dark:text-[#f5f5f4]" style={{ fontFamily: "var(--font-tajawal)" }}>{car.title_ar}</p>
-                  <p className="text-[12px] text-[#999] dark:text-[#6b6b70]" style={{ fontFamily: "var(--font-tajawal)" }}>
+                  <p className="truncate text-[15px] font-semibold text-[#111] " style={{ fontFamily: "var(--font-tajawal)" }}>{car.title_ar}</p>
+                  <p className="text-[12px] text-[#999] " style={{ fontFamily: "var(--font-tajawal)" }}>
                     {car.year} · {car.mileage.toLocaleString("en-US")} KM · {car.price.toLocaleString("en-US")} {car.currency}
                   </p>
                 </div>
 
                 <span className={`shrink-0 rounded-full px-3 py-1 text-[11px] font-bold ${
                   car.status === "available"
-                    ? "bg-emerald-50 text-emerald-600 border border-emerald-200 dark:bg-emerald-950 dark:text-emerald-400 dark:border-emerald-800"
-                    : "bg-red-50 text-[#a71225] border border-red-200 dark:bg-red-950 dark:text-red-400 dark:border-red-800"
+                    ? "bg-emerald-50 text-emerald-600 border border-emerald-200   "
+                    : "bg-red-50 text-[#a71225] border border-red-200   "
                 }`} style={{ fontFamily: "var(--font-tajawal)" }}>
                   {car.status === "available" ? "متاحة" : "مُباعة"}
                 </span>
 
                 <div className="flex shrink-0 items-center gap-2">
-                  <Link href={`/cars/${car.id}`} target="_blank" className="rounded-lg border border-black/[0.08] px-3 py-1.5 text-[12px] font-medium text-[#555] transition-colors hover:border-black/20 hover:text-[#111] dark:border-white/[0.08] dark:text-[#96969c] dark:hover:text-[#f5f5f4]" style={{ fontFamily: "var(--font-tajawal)" }}>عرض</Link>
-                  <Link href={`/admin/cars/${car.id}/edit`} className="flex items-center gap-1.5 rounded-lg border border-black/[0.08] px-3 py-1.5 text-[12px] font-medium text-[#555] transition-colors hover:border-black/20 hover:text-[#111] dark:border-white/[0.08] dark:text-[#96969c] dark:hover:text-[#f5f5f4]" style={{ fontFamily: "var(--font-tajawal)" }}>
+                  <Link href={`/cars/${car.id}`} target="_blank" className="rounded-lg border border-black/[0.08] px-3 py-1.5 text-[12px] font-medium text-[#555] transition-colors hover:border-black/20 hover:text-[#111]   " style={{ fontFamily: "var(--font-tajawal)" }}>عرض</Link>
+                  <Link href={`/admin/cars/${car.id}/edit`} className="flex items-center gap-1.5 rounded-lg border border-black/[0.08] px-3 py-1.5 text-[12px] font-medium text-[#555] transition-colors hover:border-black/20 hover:text-[#111]   " style={{ fontFamily: "var(--font-tajawal)" }}>
                     <Pencil className="h-3 w-3" />تعديل
                   </Link>
                   <form action={updateCarStatus}>
                     <input type="hidden" name="id" value={car.id} />
                     <input type="hidden" name="status" value={car.status === "available" ? "sold" : "available"} />
-                    <button type="submit" className="flex items-center gap-1.5 rounded-lg border border-black/[0.08] px-3 py-1.5 text-[12px] font-medium text-[#555] transition-colors hover:text-[#111] dark:border-white/[0.08] dark:text-[#96969c] dark:hover:text-[#f5f5f4]" style={{ fontFamily: "var(--font-tajawal)" }}>
+                    <button type="submit" className="flex items-center gap-1.5 rounded-lg border border-black/[0.08] px-3 py-1.5 text-[12px] font-medium text-[#555] transition-colors hover:text-[#111]   " style={{ fontFamily: "var(--font-tajawal)" }}>
                       {car.status === "available" ? <><XCircle className="h-3 w-3" />تعيين مباعة</> : <><CheckCircle className="h-3 w-3" />تعيين متاحة</>}
                     </button>
                   </form>
                   <form action={deleteCarAction}>
                     <input type="hidden" name="id" value={car.id} />
-                    <button type="submit" className="flex items-center gap-1.5 rounded-lg border border-red-200 bg-red-50 px-3 py-1.5 text-[12px] font-medium text-[#a71225] transition-colors hover:bg-red-100 dark:border-red-800 dark:bg-red-950 dark:text-red-400 dark:hover:bg-red-900" style={{ fontFamily: "var(--font-tajawal)" }}>
+                    <button type="submit" className="flex items-center gap-1.5 rounded-lg border border-red-200 bg-red-50 px-3 py-1.5 text-[12px] font-medium text-[#a71225] transition-colors hover:bg-red-100    " style={{ fontFamily: "var(--font-tajawal)" }}>
                       <Trash2 className="h-3 w-3" />حذف
                     </button>
                   </form>

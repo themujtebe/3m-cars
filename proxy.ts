@@ -1,28 +1,21 @@
 import { NextRequest, NextResponse } from "next/server";
+import { ADMIN_SESSION_COOKIE, computeSessionToken } from "@/lib/adminAuth";
 
-const ADMIN_USER = "admin";
-
-export function proxy(req: NextRequest) {
+export async function proxy(req: NextRequest) {
   const adminPassword = process.env.ADMIN_PASSWORD;
   if (!adminPassword) return NextResponse.next();
 
-  const auth = req.headers.get("authorization");
-  if (auth?.startsWith("Basic ")) {
-    const decoded = atob(auth.slice(6));
-    const colon = decoded.indexOf(":");
-    const user = decoded.slice(0, colon);
-    const pass = decoded.slice(colon + 1);
-    if (user === ADMIN_USER && pass === adminPassword) {
-      return NextResponse.next();
-    }
-  }
+  const { pathname } = req.nextUrl;
+  if (pathname === "/admin/login") return NextResponse.next();
 
-  return new NextResponse("Unauthorized", {
-    status: 401,
-    headers: {
-      "WWW-Authenticate": 'Basic realm="3M Cars Admin", charset="UTF-8"',
-    },
-  });
+  const cookie = req.cookies.get(ADMIN_SESSION_COOKIE)?.value;
+  const expected = await computeSessionToken(adminPassword);
+
+  if (cookie === expected) return NextResponse.next();
+
+  const loginUrl = new URL("/admin/login", req.url);
+  loginUrl.searchParams.set("from", pathname);
+  return NextResponse.redirect(loginUrl);
 }
 
 export const config = {

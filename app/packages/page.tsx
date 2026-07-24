@@ -12,11 +12,11 @@ export default function PackagesPage() {
   const { whatsapp } = readSettings();
 
   return (
-    <div className="min-h-screen bg-white text-[#111] dark:bg-[#17171a] dark:text-[#f5f5f4]">
+    <div className="min-h-screen bg-white text-[#111]  ">
       <Header />
 
       {/* Page header */}
-      <section className="dm-spotlight border-b border-black/[0.06] bg-[#f7f7f7] px-6 py-14 text-center md:px-10 dark:bg-[#17171a] dark:border-white/[0.06]">
+      <section className=" border-b border-black/[0.06] bg-[#f7f7f7] px-6 py-14 text-center md:px-10  ">
         <p
           className="mb-2 text-[11px] font-bold tracking-[4px] text-[#a71225] uppercase"
           style={{ fontFamily: "var(--font-tajawal)" }}
@@ -24,13 +24,13 @@ export default function PackagesPage() {
           باقات الخدمة
         </p>
         <h1
-          className="text-[36px] font-bold text-[#111] md:text-[42px] dark:text-[#f5f5f4]"
+          className="text-[36px] font-bold text-[#111] md:text-[42px] "
           style={{ fontFamily: "var(--font-tajawal)" }}
         >
           اختر الباقة المناسبة
         </h1>
         <p
-          className="mx-auto mt-3 max-w-lg text-[15px] leading-[1.8] text-[#777] dark:text-[#96969c]"
+          className="mx-auto mt-3 max-w-lg text-[15px] leading-[1.8] text-[#777] "
           style={{ fontFamily: "var(--font-tajawal)" }}
         >
           نتكفل بالتصوير والتعديل والنشر — أنت فقط تستقبل المشترين
@@ -38,9 +38,9 @@ export default function PackagesPage() {
       </section>
 
       {/* Packages grid */}
-      <section className="px-6 py-16 md:px-10 dark:bg-[#17171a]">
+      <section className="px-6 py-16 md:px-10 ">
         {packages.length === 0 ? (
-          <p className="text-center text-[15px] text-[#aaa] dark:text-[#4b4b50]" style={{ fontFamily: "var(--font-tajawal)" }}>
+          <p className="text-center text-[15px] text-[#aaa] " style={{ fontFamily: "var(--font-tajawal)" }}>
             لا توجد باقات متاحة حالياً
           </p>
         ) : (
@@ -52,15 +52,15 @@ export default function PackagesPage() {
               return (
                 <div
                   key={pkg.id}
-                  className={`dm-card relative rounded-2xl border p-8 transition-all duration-300 hover:-translate-y-1 dark:bg-[#1e1e22] ${
+                  className={` relative rounded-2xl border p-8 transition-all duration-300 hover:-translate-y-1  ${
                     pkg.highlighted
-                      ? "border-[#a71225]/30 shadow-[0_4px_32px_rgba(167,18,37,0.10)] dark:border-[#e8323f]/35"
-                      : "border-black/[0.08] hover:border-black/[0.15] dark:border-white/[0.08] dark:hover:border-white/[0.16]"
+                      ? "border-[#a71225]/30 shadow-[0_4px_32px_rgba(167,18,37,0.10)] "
+                      : "border-black/[0.08] hover:border-black/[0.15]  "
                   }`}
                 >
                   {pkg.highlighted && (
                     <span
-                      className="absolute -top-3 right-6 rounded-full bg-[#a71225] px-3 py-1 text-[10px] font-bold text-white dark:bg-[#e8323f]"
+                      className="absolute -top-3 right-6 rounded-full bg-[#a71225] px-3 py-1 text-[10px] font-bold text-white "
                       style={{ fontFamily: "var(--font-tajawal)" }}
                     >
                       الأكثر طلبًا
@@ -68,7 +68,7 @@ export default function PackagesPage() {
                   )}
 
                   <h2
-                    className="text-[22px] font-bold text-[#111] dark:text-[#f5f5f4]"
+                    className="text-[22px] font-bold text-[#111] "
                     style={{ fontFamily: "var(--font-tajawal)" }}
                   >
                     {pkg.name}
@@ -77,32 +77,32 @@ export default function PackagesPage() {
                   {/* Price */}
                   <div className="mt-6 flex items-end gap-2">
                     <span
-                      className="dm-price text-[52px] font-bold leading-none text-[#111] dark:text-[#f5f5f4]"
+                      className=" text-[52px] font-bold leading-none text-[#111] "
                       style={{ fontFamily: "var(--font-tajawal)" }}
                     >
                       {pkg.price}
                     </span>
                     <span
-                      className="mb-2 text-[14px] text-[#999] dark:text-[#6b6b70]"
+                      className="mb-2 text-[14px] text-[#999] "
                       style={{ fontFamily: "var(--font-tajawal)" }}
                     >
                       دينار بحريني
                     </span>
                   </div>
 
-                  <div className="my-6 h-px bg-[#f0f0f0] dark:bg-white/[0.06]" />
+                  <div className="my-6 h-px bg-[#f0f0f0] " />
 
                   {/* Features */}
                   <ul className="flex flex-col gap-3">
                     {pkg.features.map((f) => (
                       <li key={f} className="flex items-start gap-3">
                         <span
-                          className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full dark:bg-white/[0.06]"
+                          className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full "
                           style={{ background: pkg.highlighted ? "rgba(167,18,37,0.1)" : undefined }}
                         >
-                          <Check className="h-3 w-3 dark:text-[#c9c9ce]" style={{ color: pkg.highlighted ? "#e8323f" : undefined }} />
+                          <Check className="h-3 w-3 " style={{ color: pkg.highlighted ? "#e8323f" : undefined }} />
                         </span>
-                        <span className="text-[14px] text-[#555] dark:text-[#c9c9ce]" style={{ fontFamily: "var(--font-tajawal)" }}>{f}</span>
+                        <span className="text-[14px] text-[#555] " style={{ fontFamily: "var(--font-tajawal)" }}>{f}</span>
                       </li>
                     ))}
                   </ul>
@@ -114,8 +114,8 @@ export default function PackagesPage() {
                     rel="noreferrer"
                     className={`mt-8 flex w-full items-center justify-center rounded-full py-3 text-[14px] font-bold transition-colors ${
                       pkg.highlighted
-                        ? "bg-[#a71225] text-white hover:bg-[#8a0e1d] dark:bg-[#e8323f] dark:hover:bg-[#ff4550]"
-                        : "border border-black/[0.12] text-[#111] hover:border-black/25 hover:bg-[#f7f7f7] dark:border-white/[0.16] dark:text-[#f5f5f4] dark:hover:border-white/30 dark:hover:bg-white/[0.04]"
+                        ? "bg-[#a71225] text-white hover:bg-[#8a0e1d]  "
+                        : "border border-black/[0.12] text-[#111] hover:border-black/25 hover:bg-[#f7f7f7]    "
                     }`}
                     style={{ fontFamily: "var(--font-tajawal)" }}
                   >
@@ -129,16 +129,16 @@ export default function PackagesPage() {
       </section>
 
       {/* Terms */}
-      <section className="border-t border-black/[0.06] bg-[#f7f7f7] px-6 py-14 md:px-10 dark:bg-[#17171a] dark:border-white/[0.06]">
+      <section className="border-t border-black/[0.06] bg-[#f7f7f7] px-6 py-14 md:px-10  ">
         <div className="mx-auto max-w-3xl">
           <p
-            className="mb-4 text-[11px] font-bold tracking-[3px] text-[#999] uppercase dark:text-[#6b6b70]"
+            className="mb-4 text-[11px] font-bold tracking-[3px] text-[#999] uppercase "
             style={{ fontFamily: "var(--font-tajawal)" }}
           >
             الشروط والأحكام
           </p>
           <h2
-            className="mb-6 text-[22px] font-bold text-[#111] dark:text-[#f5f5f4]"
+            className="mb-6 text-[22px] font-bold text-[#111] "
             style={{ fontFamily: "var(--font-tajawal)" }}
           >
             ما يجب معرفته
@@ -151,8 +151,8 @@ export default function PackagesPage() {
               "لا يُسترد المبلغ بعد إتمام التصوير.",
               "السبونسر يبدأ من يوم النشر لمدة يومين متتاليين.",
             ].map((term, i) => (
-              <li key={i} className="flex items-start gap-3 text-[14px] text-[#555] dark:text-[#c9c9ce]" style={{ fontFamily: "var(--font-tajawal)" }}>
-                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#a71225] dark:bg-[#e8323f]" />
+              <li key={i} className="flex items-start gap-3 text-[14px] text-[#555] " style={{ fontFamily: "var(--font-tajawal)" }}>
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#a71225] " />
                 {term}
               </li>
             ))}
